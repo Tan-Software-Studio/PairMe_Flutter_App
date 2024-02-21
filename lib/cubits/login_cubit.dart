@@ -10,7 +10,7 @@ import 'package:pair_me/Widgets/flutter_toast.dart';
 import 'package:pair_me/helper/Apis.dart';
 import 'package:pair_me/helper/Size_page.dart';
 import 'package:pair_me/helper/pref_Service.dart';
-
+import 'package:pair_me/zego_chat/login_page.dart';
 
 abstract class LoginState {}
 
@@ -25,10 +25,7 @@ class LoginSuccess extends LoginState {}
 class LoginCubit extends Cubit<LoginState> {
   LoginCubit() : super(LoginInitials());
 
-  Future<void> LoginService(
-      {required String phoneNumber,
-        required String otp,
-        required BuildContext context}) async {
+  Future<void> LoginService({required String phoneNumber, required String otp, required BuildContext context}) async {
     emit(LoginLoading());
     final dio = Dio();
     SharedPrefsService prefsService = SharedPrefsService();
@@ -47,7 +44,14 @@ class LoginCubit extends Cubit<LoginState> {
         emit(LoginSuccess());
         Authtoken = "Bearer ${hello['Token']}";
         prefsService.setStringData("Authtoken", Authtoken);
-        Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => const Home_screen(),), (route) => false);
+        Navigator.pushAndRemoveUntil(
+            context,
+            MaterialPageRoute(
+              builder: (context) => const Home_screen(),
+              // builder: (context) => const LoginPage(),
+
+            ),
+            (route) => false);
         flutterToast(hello['message'], true);
       } else {
         emit(LoginError());

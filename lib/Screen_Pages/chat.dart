@@ -8,7 +8,7 @@ import 'package:file_picker/file_picker.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_sound/public/flutter_sound_player.dart';
+// import 'package:flutter_sound/public/flutter_sound_player.dart';
 import 'package:media_picker_widget/media_picker_widget.dart';
 import 'package:pair_me/Screen_Pages/image_page.dart';
 import 'package:pair_me/Screen_Pages/videocall.dart';
@@ -1395,7 +1395,7 @@ class displayvoiceMessage extends StatefulWidget {
 }
 
 class _displayvoiceMessageState extends State<displayvoiceMessage> {
-  final player = FlutterSoundPlayer();
+  // final player = FlutterSoundPlayer();
 
   bool play = false;
   @override
@@ -1437,14 +1437,14 @@ class _displayvoiceMessageState extends State<displayvoiceMessage> {
                   setState(() {
                     play = false;
                   });
-                   await player.closePlayer();
+                   // await player.closePlayer();
                 }, child: const Icon(Icons.pause,color: Colors.black)) :
                 InkWell(onTap: () async {
                   print("play");
                   setState(() {
                     play = true;
                   });
-                  await player.startPlayer(fromURI: widget.thumbnail);
+                  // await player.startPlayer(fromURI: widget.thumbnail);
                 }, child: const Icon(Icons.play_arrow,color: Colors.black,)),
                 Text(widget.dispalname,maxLines: 1,style: TextStyle(
                     fontSize: 17,

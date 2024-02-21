@@ -8,6 +8,9 @@
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <queries>
+        <provider android:authorities="com.facebook.katana.provider.PlatformProvider" />
+    </queries>
     <application
         android:requestLegacyExternalStorage="true"
         android:label="Pair me"
@@ -17,6 +20,8 @@
         android:hardwareAccelerated="true"
         android:windowSoftInputMode="adjustResize"
         android:icon="@mipmap/ic_launcher">
+        <meta-data android:name="com.facebook.sdk.ApplicationId" android:value="@string/facebook_app_id"/>
+        <meta-data android:name="com.facebook.sdk.ClientToken" android:value="@string/facebook_client_token"/>
         <activity
             android:name=".MainActivity"
             android:exported="true"
@@ -45,3 +50,4 @@
             android:value="AIzaSyCI6NC4_qw3itCGtTP8Hx30aP1IY35ng1Y"/>
     </application>
 </manifest>
+

@@ -3,8 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pair_me/Modal/city&state.dart';
 import 'package:pair_me/Screen_Pages/login_page.dart';
+import 'package:pair_me/cubits/signup.dart';
 import 'package:pair_me/helper/Apis.dart';
 import 'package:pair_me/helper/Size_page.dart';
+import 'package:pair_me/helper/pref_Service.dart';
 
 
 abstract class DeleteUserState {}
@@ -60,6 +62,9 @@ class LogoutUserSuccess extends LogoutUserState {}
 class LogoutUserCubit extends Cubit<LogoutUserState> {
   LogoutUserCubit() : super(LogoutUserInitials());
   final dio = Dio();
+  SignUpCubit signUpCubit = SignUpCubit();
+  SharedPrefsService prefsService = SharedPrefsService();
+
   Future<CityandState?> LogoutService(BuildContext context) async {
     emit(LogoutUserLoading());
     try {
@@ -70,6 +75,9 @@ class LogoutUserCubit extends Cubit<LogoutUserState> {
       print(response);
       if(response.statusCode == 200 && response.data != null)
       {
+        await signUpCubit.signOutGoogle();
+        await signUpCubit.signOutFacebook();
+        prefsService.clearAll();
         emit(LogoutUserSuccess());
         Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) {
           return  Login_page();

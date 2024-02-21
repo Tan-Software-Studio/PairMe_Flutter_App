@@ -11,6 +11,7 @@ import 'package:pair_me/Widgets/custom_texts.dart';
 import 'package:pair_me/Widgets/flutter_toast.dart';
 import 'package:pair_me/Widgets/textfield.dart';
 import 'package:pair_me/cubits/login_cubit.dart';
+import 'package:pair_me/cubits/signup.dart';
 import 'package:pair_me/helper/App_Colors.dart';
 import 'package:pair_me/helper/Size_page.dart';
 import 'package:pair_me/helper/pref_Service.dart';
@@ -29,6 +30,7 @@ class _Login_pageState extends State<Login_page> {
   final TextEditingController _Email = TextEditingController();
   final TextEditingController _Password = TextEditingController();
   SharedPrefsService prefsService = SharedPrefsService();
+  SignUpCubit signUpCubit = SignUpCubit();
   LoginCubit loginCubit = LoginCubit();
   @override
   void initState() {
@@ -223,76 +225,86 @@ class _Login_pageState extends State<Login_page> {
                               )),
                         ),
                       ]),
-                    Container(
-                      margin: EdgeInsets.symmetric(vertical: screenHeight(context,dividedBy: 60)),
-                      height: screenHeight(context,dividedBy: 20),
-                      width: screenWidth(context),
-                      decoration: BoxDecoration(
-                          color: AppColor.white,
-                          borderRadius: BorderRadius.circular(9),
-                          boxShadow: const [
-                            BoxShadow(
-                              color: AppColor.fontgray,
-                              offset: Offset(
-                                1,
-                                1,
-                              ),
-                              blurRadius: 4,
-                              // spreadRadius: 1.0,
-                            ),
-                          ]
-                      ),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Container(
-                          //  margin: const EdgeInsets.symmetric(horizontal: 10),
-                            height: screenHeight(context,dividedBy: 40),
-                            width: screenHeight(context,dividedBy: 40),
-                            decoration: const BoxDecoration(image: DecorationImage(image: AssetImage('assets/Images/google.png'))),
-                          ),
-                           SizedBox(width: screenWidth(context,dividedBy: 40),),
-                           Text("Login with Google".tr(),style: const TextStyle(color: Color(0xff888888),fontWeight: FontWeight.w400,fontFamily: 'Roboto'),),
-                        ],
-                      ),
-                    ),
-                    Center(
-                        child: Container(
-                          height: screenHeight(context,dividedBy: 20),
-                          width: screenWidth(context),
-                          decoration: BoxDecoration(
+                    GestureDetector(
+                      onTap: (){
+                        signUpCubit.signInWithGoogle(context: context);
+                      },
+                      child: Container(
+                        margin: EdgeInsets.symmetric(vertical: screenHeight(context,dividedBy: 60)),
+                        height: screenHeight(context,dividedBy: 20),
+                        width: screenWidth(context),
+                        decoration: BoxDecoration(
                             color: AppColor.white,
                             borderRadius: BorderRadius.circular(9),
-                              boxShadow: const [
-                                BoxShadow(
-                                  color: AppColor.fontgray,
-                                  offset: Offset(
-                                    1,
-                                    1,
-                                  ),
-                                  blurRadius: 4,
-                                  // spreadRadius: 1.0,
+                            boxShadow: const [
+                              BoxShadow(
+                                color: AppColor.fontgray,
+                                offset: Offset(
+                                  1,
+                                  1,
                                 ),
-                              ]
-                          ),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Container(
-                               // margin: const EdgeInsets.symmetric(horizontal: 5),
-                                height: screenHeight(context,dividedBy: 37),
-                                width: screenHeight(context,dividedBy: 60),
-                                decoration: const BoxDecoration(
-                                 // color: Colors.red,
-                                    image: DecorationImage(image: AssetImage('assets/Images/facebook.png'),fit: BoxFit.fitHeight)),
+                                blurRadius: 4,
+                                // spreadRadius: 1.0,
                               ),
-                              SizedBox(width: screenWidth(context,dividedBy: 50),),
-                               Text("Login with Facebook".tr(),style: const TextStyle(color: Color(0xff888888),fontWeight: FontWeight.w400,fontFamily: 'Roboto'),),
-
-                            ],
-                          ),
+                            ]
+                        ),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Container(
+                            //  margin: const EdgeInsets.symmetric(horizontal: 10),
+                              height: screenHeight(context,dividedBy: 40),
+                              width: screenHeight(context,dividedBy: 40),
+                              decoration: const BoxDecoration(image: DecorationImage(image: AssetImage('assets/Images/google.png'))),
+                            ),
+                             SizedBox(width: screenWidth(context,dividedBy: 40),),
+                             Text("Login with Google".tr(),style: const TextStyle(color: Color(0xff888888),fontWeight: FontWeight.w400,fontFamily: 'Roboto'),),
+                          ],
                         ),
                       ),
+                    ),
+                    GestureDetector(
+                      onTap: (){
+                        signUpCubit.signInWithFacebook(context: context);
+                      },
+                      child: Center(
+                          child: Container(
+                            height: screenHeight(context,dividedBy: 20),
+                            width: screenWidth(context),
+                            decoration: BoxDecoration(
+                              color: AppColor.white,
+                              borderRadius: BorderRadius.circular(9),
+                                boxShadow: const [
+                                  BoxShadow(
+                                    color: AppColor.fontgray,
+                                    offset: Offset(
+                                      1,
+                                      1,
+                                    ),
+                                    blurRadius: 4,
+                                    // spreadRadius: 1.0,
+                                  ),
+                                ]
+                            ),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Container(
+                                 // margin: const EdgeInsets.symmetric(horizontal: 5),
+                                  height: screenHeight(context,dividedBy: 37),
+                                  width: screenHeight(context,dividedBy: 60),
+                                  decoration: const BoxDecoration(
+                                   // color: Colors.red,
+                                      image: DecorationImage(image: AssetImage('assets/Images/facebook.png'),fit: BoxFit.fitHeight)),
+                                ),
+                                SizedBox(width: screenWidth(context,dividedBy: 50),),
+                                 Text("Login with Facebook".tr(),style: const TextStyle(color: Color(0xff888888),fontWeight: FontWeight.w400,fontFamily: 'Roboto'),),
+
+                              ],
+                            ),
+                          ),
+                        ),
+                    ),
                     Padding(
                       padding: EdgeInsets.symmetric(vertical:screenHeight(context,dividedBy: 25) ),
                       child: Row(

@@ -56,4 +56,9 @@ class SharedPrefsService {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     prefs.remove(key);
   }
+
+  clearAll() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    prefs.clear();
+  }
 }

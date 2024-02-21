@@ -70,47 +70,78 @@ class _Home_PageState extends State<Home_Page> with TickerProviderStateMixin {
     allUsersdetails = (await allUsersDetailsCubit.GetAllUsersDetails())!;
     setState(() {});
   }
+
   getImage(int index) {
-    if(filterData){
+    if (filterData) {
       if (filterUserCubit.filterUser.data?[index].last?.image != null) {
-        if (filterUserCubit.filterUser.data?[index].last?.image?.photo1 == null &&
-            image.contains(filterUserCubit.filterUser.data?[index].last?.image?.photo1)) {
+        if (filterUserCubit.filterUser.data?[index].last?.image?.photo1 ==
+                null &&
+            image.contains(
+                filterUserCubit.filterUser.data?[index].last?.image?.photo1)) {
           image = image;
-        } else if (filterUserCubit.filterUser.data?[index].last?.image?.photo1 != null) {
-          image.add(filterUserCubit.filterUser.data?[index].last?.image?.photo1);
-          int imagelength = filterUserCubit.filterUser.data?.length  ?? 0;
+        } else if (filterUserCubit
+                .filterUser.data?[index].last?.image?.photo1 !=
+            null) {
+          image
+              .add(filterUserCubit.filterUser.data?[index].last?.image?.photo1);
+          int imagelength = filterUserCubit.filterUser.data?.length ?? 0;
           // looking_for1 = filterUserCubit.filterUser.data[index].
-         // image1.add(filterUserCubit.filterUser.data?[imagelength-1 == index ?index:index+1].last.image?.photo1);
+          // image1.add(filterUserCubit.filterUser.data?[imagelength-1 == index ?index:index+1].last.image?.photo1);
         }
-        if (filterUserCubit.filterUser.data?[index].last?.image?.photo2 == null &&
-            image.contains(filterUserCubit.filterUser.data?[index].last?.image?.photo2)) {
+        if (filterUserCubit.filterUser.data?[index].last?.image?.photo2 ==
+                null &&
+            image.contains(
+                filterUserCubit.filterUser.data?[index].last?.image?.photo2)) {
           image = image;
-        } else if (filterUserCubit.filterUser.data?[index].last?.image?.photo2 != null) {
-          image.add(filterUserCubit.filterUser.data?[index].last?.image?.photo2);
+        } else if (filterUserCubit
+                .filterUser.data?[index].last?.image?.photo2 !=
+            null) {
+          image
+              .add(filterUserCubit.filterUser.data?[index].last?.image?.photo2);
         }
-        if (filterUserCubit.filterUser.data?[index].last?.image?.photo3 == null &&
-            image.contains(filterUserCubit.filterUser.data?[index].last?.image?.photo3)) {
+        if (filterUserCubit.filterUser.data?[index].last?.image?.photo3 ==
+                null &&
+            image.contains(
+                filterUserCubit.filterUser.data?[index].last?.image?.photo3)) {
           image = image;
-        } else if (filterUserCubit.filterUser.data?[index].last?.image?.photo3 != null) {
-          image.add(filterUserCubit.filterUser.data?[index].last?.image?.photo3);
+        } else if (filterUserCubit
+                .filterUser.data?[index].last?.image?.photo3 !=
+            null) {
+          image
+              .add(filterUserCubit.filterUser.data?[index].last?.image?.photo3);
         }
-        if (filterUserCubit.filterUser.data?[index].last?.image?.photo4 == null &&
-            image.contains(filterUserCubit.filterUser.data?[index].last?.image?.photo4)) {
+        if (filterUserCubit.filterUser.data?[index].last?.image?.photo4 ==
+                null &&
+            image.contains(
+                filterUserCubit.filterUser.data?[index].last?.image?.photo4)) {
           image = image;
-        } else if (filterUserCubit.filterUser.data?[index].last?.image?.photo4 != null) {
-          image.add(filterUserCubit.filterUser.data?[index].last?.image?.photo4);
+        } else if (filterUserCubit
+                .filterUser.data?[index].last?.image?.photo4 !=
+            null) {
+          image
+              .add(filterUserCubit.filterUser.data?[index].last?.image?.photo4);
         }
-        if (filterUserCubit.filterUser.data?[index].last?.image?.photo5 == null &&
-            image.contains(filterUserCubit.filterUser.data?[index].last?.image?.photo5)) {
+        if (filterUserCubit.filterUser.data?[index].last?.image?.photo5 ==
+                null &&
+            image.contains(
+                filterUserCubit.filterUser.data?[index].last?.image?.photo5)) {
           image = image;
-        } else if (filterUserCubit.filterUser.data?[index].last?.image?.photo5 != null) {
-          image.add(filterUserCubit.filterUser.data?[index].last?.image?.photo5);
+        } else if (filterUserCubit
+                .filterUser.data?[index].last?.image?.photo5 !=
+            null) {
+          image
+              .add(filterUserCubit.filterUser.data?[index].last?.image?.photo5);
         }
-        if (filterUserCubit.filterUser.data?[index].last?.image?.photo6 == null &&
-            image.contains(filterUserCubit.filterUser.data?[index].last?.image?.photo6)) {
+        if (filterUserCubit.filterUser.data?[index].last?.image?.photo6 ==
+                null &&
+            image.contains(
+                filterUserCubit.filterUser.data?[index].last?.image?.photo6)) {
           image = image;
-        } else if (filterUserCubit.filterUser.data?[index].last?.image?.photo6 != null) {
-          image.add(filterUserCubit.filterUser.data?[index].last?.image?.photo6);
+        } else if (filterUserCubit
+                .filterUser.data?[index].last?.image?.photo6 !=
+            null) {
+          image
+              .add(filterUserCubit.filterUser.data?[index].last?.image?.photo6);
         }
       }
       image = image.toSet().toList();
@@ -121,8 +152,7 @@ class _Home_PageState extends State<Home_Page> with TickerProviderStateMixin {
           image = image;
         } else if (allUsersdetails.data?[index].last.image?.photo1 != null) {
           image.add(allUsersdetails.data?[index].last.image?.photo1);
-         // int imagelength = allUsersdetails.data?.length  ?? 0;
-
+          // int imagelength = allUsersdetails.data?.length  ?? 0;
         }
         if (allUsersdetails.data?[index].last.image?.photo2 == null &&
             image.contains(allUsersdetails.data?[index].last.image?.photo2)) {
@@ -159,6 +189,7 @@ class _Home_PageState extends State<Home_Page> with TickerProviderStateMixin {
       //image1 = image1.toSet().toList();
     }
   }
+
   @override
   void initState() {
     // allUsersDetailsCubit.GetAllUsersDetails();
@@ -214,33 +245,40 @@ class _Home_PageState extends State<Home_Page> with TickerProviderStateMixin {
                                 const Spacer(),
                                 InkWell(
                                   onTap: () {
-                                    Navigator.push(context, MaterialPageRoute(builder: (context) {
-                                      return const Connection_Page();
-                                    },));
+                                    Navigator.push(context, MaterialPageRoute(
+                                      builder: (context) {
+                                        return const Connection_Page();
+                                      },
+                                    ));
                                   },
                                   child: SvgPicture.asset(
-                                      "assets/Images/Vector.svg",
-                                    height: screenHeight(context, dividedBy: 40),
+                                    "assets/Images/Vector.svg",
+                                    height:
+                                        screenHeight(context, dividedBy: 40),
                                     width: screenHeight(context, dividedBy: 40),
                                   ),
                                 ),
-                                SizedBox(width: screenWidth(context,dividedBy: 20),),
+                                SizedBox(
+                                  width: screenWidth(context, dividedBy: 20),
+                                ),
                                 InkWell(
                                   onTap: () async {
-                                   String refresh = await Navigator.push(context, MaterialPageRoute(
+                                    String refresh = await Navigator.push(
+                                        context, MaterialPageRoute(
                                       builder: (context) {
                                         return const Filter_page();
                                       },
                                     ));
-                                   if(refresh == "refresh"){
-                                     filterData = (await prefsService.getBoolData("filter"))!;
-                                     ind = 0;
-                                     pageViewIndex=0;
-                                     image.clear();
-                                     //image1.clear();
-                                     setState(() {});
-                                     print("hello");
-                                   }
+                                    if (refresh == "refresh") {
+                                      filterData = (await prefsService
+                                          .getBoolData("filter"))!;
+                                      ind = 0;
+                                      pageViewIndex = 0;
+                                      image.clear();
+                                      //image1.clear();
+                                      setState(() {});
+                                      print("hello");
+                                    }
                                   },
                                   child: Container(
                                     key: _key,
@@ -252,7 +290,7 @@ class _Home_PageState extends State<Home_Page> with TickerProviderStateMixin {
                                             image: AssetImage(
                                                 'assets/Images/filter.png'))),
                                   ),
-                                )
+                                ) // this error i don`t know
                               ],
                             ),
                           ),
@@ -260,2064 +298,1974 @@ class _Home_PageState extends State<Home_Page> with TickerProviderStateMixin {
                         SizedBox(
                           height: screenHeight(context, dividedBy: 100),
                         ),
-                        if (filterData ) BlocBuilder<FilterUserCubit, FilterUserState>(
-                          builder: (context, state) {
-                            if (state is FilterUserSuccess) {
-                              return Expanded(
-                                  child: theEnd ? Center(child: Text("No User!"),) : Stack(
-                                    children: [
-                                      AppinioSwiper(
-                                        controller: controller,
-                                      onEnd: () {
-                                        print("hello to this is end");
-                                        theEnd = true;
-                                        setState(() {});
-                                      },
-                                        invertAngleOnBottomDrag: true,
-                                        onCardPositionChanged: (position) {
-                                          if (position.offset.direction > 0) {
-                                            setState(() {
-                                              swipeDown = true;
-                                              height = height + 20;
-                                              height1 = height1 >= 1.60
-                                                  ? height1 + 0.001
-                                                  : height1 + 0.004;
-                                              height1 >= 1.50 && fontsize >= 20
-                                                  ? fontsize = fontsize - 1
-                                                  : fontsize = fontsize;
-                                              print(height1);
-                                              wight = height1 >= 1.60
-                                                  ? wight + 0.001
-                                                  : wight + 0.003;
-                                              swipeUp = false;
-                                              bottonname = "Connect";
-                                            });
-                                          }
-                                          if (position.offset.direction < 0) {
-                                            setState(() {
-                                              swipeUp = true;
-                                              bottonname = "Reject";
-                                              height1 = height1 >= 1.60
-                                                  ? height1 + 0.001
-                                                  : height1 + 0.004;
-                                              height1 >= 1.50 && fontsize >= 20
-                                                  ? fontsize = fontsize - 1
-                                                  : fontsize = fontsize;
-                                              print(height1);
-                                              wight = height1 >= 1.60
-                                                  ? wight + 0.001
-                                                  : wight + 0.003;
-                                              // print("wight ===> $wight");
-                                              height = height + 20;
-                                              swipeDown = false;
-                                            });
-                                          }
-                                        },
-                                        onSwipeCancelled: (activity) {
-                                          setState(() {
-                                            image.clear();
-                                            swipeUp = false;
-                                            swipeDown = false;
-                                            fontsize = 70;
-                                            height1 = 1.2;
-                                            wight = 1;
-                                            height = 0;
-                                          });
-                                        },
-                                        onSwipeEnd: (previousIndex, targetIndex, activity) {
-                                          setState(() {
-                                            undoid = filterUserCubit.filterUser.data?[ind].first?.id ?? '';
-                                           height1 >= 1.51 ? print("undoid =======> $undoid") :print("Sorry =======> ");
-                                            print("previousIndex  ===> $previousIndex");
-                                            print("targetIndex  ===> $targetIndex");
-                                            print("activity  ===> $activity");
-                                            print("activity  ===> ${activity.end}");
-                                            print("activity  ===> ${activity.direction}");
-                                            activity.direction == AxisDirection.up
-                                               ? rejectUserCubit.GetRejectUser(
-                                               id: filterUserCubit.filterUser.data?[ind].first?.id ?? '').then((value) =>  pageViewIndex = 0)
-                                               : connectUserCubit.GetConnectUser(
-                                               id: filterUserCubit.filterUser.data?[ind].first?.id ?? '').then((value) =>  pageViewIndex = 0);
-                                           ind >= filterUserCubit.filterUser.data!.length - 1 ? ind = ind : ind = targetIndex;
-                                            height = 0;
-                                            fontsize = 70;
-                                            height1 = 1.2;
-                                            wight = 1;
-                                            swipeUp = false;
-                                            swipeDown = false;
-                                            image.clear();
-                                          });
-                                        },
-                                        threshold: screenHeight(context, dividedBy: 4.5),
-                                        maxAngle: screenHeight(context, dividedBy: 7),
-                                        swipeOptions: const SwipeOptions.only(down: true, up: true),
-                                        cardCount:filterUserCubit.filterUser.data?.length ?? 0,
-                                        cardBuilder: (BuildContext context, int index) {
-                                          getImage(index);
-                                          return Padding(
-                                            padding: EdgeInsets.symmetric(
-                                              horizontal: screenWidth(context,
-                                                  dividedBy: 100),
-                                            ),
-                                            child: Container(
-                                              // height: screenHeight(context),
-                                              // width: screenWidth(context),
-                                              decoration: const BoxDecoration(
-                                                  borderRadius: BorderRadius.all(
-                                                      Radius.circular(20))
-                                                // BorderRadius.only(
-                                                //     topRight: Radius.circular(20),
-                                                //     topLeft: Radius.circular(20)
-                                                // )
-                                              ),
-                                              child: Stack(
-                                                children: [
-                                                  swipeUp || swipeDown
-                                                      ? image[pageViewIndex]
-                                                      .toString()
-                                                      .endsWith(
-                                                      ".mp4") ||
-                                                      image[pageViewIndex]
-                                                          .toString()
-                                                          .endsWith(".3gpp")
-                                                      ? Center(
-                                                        child: SizedBox(
-                                                          height: screenHeight(
+                        if (filterData)
+                          BlocBuilder<FilterUserCubit, FilterUserState>(
+                            builder: (context, state) {
+                              if (state is FilterUserSuccess) {
+                                return Expanded(
+                                    child: theEnd
+                                        ? Center(
+                                            child: Text("No User!"),
+                                          )
+                                        : Stack(
+                                            children: [
+                                              AppinioSwiper(
+                                                controller: controller,
+                                                onEnd: () {
+                                                  print("hello to this is end");
+                                                  theEnd = true;
+                                                  setState(() {});
+                                                },
+                                                invertAngleOnBottomDrag: true,
+                                                onCardPositionChanged:
+                                                    (position) {
+                                                  if (position
+                                                          .offset.direction >
+                                                      0) {
+                                                    setState(() {
+                                                      swipeDown = true;
+                                                      height = height + 20;
+                                                      height1 = height1 >= 1.60
+                                                          ? height1 + 0.001
+                                                          : height1 + 0.004;
+                                                      height1 >= 1.50 &&
+                                                              fontsize >= 20
+                                                          ? fontsize =
+                                                              fontsize - 1
+                                                          : fontsize = fontsize;
+                                                      print(height1);
+                                                      wight = height1 >= 1.60
+                                                          ? wight + 0.001
+                                                          : wight + 0.003;
+                                                      swipeUp = false;
+                                                      bottonname = "Connect";
+                                                    });
+                                                  }
+                                                  if (position
+                                                          .offset.direction <
+                                                      0) {
+                                                    setState(() {
+                                                      swipeUp = true;
+                                                      bottonname = "Reject";
+                                                      height1 = height1 >= 1.60
+                                                          ? height1 + 0.001
+                                                          : height1 + 0.004;
+                                                      height1 >= 1.50 &&
+                                                              fontsize >= 20
+                                                          ? fontsize =
+                                                              fontsize - 1
+                                                          : fontsize = fontsize;
+                                                      print(height1);
+                                                      wight = height1 >= 1.60
+                                                          ? wight + 0.001
+                                                          : wight + 0.003;
+                                                      // print("wight ===> $wight");
+                                                      height = height + 20;
+                                                      swipeDown = false;
+                                                    });
+                                                  }
+                                                },
+                                                onSwipeCancelled: (activity) {
+                                                  setState(() {
+                                                    image.clear();
+                                                    swipeUp = false;
+                                                    swipeDown = false;
+                                                    fontsize = 70;
+                                                    height1 = 1.2;
+                                                    wight = 1;
+                                                    height = 0;
+                                                  });
+                                                },
+                                                onSwipeEnd: (previousIndex,
+                                                    targetIndex, activity) {
+                                                  setState(() {
+                                                    undoid = filterUserCubit
+                                                            .filterUser
+                                                            .data?[ind]
+                                                            .first
+                                                            ?.id ??
+                                                        '';
+                                                    height1 >= 1.51
+                                                        ? print(
+                                                            "undoid =======> $undoid")
+                                                        : print(
+                                                            "Sorry =======> ");
+                                                    print(
+                                                        "previousIndex  ===> $previousIndex");
+                                                    print(
+                                                        "targetIndex  ===> $targetIndex");
+                                                    print(
+                                                        "activity  ===> $activity");
+                                                    print(
+                                                        "activity  ===> ${activity.end}");
+                                                    print(
+                                                        "activity  ===> ${activity.direction}");
+                                                    activity.direction == AxisDirection.up
+                                                        ? rejectUserCubit.GetRejectUser(
+                                                                id: filterUserCubit
+                                                                        .filterUser
+                                                                        .data?[
+                                                                            ind]
+                                                                        .first
+                                                                        ?.id ??
+                                                                    '')
+                                                            .then((value) =>
+                                                                pageViewIndex =
+                                                                    0)
+                                                        : connectUserCubit.GetConnectUser(
+                                                                id: filterUserCubit
+                                                                        .filterUser
+                                                                        .data?[
+                                                                            ind]
+                                                                        .first
+                                                                        ?.id ??
+                                                                    '')
+                                                            .then((value) =>
+                                                                pageViewIndex = 0);
+                                                    ind >=
+                                                            filterUserCubit
+                                                                    .filterUser
+                                                                    .data!
+                                                                    .length -
+                                                                1
+                                                        ? ind = ind
+                                                        : ind = targetIndex;
+                                                    height = 0;
+                                                    fontsize = 70;
+                                                    height1 = 1.2;
+                                                    wight = 1;
+                                                    swipeUp = false;
+                                                    swipeDown = false;
+                                                    image.clear();
+                                                  });
+                                                },
+                                                threshold: screenHeight(context,
+                                                    dividedBy: 4.5),
+                                                maxAngle: screenHeight(context,
+                                                    dividedBy: 7),
+                                                swipeOptions:
+                                                    const SwipeOptions.only(
+                                                        down: true, up: true),
+                                                cardCount: filterUserCubit
+                                                        .filterUser
+                                                        .data
+                                                        ?.length ??
+                                                    0,
+                                                cardBuilder:
+                                                    (BuildContext context,
+                                                        int index) {
+                                                  getImage(index);
+                                                  return Padding(
+                                                    padding:
+                                                        EdgeInsets.symmetric(
+                                                      horizontal: screenWidth(
                                                           context,
-                                                          dividedBy:
-                                                          swipeDown ? 1.2 : height1),
-                                                          width: screenWidth(
-                                                          context,
-                                                          dividedBy:
-                                                          swipeDown ?1 :wight),
-                                                          child: Stack(
-                                                            children: [
-                                                              VideoWidget(
-                                                              videoUrl: "${apis.baseurl}/${image[pageViewIndex]}", play: false,),
-                                                              Container(
-                                                                  height: screenHeight(
-                                                                      context,
-                                                                      dividedBy:
-                                                                      swipeDown ? 1.2 : height1),
-                                                                  width: screenWidth(
-                                                                      context,
-                                                                      dividedBy:
-                                                                      swipeDown ?1 :wight),
-                                                                  decoration: const BoxDecoration(
-                                                                      gradient: LinearGradient(
-                                                                          begin: Alignment
-                                                                              .bottomCenter,
-                                                                          end: Alignment.topCenter,
-                                                                          colors: [
-                                                                            Colors
-                                                                                .black,
-                                                                            Colors
-                                                                                .black38
-                                                                          ]),
-                                                                      borderRadius:
-                                                                      BorderRadius.all(
-                                                                          Radius.circular(20))),
-                                                                  child: swipeUp
-                                                                      ? Center(
-                                                                    child:
-                                                                    Text(
-                                                                      "Skip"
-                                                                          .tr(),
-                                                                      style: TextStyle(
-                                                                          fontSize: fontsize,
-                                                                          fontFamily: 'Roboto',
-                                                                          fontWeight: FontWeight.w700,
-                                                                          // color: AppColor.skyBlue
-                                                                          color: AppColor.white),
-                                                                    ),
-                                                                  )
-                                                                      : Center(
-                                                                    child:
-                                                                    Text(
-                                                                      "Connect"
-                                                                          .tr(),
-                                                                      style: TextStyle(
-                                                                          fontSize: fontsize,
-                                                                          fontFamily: 'Roboto',
-                                                                          fontWeight: FontWeight.w700,
-                                                                          // color: AppColor.skyBlue
-                                                                          color: AppColor.white),
-                                                                    ),
-                                                                  )),
-                                                            ],
+                                                          dividedBy: 100),
+                                                    ),
+                                                    child: Container(
+                                                      // height: screenHeight(context),
+                                                      // width: screenWidth(context),
+                                                      decoration: const BoxDecoration(
+                                                          borderRadius:
+                                                              BorderRadius.all(
+                                                                  Radius
+                                                                      .circular(
+                                                                          20))
+                                                          // BorderRadius.only(
+                                                          //     topRight: Radius.circular(20),
+                                                          //     topLeft: Radius.circular(20)
+                                                          // )
                                                           ),
-                                                        ),
-                                                      ) : Align(
-                                                      alignment:
-                                                      Alignment.topCenter,
-                                                      child: SizedBox(
-                                                        child: Stack(
-                                                          children: [
-                                                            CachedNetworkImage(
-                                                              imageUrl:
-                                                              "${apis.baseurl}/${image[pageViewIndex]}",
-                                                              imageBuilder:
-                                                                  (context,
-                                                                  imageProvider) =>
-                                                                  Container(
+                                                      child: Stack(
+                                                        children: [
+                                                          swipeUp || swipeDown
+                                                              ? image[pageViewIndex]
+                                                                          .toString()
+                                                                          .endsWith(
+                                                                              ".mp4") ||
+                                                                      image[pageViewIndex]
+                                                                          .toString()
+                                                                          .endsWith(
+                                                                              ".3gpp")
+                                                                  ? Center(
+                                                                      child:
+                                                                          SizedBox(
+                                                                        height: screenHeight(
+                                                                            context,
+                                                                            dividedBy: swipeDown
+                                                                                ? 1.2
+                                                                                : height1),
+                                                                        width: screenWidth(
+                                                                            context,
+                                                                            dividedBy: swipeDown
+                                                                                ? 1
+                                                                                : wight),
+                                                                        child:
+                                                                            Stack(
+                                                                          children: [
+                                                                            VideoWidget(
+                                                                              videoUrl: "${apis.baseurl}/${image[pageViewIndex]}",
+                                                                              play: false,
+                                                                            ),
+                                                                            Container(
+                                                                                height: screenHeight(context, dividedBy: swipeDown ? 1.2 : height1),
+                                                                                width: screenWidth(context, dividedBy: swipeDown ? 1 : wight),
+                                                                                decoration: const BoxDecoration(gradient: LinearGradient(begin: Alignment.bottomCenter, end: Alignment.topCenter, colors: [Colors.black, Colors.black38]), borderRadius: BorderRadius.all(Radius.circular(20))),
+                                                                                child: swipeUp
+                                                                                    ? Center(
+                                                                                        child: Text(
+                                                                                          "Skip".tr(),
+                                                                                          style: TextStyle(
+                                                                                              fontSize: fontsize,
+                                                                                              fontFamily: 'Roboto',
+                                                                                              fontWeight: FontWeight.w700,
+                                                                                              // color: AppColor.skyBlue
+                                                                                              color: AppColor.white),
+                                                                                        ),
+                                                                                      )
+                                                                                    : Center(
+                                                                                        child: Text(
+                                                                                          "Connect".tr(),
+                                                                                          style: TextStyle(
+                                                                                              fontSize: fontsize,
+                                                                                              fontFamily: 'Roboto',
+                                                                                              fontWeight: FontWeight.w700,
+                                                                                              // color: AppColor.skyBlue
+                                                                                              color: AppColor.white),
+                                                                                        ),
+                                                                                      )),
+                                                                          ],
+                                                                        ),
+                                                                      ),
+                                                                    )
+                                                                  : Align(
+                                                                      alignment:
+                                                                          Alignment
+                                                                              .topCenter,
+                                                                      child:
+                                                                          SizedBox(
+                                                                        child:
+                                                                            Stack(
+                                                                          children: [
+                                                                            CachedNetworkImage(
+                                                                              imageUrl: "${apis.baseurl}/${image[pageViewIndex]}",
+                                                                              imageBuilder: (context, imageProvider) => Container(
+                                                                                height: screenHeight(context, dividedBy: swipeDown ? 1.2 : height1),
+                                                                                width: screenWidth(context, dividedBy: swipeDown ? 1 : wight),
+                                                                                decoration: BoxDecoration(image: DecorationImage(image: imageProvider, fit: BoxFit.cover, filterQuality: FilterQuality.high), borderRadius: const BorderRadius.all(Radius.circular(20))),
+                                                                              ),
+                                                                              placeholder: (context, url) => Container(
+                                                                                height: screenHeight(context),
+                                                                                width: screenWidth(context),
+                                                                                decoration: const BoxDecoration(borderRadius: BorderRadius.only(topRight: Radius.circular(20), topLeft: Radius.circular(20)), color: Colors.black),
+                                                                                child: const Center(
+                                                                                  child: CircularProgressIndicator(
+                                                                                    color: AppColor.skyBlue,
+                                                                                  ),
+                                                                                ),
+                                                                              ),
+                                                                              errorWidget: (context, url, error) => const Icon(Icons.error),
+                                                                            ),
+                                                                            Container(
+                                                                                height: screenHeight(context, dividedBy: swipeDown ? 1.2 : height1),
+                                                                                width: screenWidth(context, dividedBy: swipeDown ? 1 : wight),
+                                                                                decoration: const BoxDecoration(gradient: LinearGradient(begin: Alignment.bottomCenter, end: Alignment.topCenter, colors: [Colors.black, Colors.black38]), borderRadius: BorderRadius.all(Radius.circular(20))),
+                                                                                child: swipeUp
+                                                                                    ? Center(
+                                                                                        child: Text(
+                                                                                          "Skip".tr(),
+                                                                                          style: TextStyle(
+                                                                                              fontSize: fontsize,
+                                                                                              fontFamily: 'Roboto',
+                                                                                              fontWeight: FontWeight.w700,
+                                                                                              // color: AppColor.skyBlue
+                                                                                              color: AppColor.white),
+                                                                                        ),
+                                                                                      )
+                                                                                    : Center(
+                                                                                        child: Text(
+                                                                                          "Connect".tr(),
+                                                                                          style: TextStyle(
+                                                                                              fontSize: fontsize,
+                                                                                              fontFamily: 'Roboto',
+                                                                                              fontWeight: FontWeight.w700,
+                                                                                              // color: AppColor.skyBlue
+                                                                                              color: AppColor.white),
+                                                                                        ),
+                                                                                      )),
+                                                                          ],
+                                                                        ),
+                                                                      ))
+                                                              : image[pageViewIndex]
+                                                                          .toString()
+                                                                          .endsWith(
+                                                                              ".mp4") ||
+                                                                      image[pageViewIndex]
+                                                                          .toString()
+                                                                          .endsWith(
+                                                                              ".3gpp")
+                                                                  ? VideoWidget(
+                                                                      videoUrl:
+                                                                          "${apis.baseurl}/${image[pageViewIndex]}",
+                                                                      play:
+                                                                          true,
+                                                                    )
+                                                                  : CachedNetworkImage(
+                                                                      imageUrl:
+                                                                          "${apis.baseurl}/${image[pageViewIndex]}",
+                                                                      imageBuilder:
+                                                                          (context, imageProvider) =>
+                                                                              Container(
+                                                                        decoration: BoxDecoration(
+                                                                            image: DecorationImage(
+                                                                                image: imageProvider,
+                                                                                fit: BoxFit.cover,
+                                                                                filterQuality: FilterQuality.high),
+                                                                            borderRadius: const BorderRadius.all(Radius.circular(20))),
+                                                                      ),
+                                                                      placeholder:
+                                                                          (context, url) =>
+                                                                              Container(
+                                                                        height:
+                                                                            screenHeight(context),
+                                                                        width: screenWidth(
+                                                                            context),
+                                                                        decoration: const BoxDecoration(
+                                                                            borderRadius:
+                                                                                BorderRadius.all(Radius.circular(20)),
+                                                                            color: Colors.black),
+                                                                        child:
+                                                                            const Center(
+                                                                          child:
+                                                                              CircularProgressIndicator(
+                                                                            color:
+                                                                                AppColor.skyBlue,
+                                                                          ),
+                                                                        ),
+                                                                      ),
+                                                                      errorWidget: (context,
+                                                                              url,
+                                                                              error) =>
+                                                                          const Center(
+                                                                        child: Icon(
+                                                                            Icons.error),
+                                                                      ),
+                                                                    ),
+                                                          swipeUp || swipeDown
+                                                              ? const SizedBox()
+                                                              : Align(
+                                                                  alignment:
+                                                                      Alignment
+                                                                          .topCenter,
+                                                                  child: swipeUp ==
+                                                                              false &&
+                                                                          swipeDown ==
+                                                                              false
+                                                                      ? Padding(
+                                                                          padding:
+                                                                              EdgeInsets.symmetric(vertical: screenHeight(context, dividedBy: 35)),
+                                                                          child:
+                                                                              TabPageSelector(
+                                                                            key:
+                                                                                _key1,
+                                                                            controller: TabController(
+                                                                                vsync: this,
+                                                                                length: image.isNotEmpty ? image.length : 0,
+                                                                                initialIndex: pageViewIndex),
+                                                                            color:
+                                                                                AppColor.gray,
+                                                                            borderStyle:
+                                                                                BorderStyle.none,
+                                                                            indicatorSize:
+                                                                                9,
+                                                                            selectedColor:
+                                                                                AppColor.skyBlue,
+                                                                          ),
+                                                                        )
+                                                                      : const SizedBox(),
+                                                                ),
+                                                          swipeUp || swipeDown
+                                                              ? const SizedBox()
+                                                              : Row(
+                                                                  children: [
+                                                                    Expanded(
+                                                                      child:
+                                                                          InkWell(
+                                                                        overlayColor:
+                                                                            const MaterialStatePropertyAll(Colors.transparent),
+                                                                        onTap:
+                                                                            () {
+                                                                          setState(
+                                                                              () {
+                                                                            pageViewIndex > 0
+                                                                                ? pageViewIndex--
+                                                                                : null;
+                                                                            image =
+                                                                                image;
+                                                                          });
+                                                                        },
+                                                                        child:
+                                                                            Container(
+                                                                          height:
+                                                                              screenHeight(context),
+                                                                        ),
+                                                                      ),
+                                                                    ),
+                                                                    Expanded(
+                                                                      child:
+                                                                          InkWell(
+                                                                        overlayColor:
+                                                                            const MaterialStatePropertyAll(Colors.transparent),
+                                                                        onTap:
+                                                                            () {
+                                                                          setState(
+                                                                              () {
+                                                                            pageViewIndex >= image.length
+                                                                                ? null
+                                                                                : pageViewIndex++;
+                                                                            pageViewIndex =
+                                                                                pageViewIndex;
+                                                                            image =
+                                                                                image;
+                                                                          });
+                                                                        },
+                                                                        child:
+                                                                            Container(
+                                                                          height:
+                                                                              screenHeight(context),
+                                                                        ),
+                                                                      ),
+                                                                    ),
+                                                                  ],
+                                                                ),
+                                                          swipeUp || swipeDown
+                                                              ? const SizedBox()
+                                                              : Align(
+                                                                  alignment:
+                                                                      Alignment
+                                                                          .bottomCenter,
+                                                                  child:
+                                                                      Container(
+                                                                    alignment:
+                                                                        Alignment
+                                                                            .bottomCenter,
                                                                     height: screenHeight(
                                                                         context,
                                                                         dividedBy:
-                                                                       swipeDown?1.2: height1),
+                                                                            4.1),
                                                                     width: screenWidth(
-                                                                        context,
-                                                                        dividedBy:
-                                                                        swipeDown ?1 :wight),
-                                                                    decoration: BoxDecoration(
-                                                                        image: DecorationImage(
-                                                                            image:
-                                                                            imageProvider,
-                                                                            fit: BoxFit
-                                                                                .cover,
-                                                                            filterQuality:
-                                                                            FilterQuality
-                                                                                .high),
-                                                                        borderRadius:
-                                                                        const BorderRadius
-                                                                            .all(
-                                                                            Radius.circular(20))),
-                                                                  ),
-                                                              placeholder:
-                                                                  (context,
-                                                                  url) =>
-                                                                  Container(
-                                                                    height:
-                                                                    screenHeight(
-                                                                        context),
-                                                                    width:
-                                                                    screenWidth(
                                                                         context),
                                                                     decoration: const BoxDecoration(
                                                                         borderRadius: BorderRadius.only(
-                                                                            topRight:
-                                                                            Radius.circular(
+                                                                            bottomLeft: Radius.circular(
                                                                                 20),
-                                                                            topLeft:
-                                                                            Radius.circular(
+                                                                            bottomRight: Radius.circular(
                                                                                 20)),
-                                                                        color: Colors
-                                                                            .black),
+                                                                        gradient: LinearGradient(
+                                                                            begin:
+                                                                                Alignment.topCenter,
+                                                                            end: Alignment.bottomCenter,
+                                                                            colors: [
+                                                                              Colors.transparent,
+                                                                              Colors.black
+                                                                            ])),
                                                                     child:
-                                                                    const Center(
+                                                                        Padding(
+                                                                      padding: EdgeInsets.symmetric(
+                                                                          horizontal: screenWidth(
+                                                                              context,
+                                                                              dividedBy: 20)),
                                                                       child:
-                                                                      CircularProgressIndicator(
-                                                                        color: AppColor
-                                                                            .skyBlue,
+                                                                          Column(
+                                                                        crossAxisAlignment:
+                                                                            CrossAxisAlignment.start,
+                                                                        children: [
+                                                                          Row(
+                                                                            mainAxisAlignment:
+                                                                                MainAxisAlignment.spaceBetween,
+                                                                            children: [
+                                                                              SizedBox(
+                                                                                width: screenWidth(context, dividedBy: 1.3),
+                                                                                child: Row(
+                                                                                  children: [
+                                                                                    Text(
+                                                                                      filterUserCubit.filterUser.data?[index].first?.name ?? '',
+                                                                                      style: const TextStyle(color: AppColor.white, fontFamily: 'Roboto', fontSize: 25, fontWeight: FontWeight.w600),
+                                                                                    ),
+                                                                                    SizedBox(
+                                                                                      width: screenWidth(context, dividedBy: 100),
+                                                                                    ),
+                                                                                    Container(
+                                                                                      height: screenHeight(context, dividedBy: 45),
+                                                                                      width: screenHeight(context, dividedBy: 45),
+                                                                                      decoration: const BoxDecoration(image: DecorationImage(image: AssetImage("assets/Images/verified.png"))),
+                                                                                    )
+                                                                                  ],
+                                                                                ),
+                                                                              ),
+                                                                            ],
+                                                                          ),
+                                                                          Row(
+                                                                            children: [
+                                                                              Wrap(
+                                                                                spacing: 7,
+                                                                                direction: Axis.vertical,
+                                                                                children: [
+                                                                                  filterUserCubit.filterUser.data?[index].first?.professionalDetails != null
+                                                                                      ? Row(
+                                                                                          children: [
+                                                                                            Text(
+                                                                                              'Job Title'.tr(),
+                                                                                              style: const TextStyle(fontSize: 14, fontFamily: 'Roboto', fontWeight: FontWeight.w500, color: Colors.white),
+                                                                                            ),
+                                                                                            const Text(
+                                                                                              ": ",
+                                                                                              style: TextStyle(fontSize: 14, fontFamily: 'Roboto', fontWeight: FontWeight.w500, color: Colors.white),
+                                                                                            ),
+                                                                                            Text(
+                                                                                              13 >= filterUserCubit.filterUser.data![index].first!.professionalDetails!.addRole!.length ? "${filterUserCubit.filterUser.data?[index].first?.professionalDetails?.addRole ?? ''}" : "${filterUserCubit.filterUser.data?[index].first?.professionalDetails?.addRole?.substring(0, 13) ?? ''}...",
+                                                                                              style: const TextStyle(overflow: TextOverflow.ellipsis, fontSize: 14, fontFamily: 'Roboto', fontWeight: FontWeight.w400, color: Colors.white),
+                                                                                            ),
+                                                                                          ],
+                                                                                        )
+                                                                                      : SizedBox(),
+                                                                                  filterUserCubit.filterUser.data?[index].first?.businessaddress?.country != null
+                                                                                      ? Row(
+                                                                                          children: [
+                                                                                            Text(
+                                                                                              'City/Country'.tr(),
+                                                                                              style: const TextStyle(fontSize: 14, fontFamily: 'Roboto', fontWeight: FontWeight.w500, color: Colors.white),
+                                                                                            ),
+                                                                                            const Text(
+                                                                                              ": ",
+                                                                                              style: TextStyle(fontSize: 14, fontFamily: 'Roboto', fontWeight: FontWeight.w500, color: Colors.white),
+                                                                                            ),
+                                                                                            Text(
+                                                                                              10 <= filterUserCubit.filterUser.data![index].first!.businessaddress!.country!.length ? "${allUsersdetails.data?[index].first.businessaddress?.country?.substring(0, 10) ?? ''}..." : filterUserCubit.filterUser.data?[ind].first?.businessaddress?.country ?? '',
+                                                                                              style: const TextStyle(fontSize: 14, fontFamily: 'Roboto', fontWeight: FontWeight.w400, color: Colors.white),
+                                                                                            ),
+                                                                                          ],
+                                                                                        )
+                                                                                      : const SizedBox(),
+                                                                                  filterUserCubit.filterUser.data?[index].first?.professionalDetails?.companyName != null
+                                                                                      ? Row(
+                                                                                          children: [
+                                                                                            Text(
+                                                                                              'Company'.tr(),
+                                                                                              style: const TextStyle(fontSize: 14, fontFamily: 'Roboto', fontWeight: FontWeight.w500, color: Colors.white),
+                                                                                            ),
+                                                                                            const Text(
+                                                                                              ": ",
+                                                                                              style: TextStyle(fontSize: 14, fontFamily: 'Roboto', fontWeight: FontWeight.w500, color: Colors.white),
+                                                                                            ),
+                                                                                            Text(
+                                                                                              15 <= filterUserCubit.filterUser.data![index].first!.professionalDetails!.companyName!.length ? "${filterUserCubit.filterUser.data?[index].first?.professionalDetails?.companyName?.substring(0, 13) ?? ''}..." : "${filterUserCubit.filterUser.data?[index].first?.professionalDetails?.companyName ?? ''}",
+                                                                                              style: const TextStyle(fontSize: 14, fontFamily: 'Roboto', fontWeight: FontWeight.w400, color: Colors.white),
+                                                                                            ),
+                                                                                          ],
+                                                                                        )
+                                                                                      : SizedBox(),
+                                                                                ],
+                                                                              ),
+                                                                              const Spacer(),
+                                                                              Wrap(
+                                                                                direction: Axis.vertical,
+                                                                                spacing: 5,
+                                                                                children: filterUserCubit.filterUser.data?[index].first?.lookingfor
+                                                                                        ?.map((e) => Container(
+                                                                                            decoration: BoxDecoration(
+                                                                                                border: Border.all(
+                                                                                                    color: AppColor.white
+                                                                                                    //const Color(0xff6D9Aff)
+                                                                                                    ,
+                                                                                                    width: 2),
+                                                                                                borderRadius: BorderRadius.circular(20)),
+                                                                                            child: Padding(
+                                                                                              padding: EdgeInsets.symmetric(
+                                                                                                horizontal: screenWidth(context, dividedBy: 45),
+                                                                                                vertical: screenHeight(context, dividedBy: 250),
+                                                                                              ),
+                                                                                              child: Text(
+                                                                                                e,
+                                                                                                style: const TextStyle(fontWeight: FontWeight.w400, fontSize: 12.7, fontFamily: 'Roboto', color: AppColor.white),
+                                                                                              ),
+                                                                                            )))
+                                                                                        .toList() ??
+                                                                                    [],
+                                                                              )
+                                                                            ],
+                                                                          ),
+                                                                          SizedBox(
+                                                                            height:
+                                                                                screenHeight(context, dividedBy: 100),
+                                                                          ),
+                                                                          const Spacer(),
+                                                                        ],
                                                                       ),
                                                                     ),
                                                                   ),
-                                                              errorWidget: (context,
-                                                                  url,
-                                                                  error) =>
-                                                              const Icon(Icons
-                                                                  .error),
-                                                            ),
-                                                            Container(
-                                                                height: screenHeight(
-                                                                    context,
-                                                                    dividedBy:
-                                                                   swipeDown ?1.2 : height1),
-                                                                width: screenWidth(
-                                                                    context,
-                                                                    dividedBy:
-                                                                    swipeDown ? 1 :wight),
-                                                                decoration: const BoxDecoration(
-                                                                    gradient: LinearGradient(
-                                                                        begin: Alignment
-                                                                            .bottomCenter,
-                                                                        end: Alignment.topCenter,
-                                                                        colors: [
-                                                                          Colors
-                                                                              .black,
-                                                                          Colors
-                                                                              .black38
-                                                                        ]),
-                                                                    borderRadius:
-                                                                    BorderRadius.all(
-                                                                        Radius.circular(20))),
-                                                                child: swipeUp
-                                                                    ? Center(
+                                                                ),
+                                                          swipeUp || swipeDown
+                                                              ? Align(
+                                                                  alignment: swipeUp
+                                                                      ? Alignment
+                                                                          .bottomCenter
+                                                                      : Alignment
+                                                                          .topCenter,
                                                                   child:
-                                                                  Text(
-                                                                    "Skip"
-                                                                        .tr(),
-                                                                    style: TextStyle(
-                                                                        fontSize: fontsize,
-                                                                        fontFamily: 'Roboto',
-                                                                        fontWeight: FontWeight.w700,
-                                                                        // color: AppColor.skyBlue
-                                                                        color: AppColor.white),
-                                                                  ),
-                                                                )
-                                                                    : Center(
-                                                                  child:
-                                                                  Text(
-                                                                    "Connect"
-                                                                        .tr(),
-                                                                    style: TextStyle(
-                                                                        fontSize: fontsize,
-                                                                        fontFamily: 'Roboto',
-                                                                        fontWeight: FontWeight.w700,
-                                                                        // color: AppColor.skyBlue
-                                                                        color: AppColor.white),
-                                                                  ),
-                                                                )),
-                                                          ],
-                                                        ),
-                                                      ))
-                                                      : image[pageViewIndex]
-                                                      .toString()
-                                                      .endsWith(
-                                                      ".mp4") ||
-                                                      image[pageViewIndex]
-                                                          .toString()
-                                                          .endsWith(".3gpp")
-                                                      ? VideoWidget(
-                                                      videoUrl: "${apis.baseurl}/${image[pageViewIndex]}", play: true,)
-                                                      : CachedNetworkImage(
-                                                    imageUrl: "${apis.baseurl}/${image[pageViewIndex]}",
-                                                    imageBuilder: (context, imageProvider) =>
-                                                        Container(
-                                                          decoration: BoxDecoration(
-                                                              image: DecorationImage(
-                                                                  image:
-                                                                  imageProvider,
-                                                                  fit: BoxFit
-                                                                      .cover,
-                                                                  filterQuality:
-                                                                  FilterQuality
-                                                                      .high),
-                                                              borderRadius:
-                                                              const BorderRadius
-                                                                  .all(
-                                                                  Radius.circular(
-                                                                      20))),
-                                                        ),
-                                                    placeholder: (context, url) =>
-                                                        Container(
-                                                          height:
-                                                          screenHeight(
-                                                              context),
-                                                          width: screenWidth(
-                                                              context),
-                                                          decoration: const BoxDecoration(
-                                                              borderRadius: BorderRadius
-                                                                  .all(Radius
-                                                                  .circular(
-                                                                  20)),
-                                                              color: Colors
-                                                                  .black),
-                                                          child: const Center(
-                                                            child:
-                                                            CircularProgressIndicator(
-                                                              color: AppColor
-                                                                  .skyBlue,
-                                                            ),
-                                                          ),
-                                                        ),
-                                                    errorWidget: (context, url, error) => const Center(
-                                                      child: Icon(
-                                                          Icons.error),
-                                                    ),
-                                                  ),
-                                                  swipeUp || swipeDown
-                                                      ? const SizedBox()
-                                                      : Align(
-                                                    alignment:
-                                                    Alignment.topCenter,
-                                                    child: swipeUp == false &&
-                                                        swipeDown == false
-                                                        ? Padding(
-                                                      padding: EdgeInsets.symmetric(
-                                                          vertical: screenHeight(
-                                                              context,
-                                                              dividedBy:
-                                                              35)),
-                                                      child:
-                                                      TabPageSelector(
-                                                        key: _key1,
-                                                        controller: TabController(
-                                                            vsync: this,
-                                                            length: image.isNotEmpty ? image.length : 0,
-                                                            initialIndex:
-                                                            pageViewIndex),
-                                                        color: AppColor
-                                                            .gray,
-                                                        borderStyle:
-                                                        BorderStyle. none,
-
-                                                        indicatorSize: 9,
-                                                        selectedColor: AppColor.skyBlue,
-                                                      ),
-                                                    )
-                                                        : const SizedBox(),
-                                                  ),
-                                                  swipeUp || swipeDown
-                                                      ? const SizedBox()
-                                                      : Row(
-                                                    children: [
-                                                      Expanded(
-                                                        child: InkWell(
-                                                          overlayColor:
-                                                          const MaterialStatePropertyAll(
-                                                              Colors
-                                                                  .transparent),
-                                                          onTap: () {
-                                                            setState(() {
-
-                                                                  pageViewIndex >
-                                                                      0
-                                                                  ? pageViewIndex--
-                                                                  : null;
-                                                              image = image;
-                                                            });
-                                                          },
-                                                          child: Container(
-                                                            height:
-                                                            screenHeight(
-                                                                context),
-                                                          ),
-                                                        ),
-                                                      ),
-                                                      Expanded(
-                                                        child: InkWell(
-                                                          overlayColor:
-                                                          const MaterialStatePropertyAll(
-                                                              Colors
-                                                                  .transparent),
-                                                          onTap: () {
-                                                            setState(() {
-                                                              pageViewIndex >= image.length  ? null : pageViewIndex++;
-                                                              pageViewIndex = pageViewIndex;
-                                                              image = image;
-                                                            });
-                                                          },
-                                                          child: Container(
-                                                            height:
-                                                            screenHeight(
-                                                                context),
-                                                          ),
-                                                        ),
-                                                      ),
-                                                    ],
-                                                  ),
-                                                  swipeUp || swipeDown
-                                                      ? const SizedBox()
-                                                      : Align(
-                                                    alignment: Alignment
-                                                        .bottomCenter,
-                                                    child: Container(
-                                                      alignment: Alignment
-                                                          .bottomCenter,
-                                                      height: screenHeight(
-                                                          context,
-                                                          dividedBy: 4.1),
-                                                      width: screenWidth(
-                                                          context),
-                                                      decoration: const BoxDecoration(
-                                                          borderRadius: BorderRadius.only(
-                                                              bottomLeft: Radius
-                                                                  .circular(
-                                                                  20),
-                                                              bottomRight: Radius
-                                                                  .circular(
-                                                                  20)),
-                                                          gradient: LinearGradient(
-                                                              begin: Alignment
-                                                                  .topCenter,
-                                                              end: Alignment
-                                                                  .bottomCenter,
-                                                              colors: [
-                                                                Colors
-                                                                    .transparent,
-                                                                Colors.black
-                                                              ])),
-                                                      child: Padding(
-                                                        padding: EdgeInsets.symmetric(
-                                                            horizontal:
-                                                            screenWidth(
-                                                                context,
-                                                                dividedBy:
-                                                                20)),
-                                                        child: Column(
-                                                          crossAxisAlignment:
-                                                          CrossAxisAlignment
-                                                              .start,
-                                                          children: [
-                                                            Row(
-                                                              mainAxisAlignment:
-                                                              MainAxisAlignment
-                                                                  .spaceBetween,
-                                                              children: [
-                                                                SizedBox(
-                                                                  width: screenWidth(
-                                                                      context,
-                                                                      dividedBy:
-                                                                      1.3),
-                                                                  child: Row(
-                                                                    children: [
-                                                                      Text(
-                                                                        filterUserCubit.filterUser.data?[index].first?.name ??
-                                                                            '',
-                                                                        style: const TextStyle(
-                                                                            color: AppColor.white,
-                                                                            fontFamily: 'Roboto',
-                                                                            fontSize: 25,
-                                                                            fontWeight: FontWeight.w600),
-                                                                      ),
                                                                       SizedBox(
-                                                                        width: screenWidth(
-                                                                            context,
-                                                                            dividedBy: 100),
-                                                                      ),
-                                                                      Container(
-                                                                        height: screenHeight(
-                                                                            context,
-                                                                            dividedBy: 45),
-                                                                        width: screenHeight(
-                                                                            context,
-                                                                            dividedBy: 45),
-                                                                        decoration:
-                                                                        const BoxDecoration(image: DecorationImage(image: AssetImage("assets/Images/verified.png"))),
-                                                                      )
-                                                                    ],
+                                                                    height:
+                                                                        height,
+                                                                  ),
+                                                                )
+                                                              : Align(
+                                                                  alignment:
+                                                                      Alignment
+                                                                          .center,
+                                                                  child:
+                                                                      SizedBox(
+                                                                    key: _key3,
+                                                                    // margin: EdgeInsets.only(
+                                                                    //     top: screenHeight(context,
+                                                                    //         dividedBy: 10)),
+                                                                    height: 0,
+                                                                    width: 0,
                                                                   ),
                                                                 ),
-                                                              ],
-                                                            ),
-                                                            Row(
-                                                              children: [
-                                                                Wrap(
-                                                                  spacing: 7,
-                                                                  direction: Axis
-                                                                      .vertical,
-                                                                  children: [
-                                                                    filterUserCubit.filterUser.data?[index].first?.professionalDetails != null ?  Row(
-                                                                      children: [
-                                                                        Text(
-                                                                          'Job Title'.tr(),
-                                                                          style: const TextStyle(
-                                                                              fontSize: 14,
-                                                                              fontFamily: 'Roboto',
-                                                                              fontWeight: FontWeight.w500,
-                                                                              color: Colors.white),
-                                                                        ),
-                                                                        const Text(
-                                                                          ": ",
-                                                                          style: TextStyle(
-                                                                              fontSize: 14,
-                                                                              fontFamily: 'Roboto',
-                                                                              fontWeight: FontWeight.w500,
-                                                                              color: Colors.white),
-                                                                        ),
-                                                                        Text(
-                                                                          13 >= filterUserCubit.filterUser.data![index].first!.professionalDetails!.addRole!.length
-                                                                              ? "${filterUserCubit.filterUser.data?[index].first?.professionalDetails?.addRole ?? ''}"
-                                                                              : "${filterUserCubit.filterUser.data?[index].first?.professionalDetails?.addRole?.substring(0, 13) ?? ''}...",
-                                                                          style: const TextStyle(
-                                                                              overflow: TextOverflow.ellipsis,
-                                                                              fontSize: 14,
-                                                                              fontFamily: 'Roboto',
-                                                                              fontWeight: FontWeight.w400,
-                                                                              color: Colors.white),
-                                                                        ),
-                                                                      ],
-                                                                    ) : SizedBox(),
-                                                                    filterUserCubit.filterUser.data?[index].first?.businessaddress?.country != null ? Row(
-                                                                      children: [
-                                                                        Text(
-                                                                          'City/Country'.tr(),
-                                                                          style: const TextStyle(
-                                                                              fontSize: 14,
-                                                                              fontFamily: 'Roboto',
-                                                                              fontWeight: FontWeight.w500,
-                                                                              color: Colors.white),
-                                                                        ),
-                                                                        const Text(
-                                                                          ": ",
-                                                                          style: TextStyle(
-                                                                              fontSize: 14,
-                                                                              fontFamily: 'Roboto',
-                                                                              fontWeight: FontWeight.w500,
-                                                                              color: Colors.white),
-                                                                        ),
-                                                                        Text(
-                                                                          10 <= filterUserCubit.filterUser.data![index].first!.businessaddress!.country!.length
-                                                                              ? "${allUsersdetails.data?[index].first.businessaddress?.country?.substring(0, 10) ?? ''}..."
-                                                                              : filterUserCubit.filterUser.data?[ind].first?.businessaddress?.country ?? '',
-                                                                          style: const TextStyle(
-                                                                              fontSize: 14,
-                                                                              fontFamily: 'Roboto',
-                                                                              fontWeight: FontWeight.w400,
-                                                                              color: Colors.white),
-                                                                        ),
-                                                                      ],
-                                                                    ) : const SizedBox(),
-                                                                    filterUserCubit.filterUser.data?[index].first?.professionalDetails?.companyName != null ?Row(
-                                                                      children: [
-                                                                        Text(
-                                                                          'Company'.tr(),
-                                                                          style: const TextStyle(
-                                                                              fontSize: 14,
-                                                                              fontFamily: 'Roboto',
-                                                                              fontWeight: FontWeight.w500,
-                                                                              color: Colors.white),
-                                                                        ),
-                                                                        const Text(
-                                                                          ": ",
-                                                                          style: TextStyle(
-                                                                              fontSize: 14,
-                                                                              fontFamily: 'Roboto',
-                                                                              fontWeight: FontWeight.w500,
-                                                                              color: Colors.white),
-                                                                        ),
-                                                                        Text(
-                                                                          15 <= filterUserCubit.filterUser.data![index].first!.professionalDetails!.companyName!.length
-                                                                              ? "${filterUserCubit.filterUser.data?[index].first?.professionalDetails?.companyName?.substring(0, 13) ?? ''}..."
-                                                                              : "${filterUserCubit.filterUser.data?[index].first?.professionalDetails?.companyName ?? ''}",
-                                                                          style: const TextStyle(
-                                                                              fontSize: 14,
-                                                                              fontFamily: 'Roboto',
-                                                                              fontWeight: FontWeight.w400,
-                                                                              color: Colors.white),
-                                                                        ),
-                                                                      ],
-                                                                    ) : SizedBox(),
-                                                                  ],
+                                                          swipeUp || swipeDown
+                                                              ? const SizedBox()
+                                                              : Align(
+                                                                  alignment:
+                                                                      Alignment
+                                                                          .topRight,
+                                                                  child: swipeUp ==
+                                                                              false &&
+                                                                          swipeDown ==
+                                                                              false
+                                                                      ? Padding(
+                                                                          padding: EdgeInsets
+                                                                              .symmetric(
+                                                                            vertical:
+                                                                                screenHeight(context, dividedBy: 120),
+                                                                            horizontal:
+                                                                                screenHeight(context, dividedBy: 40),
+                                                                          ),
+                                                                          child:
+                                                                              SizedBox(
+                                                                            height:
+                                                                                screenHeight(context, dividedBy: 17),
+                                                                            width:
+                                                                                screenHeight(context, dividedBy: 10),
+                                                                            // decoration: BoxDecoration(
+                                                                            //   color: Colors.red,
+                                                                            //     image: DecorationImage(
+                                                                            //         image: AssetImage(
+                                                                            //             users[index]
+                                                                            //             ['premium']),
+                                                                            //         fit: BoxFit
+                                                                            //             .cover,
+                                                                            //         filterQuality:
+                                                                            //         FilterQuality
+                                                                            //             .high)),
+                                                                            child:
+                                                                                SvgPicture.asset("assets/Images/premiumTag.svg"),
+                                                                          ))
+                                                                      : const SizedBox(),
                                                                 ),
-                                                                const Spacer(),
-                                                                Wrap(
-                                                                  direction: Axis
-                                                                      .vertical,
-                                                                  spacing: 5,
-                                                                  children: filterUserCubit.filterUser.data?[index].first?.lookingfor
-                                                                      ?.map((e) => Container(
-                                                                      decoration: BoxDecoration(
-                                                                          border: Border.all(
-                                                                              color: AppColor.white
-                                                                              //const Color(0xff6D9Aff)
-                                                                              ,
-                                                                              width: 2),
-                                                                          borderRadius: BorderRadius.circular(20)),
-                                                                      child: Padding(
-                                                                        padding: EdgeInsets.symmetric(
-                                                                          horizontal: screenWidth(context, dividedBy: 45),
-                                                                          vertical: screenHeight(context, dividedBy: 250),
-                                                                        ),
-                                                                        child: Text(
-                                                                          e,
-                                                                          style: const TextStyle(fontWeight: FontWeight.w400, fontSize: 12.7, fontFamily: 'Roboto', color: AppColor.white),
-                                                                        ),
-                                                                      )))
-                                                                      .toList() ??
-                                                                      [],
-                                                                )
-                                                              ],
-                                                            ),
-                                                            SizedBox(
-                                                              height:
-                                                              screenHeight(
-                                                                  context,
-                                                                  dividedBy:
-                                                                  100),
-                                                            ),
-                                                            const Spacer(),
-                                                          ],
-                                                        ),
+                                                        ],
                                                       ),
                                                     ),
-                                                  ),
-                                                  swipeUp || swipeDown
-                                                      ? Align(
-                                                    alignment: swipeUp
-                                                        ? Alignment
-                                                        .bottomCenter
-                                                        : Alignment.topCenter,
-                                                    child: SizedBox(
-                                                      height: height,
-                                                    ),
-                                                  )
-                                                      : Align(
-                                                    alignment:
-                                                    Alignment.center,
-                                                    child: SizedBox(
-                                                      key: _key3,
-                                                      // margin: EdgeInsets.only(
-                                                      //     top: screenHeight(context,
-                                                      //         dividedBy: 10)),
-                                                      height: 0,
-                                                      width: 0,
-                                                    ),
-                                                  ),
-                                                  swipeUp || swipeDown
-                                                      ? const SizedBox()
-                                                      : Align(
-                                                    alignment:
-                                                    Alignment.topRight,
-                                                    child: swipeUp == false &&
-                                                        swipeDown == false
-                                                        ? Padding(
-                                                        padding: EdgeInsets
-                                                            .symmetric(
-                                                          vertical:
-                                                          screenHeight(
-                                                              context,
-                                                              dividedBy:
-                                                              120),
-                                                          horizontal:
-                                                          screenHeight(
-                                                              context,
-                                                              dividedBy:
-                                                              40),
-                                                        ),
-                                                        child: SizedBox(
-                                                          height:
-                                                          screenHeight(
-                                                              context,
-                                                              dividedBy:
-                                                              17),
-                                                          width:
-                                                          screenHeight(
-                                                              context,
-                                                              dividedBy:
-                                                              10),
-                                                          // decoration: BoxDecoration(
-                                                          //   color: Colors.red,
-                                                          //     image: DecorationImage(
-                                                          //         image: AssetImage(
-                                                          //             users[index]
-                                                          //             ['premium']),
-                                                          //         fit: BoxFit
-                                                          //             .cover,
-                                                          //         filterQuality:
-                                                          //         FilterQuality
-                                                          //             .high)),
-                                                          child: SvgPicture
-                                                              .asset(
-                                                              "assets/Images/premiumTag.svg"),
-                                                        ))
-                                                        : const SizedBox(),
-                                                  ),
-                                                ],
-                                              ),
-                                            ),
-                                          );
-                                        },
-                                        cardBuilder1: (BuildContext context, int index) {
-                                          final image1 = filterUserCubit.filterUser.data?[index].last?.image?.photo1 ?? '';
-                                          return  CachedNetworkImage(
-                                            imageUrl:
-                                            "${apis.baseurl}/$image1",
-                                            imageBuilder:
-                                                (context, imageProvider) =>
-                                                Container(
-                                                  decoration: BoxDecoration(
-                                                      image: DecorationImage(
-                                                          image: imageProvider,
-                                                          fit: BoxFit.cover,
-                                                          filterQuality:
-                                                          FilterQuality.high),
-                                                      borderRadius:
-                                                      BorderRadius.all(
-                                                          Radius.circular(
-                                                              20))),
-                                                ),
-                                            placeholder: (context, url) =>
-                                                Container(
-                                                  height: screenHeight(context),
-                                                  width: screenWidth(context),
-                                                  decoration: const BoxDecoration(
-                                                      borderRadius:
-                                                      BorderRadius.all(
-                                                          Radius.circular(
-                                                              20)),
-                                                      color: Colors.black),
-                                                  child: const Center(
-                                                    child:
-                                                    CircularProgressIndicator(
-                                                      color: AppColor.skyBlue,
-                                                    ),
-                                                  ),
-                                                ),
-                                            errorWidget:
-                                                (context, url, error) =>
-                                            const Icon(Icons.error),
-                                          );
-                                        },
-                                      ),
-                                      Align(
-                                          alignment: swipeUp
-                                              ? Alignment.bottomLeft
-                                              : swipeDown
-                                              ? Alignment.bottomRight
-                                              : Alignment.bottomCenter,
-                                          child: Padding(
-                                              padding: EdgeInsets.symmetric(
-                                                  vertical: screenHeight(context,
-                                                      dividedBy: 70),
-                                                  horizontal: screenWidth(context,
-                                                      dividedBy: 15)),
-                                              child: swipeUp
-                                                  ? FadeIn(
-                                                duration: const Duration(
-                                                    milliseconds: 1000),
-                                                animate: true,
-                                                child: buttons(
-                                                    context: context,
-                                                    img:
-                                                    "assets/Images/button3.svg",
-                                                    onTap: () {},
-                                                    buttonName: "Skip",
-                                                    bool: month),
-                                              )
-                                                  : swipeDown
-                                                  ? FadeIn(
-                                                duration: const Duration(
-                                                    milliseconds: 1000),
-                                                animate: true,
-                                                child: buttons(
-                                                    context: context,
-                                                    img:
-                                                    "assets/Images/button2.svg",
-                                                    onTap: () {},
-                                                    buttonName: "Connect",
-                                                    bool: month),
-                                              )
-                                                  : bottonname == "Connect"
-                                                  ? Row(
-                                                mainAxisAlignment:
-                                                MainAxisAlignment
-                                                    .spaceAround,
-                                                children: [
-                                                  buttons(
-                                                      context:
-                                                      context,
-                                                      img:
-                                                      "assets/Images/button3.svg",
-                                                      onTap: () {
-                                                        controller.swipeUp();
-                                                        setState(
-                                                                () {
-                                                              bottonname = "Reject";
-                                                            });
-                                                      },
-                                                      buttonName:
-                                                      "Skip",
-                                                      bool: month),
-                                                  buttons(
-                                                      context:
-                                                      context,
-                                                      img:
-                                                      "assets/Images/button1.svg",
-                                                      onTap: () {
-                                                        msgReqbyIDCubit.AcceptNotification(context, id: filterUserCubit.filterUser.data?[ind].first?.id ?? '', name: filterUserCubit.filterUser.data?[ind].first?.name ?? '', image: filterUserCubit.filterUser.data?[ind].first?.profileImage ?? '', uid: filterUserCubit.filterUser.loginUserId ?? '');
-                                                      },
-                                                      buttonName:
-                                                      "Chat",
-                                                      bool: month),
-                                                  buttons(
-                                                      context:
-                                                      context,
-                                                      img:
-                                                      "assets/Images/button4.svg",
-                                                      onTap: () {
-                                                        undoUsersCubit
-                                                            .GetUndoUsers(
-                                                            id: undoid)
-                                                            .then(
-                                                              (value) async {
-                                                            setState(
-                                                                    () {
-                                                                  image =
-                                                                      image;
-                                                                });
-                                                            Navigator.pushReplacement(
-                                                                context,
-                                                                MaterialPageRoute(
-                                                                  builder:
-                                                                      (context) {
-                                                                    return const Home_screen();
-                                                                  },
-                                                                ));
-                                                            setState(
-                                                                    () {});
-                                                          },
-                                                        );
-                                                      },
-                                                      buttonName:
-                                                      "Undo",
-                                                      bool: month),
-                                                ],
-                                              )
-                                                  : bottonname == "Reject"
-                                                  ? Row(
-                                                mainAxisAlignment:
-                                                MainAxisAlignment
-                                                    .spaceAround,
-                                                children: [
-                                                  buttons(
-                                                      context:
-                                                      context,
-                                                      img:
-                                                      "assets/Images/button4.svg",
-                                                      onTap: () {
-                                                        undoUsersCubit.GetUndoUsers(
-                                                            id: undoid)
-                                                            .then(
-                                                              (value) async {
-                                                            setState(
-                                                                    () {
-                                                                  image =
-                                                                      image;
-                                                                });
-                                                            Navigator.pushReplacement(
-                                                                context,
-                                                                MaterialPageRoute(
-                                                                  builder:
-                                                                      (context) {
-                                                                    return const Home_screen();
-                                                                  },
-                                                                ));
-                                                            setState(
-                                                                    () {});
-                                                          },
-                                                        );
-                                                      },
-                                                      buttonName:
-                                                      "Undo",
-                                                      bool:
-                                                      month),
-                                                  buttons(
-                                                      context:
-                                                      context,
-                                                      img:
-                                                      "assets/Images/button1.svg",
-                                                      onTap: () {
-                                                        msgReqbyIDCubit.AcceptNotification(context, id: filterUserCubit.filterUser.data?[ind].first?.id ?? '', name: filterUserCubit.filterUser.data?[ind].first?.name ?? '', image: filterUserCubit.filterUser.data?[ind].first?.profileImage ?? '', uid: filterUserCubit.filterUser.loginUserId ?? '');
-                                                      },
-                                                      buttonName:
-                                                      "Chat",
-                                                      bool:
-                                                      month),
-                                                  buttons(
-                                                      context:
-                                                      context,
-                                                      img:
-                                                      "assets/Images/button2.svg",
-                                                      onTap: () {
-
-                                                            controller
-                                                                .swipeDown();
-                                                            setState(
-                                                                    () {
-                                                                  bottonname =
-                                                                  "Connect";
-                                                                });
-
-                                                      },
-                                                      buttonName:
-                                                      "Connect",
-                                                      bool:
-                                                      month),
-                                                ],
-                                              )
-                                                  : Row(
-                                                mainAxisAlignment:
-                                                MainAxisAlignment
-                                                    .spaceAround,
-                                                children: [
-                                                  buttons(
-                                                      context:
-                                                      context,
-                                                      img:
-                                                      "assets/Images/button3.svg",
-                                                      onTap: () {
-
-                                                            controller
-                                                                .swipeUp();
-                                                            setState(
-                                                                    () {
-                                                                  bottonname =
-                                                                  "Reject";
-                                                                });
-
-                                                      },
-                                                      buttonName:
-                                                      "Skip",
-                                                      bool:
-                                                      month),
-                                                  buttons(
-                                                      context:
-                                                      context,
-                                                      img:
-                                                      "assets/Images/button1.svg",
-                                                      onTap: () {
-                                                        msgReqbyIDCubit.AcceptNotification(context, id: filterUserCubit.filterUser.data?[ind].first?.id ?? '', name: filterUserCubit.filterUser.data?[ind].first?.name ?? '', image: filterUserCubit.filterUser.data?[ind].first?.profileImage ?? '', uid: filterUserCubit.filterUser.loginUserId ?? '');
-                                                      },
-                                                      buttonName:
-                                                      "Chat",
-                                                      bool:
-                                                      month),
-                                                  buttons(
-                                                      context:
-                                                      context,
-                                                      img:
-                                                      "assets/Images/button2.svg",
-                                                      onTap: () {
-                                                        controller.swipeDown();
-                                                        setState(
-                                                                () {
-                                                              bottonname =
-                                                              "Connect";
-                                                            });
-                                                      },
-                                                      buttonName:
-                                                      "Connect",
-                                                      bool:
-                                                      month),
-                                                ],
-                                              )))
-                                    ],
-                                  ));
-                            }
-                            if (state is FilterUserLoading) {
-                              return Expanded(
-                                  child: Center(child: customLoader()));
-                            }
-                            if (state is FilterUserError) {
-                              return Center(
-                                child: Text("Somthing went wrong ...."),
-                              );
-                            }
-                            return const Center(
-                              child: Text("Somthing went wrong ...."),
-                            );
-                          },
-                        ) else BlocBuilder<AllUsersDetailsCubit, AllUsersDetailsState>(
-                          builder: (context, state) {
-                            if (state is AllUsersDetailsSuccess) {
-                              return  Expanded(
-                                  child: theEnd ? Center(child: Text("No User!"),) : Stack(
-                                children: [
-                                  AppinioSwiper(
-                                    controller: controller,
-                                    invertAngleOnBottomDrag: true,
-                                    onEnd: () {
-                                      print("hello to this is end");
-                                      theEnd = true;
-                                      setState(() {});
-                                    },
-                                    onCardPositionChanged: (position) {
-                                      if (position.offset.direction > 0) {
-                                        setState(() {
-                                          swipeDown = true;
-                                          height = height + 20;
-                                          height1 = height1 >= 1.60
-                                              ? height1 + 0.001
-                                              : height1 + 0.004;
-                                          height1 >= 1.50 && fontsize >= 20
-                                              ? fontsize = fontsize - 1
-                                              : fontsize = fontsize;
-                                          print(height1);
-                                          wight = height1 >= 1.60
-                                              ? wight + 0.001
-                                              : wight + 0.003;
-                                          swipeUp = false;
-                                          bottonname = "Connect";
-                                        });
-                                      }
-                                      if (position.offset.direction < 0) {
-                                        setState(() {
-                                          swipeUp = true;
-                                          bottonname = "Reject";
-                                          height1 = height1 >= 1.60
-                                              ? height1 + 0.001
-                                              : height1 + 0.004;
-                                          height1 >= 1.50 && fontsize >= 20
-                                              ? fontsize = fontsize - 1
-                                              : fontsize = fontsize;
-                                          wight = height1 >= 1.60
-                                              ? wight + 0.001
-                                              : wight + 0.003;
-                                          // print("wight ===> $wight");
-                                          height = height + 20;
-                                          swipeDown = false;
-                                        });
-                                      }
-                                    },
-                                    onSwipeCancelled: (activity) {
-                                      bottonname = '';
-                                      setState(() {
-                                        image.clear();
-                                        swipeUp = false;
-                                        swipeDown = false;
-                                        fontsize = 70;
-                                        height1 = 1.2;
-                                        wight = 1;
-                                        height = 0;
-                                      });
-                                    },
-                                    onSwipeEnd: (previousIndex, targetIndex, activity) {
-                                      setState(() {
-                                        undoid = allUsersdetails.data?[ind].first.id ?? '';
-                                        print("undoid =======> $undoid");
-                                          activity.direction == AxisDirection.up
-                                            ? rejectUserCubit.GetRejectUser(
-                                            id: allUsersdetails
-                                                .data?[ind].first.id ??
-                                                '').then((value) =>  pageViewIndex = 0)
-                                            : connectUserCubit.GetConnectUser(
-                                            id: allUsersdetails
-                                                .data?[ind].first.id ??
-                                                '').then((value) =>  pageViewIndex = 0) ;
-                                        ind >= allUsersdetails.data!.length - 1
-                                            ? ind = ind
-                                            : ind = targetIndex;
-                                        height = 0;
-                                        fontsize = 70;
-                                        height1 = 1.2;
-                                        wight = 1;
-                                        swipeUp = false;
-                                        swipeDown = false;
-                                        image.clear();
-                                      });
-                                    },
-                                    threshold: screenHeight(context, dividedBy: 4.5),
-                                    maxAngle: screenHeight(context, dividedBy: 7),
-                                    swipeOptions: const SwipeOptions.only(down: true, up: true),
-                                    cardCount: allUsersdetails.data?.length ?? 0,
-                                    cardBuilder: (BuildContext context, int index) {
-                                      getImage(index);
-                                      return Padding(
-                                        padding: EdgeInsets.symmetric(
-                                          horizontal: screenWidth(context,
-                                              dividedBy: 100),
-                                        ),
-                                        child: Container(
-                                          decoration: const BoxDecoration(
-                                              borderRadius: BorderRadius.all(
-                                                  Radius.circular(20))
-                                              ),
-                                          child: Stack(
-                                            children: [
-                                              swipeUp || swipeDown
-                                                  ? image[pageViewIndex]
-                                                  .toString()
-                                                  .endsWith(
-                                                  ".mp4") ||
-                                                  image[pageViewIndex]
-                                                      .toString()
-                                                      .endsWith(".3gpp")
-                                                  ? Center(
-                                                child: SizedBox(
-                                                  height: screenHeight(
-                                                      context,
-                                                      dividedBy:
-                                                      swipeDown ? 1.2 : height1),
-                                                  width: screenWidth(
-                                                      context,
-                                                      dividedBy:
-                                                      swipeDown ?1 :wight),
-                                                  child: Stack(
-                                                    children: [
-                                                      VideoWidget(
-                                                        videoUrl: "${apis.baseurl}/${image[pageViewIndex]}", play: false,),
-                                                      Container(
-                                                          height: screenHeight(
-                                                              context,
-                                                              dividedBy:
-                                                              swipeDown ? 1.2 : height1),
-                                                          width: screenWidth(
-                                                              context,
-                                                              dividedBy:
-                                                              swipeDown ?1 :wight),
-                                                          decoration: const BoxDecoration(
-                                                              gradient: LinearGradient(
-                                                                  begin: Alignment
-                                                                      .bottomCenter,
-                                                                  end: Alignment.topCenter,
-                                                                  colors: [
-                                                                    Colors
-                                                                        .black,
-                                                                    Colors
-                                                                        .black38
-                                                                  ]),
-                                                              borderRadius:
-                                                              BorderRadius.all(
-                                                                  Radius.circular(20))),
-                                                          child: swipeUp
-                                                              ? Center(
-                                                            child:
-                                                            Text(
-                                                              "Skip"
-                                                                  .tr(),
-                                                              style: TextStyle(
-                                                                  fontSize: fontsize,
-                                                                  fontFamily: 'Roboto',
-                                                                  fontWeight: FontWeight.w700,
-                                                                  // color: AppColor.skyBlue
-                                                                  color: AppColor.white),
-                                                            ),
-                                                          )
-                                                              : Center(
-                                                            child:
-                                                            Text(
-                                                              "Connect"
-                                                                  .tr(),
-                                                              style: TextStyle(
-                                                                  fontSize: fontsize,
-                                                                  fontFamily: 'Roboto',
-                                                                  fontWeight: FontWeight.w700,
-                                                                  // color: AppColor.skyBlue
-                                                                  color: AppColor.white),
-                                                            ),
-                                                          )),
-                                                    ],
-                                                  ),
-                                                ),
-                                              ) : Align(
-                                                  alignment:
-                                                  Alignment.topCenter,
-                                                  child: SizedBox(
-                                                    child: Stack(
-                                                      children: [
-                                                        CachedNetworkImage(
-                                                          imageUrl:
-                                                          "${apis.baseurl}/${image[pageViewIndex]}",
-                                                          imageBuilder:
-                                                              (context,
-                                                              imageProvider) =>
-                                                              Container(
-                                                                height: screenHeight(
-                                                                    context,
-                                                                    dividedBy:
-                                                                    swipeDown?1.2: height1),
-                                                                width: screenWidth(
-                                                                    context,
-                                                                    dividedBy:
-                                                                    swipeDown ?1 :wight),
-                                                                decoration: BoxDecoration(
-                                                                    image: DecorationImage(
-                                                                        image:
-                                                                        imageProvider,
-                                                                        fit: BoxFit
-                                                                            .cover,
-                                                                        filterQuality:
-                                                                        FilterQuality
-                                                                            .high),
-                                                                    borderRadius:
-                                                                    const BorderRadius
-                                                                        .all(
-                                                                        Radius.circular(20))),
-                                                              ),
-                                                          placeholder:
-                                                              (context,
-                                                              url) =>
-                                                              Container(
-                                                                height:
-                                                                screenHeight(
-                                                                    context),
-                                                                width:
-                                                                screenWidth(
-                                                                    context),
-                                                                decoration: const BoxDecoration(
-                                                                    borderRadius: BorderRadius.only(
-                                                                        topRight:
-                                                                        Radius.circular(
-                                                                            20),
-                                                                        topLeft:
-                                                                        Radius.circular(
-                                                                            20)),
-                                                                    color: Colors
-                                                                        .black),
-                                                                child:
-                                                                const Center(
-                                                                  child:
-                                                                  CircularProgressIndicator(
-                                                                    color: AppColor
-                                                                        .skyBlue,
-                                                                  ),
-                                                                ),
-                                                              ),
-                                                          errorWidget: (context,
-                                                              url,
-                                                              error) =>
-                                                          const Icon(Icons
-                                                              .error),
-                                                        ),
+                                                  );
+                                                },
+                                                cardBuilder1:
+                                                    (BuildContext context,
+                                                        int index) {
+                                                  final image1 = filterUserCubit
+                                                          .filterUser
+                                                          .data?[index]
+                                                          .last
+                                                          ?.image
+                                                          ?.photo1 ??
+                                                      '';
+                                                  return CachedNetworkImage(
+                                                    imageUrl:
+                                                        "${apis.baseurl}/$image1",
+                                                    imageBuilder: (context,
+                                                            imageProvider) =>
                                                         Container(
-                                                            height: screenHeight(
-                                                                context,
-                                                                dividedBy:
-                                                                swipeDown ?1.2 : height1),
-                                                            width: screenWidth(
-                                                                context,
-                                                                dividedBy:
-                                                                swipeDown ? 1 :wight),
-                                                            decoration: const BoxDecoration(
-                                                                gradient: LinearGradient(
-                                                                    begin: Alignment
-                                                                        .bottomCenter,
-                                                                    end: Alignment.topCenter,
-                                                                    colors: [
-                                                                      Colors
-                                                                          .black,
-                                                                      Colors
-                                                                          .black38
-                                                                    ]),
-                                                                borderRadius:
-                                                                BorderRadius.all(
-                                                                    Radius.circular(20))),
-                                                            child: swipeUp
-                                                                ? Center(
-                                                              child:
-                                                              Text(
-                                                                "Skip"
-                                                                    .tr(),
-                                                                style: TextStyle(
-                                                                    fontSize: fontsize,
-                                                                    fontFamily: 'Roboto',
-                                                                    fontWeight: FontWeight.w700,
-                                                                    // color: AppColor.skyBlue
-                                                                    color: AppColor.white),
-                                                              ),
-                                                            )
-                                                                : Center(
-                                                              child:
-                                                              Text(
-                                                                "Connect"
-                                                                    .tr(),
-                                                                style: TextStyle(
-                                                                    fontSize: fontsize,
-                                                                    fontFamily: 'Roboto',
-                                                                    fontWeight: FontWeight.w700,
-                                                                    // color: AppColor.skyBlue
-                                                                    color: AppColor.white),
-                                                              ),
-                                                            )),
-                                                      ],
-                                                    ),
-                                                  ))
-                                                  : image[pageViewIndex]
-                                                  .toString()
-                                                  .endsWith(
-                                                  ".mp4") ||
-                                                  image[pageViewIndex]
-                                                      .toString()
-                                                      .endsWith(".3gpp")
-                                                  ? VideoWidget(
-                                                videoUrl: "${apis.baseurl}/${image[pageViewIndex]}", play: true,)
-                                                  : CachedNetworkImage(
-                                                imageUrl: "${apis.baseurl}/${image[pageViewIndex]}",
-                                                imageBuilder: (context, imageProvider) =>
-                                                    Container(
                                                       decoration: BoxDecoration(
                                                           image: DecorationImage(
                                                               image:
-                                                              imageProvider,
-                                                              fit: BoxFit
-                                                                  .cover,
+                                                                  imageProvider,
+                                                              fit: BoxFit.cover,
                                                               filterQuality:
-                                                              FilterQuality
-                                                                  .high),
+                                                                  FilterQuality
+                                                                      .high),
                                                           borderRadius:
-                                                          const BorderRadius
-                                                              .all(
-                                                              Radius.circular(
-                                                                  20))),
+                                                              BorderRadius.all(
+                                                                  Radius
+                                                                      .circular(
+                                                                          20))),
                                                     ),
-                                                placeholder: (context, url) =>
-                                                    Container(
+                                                    placeholder:
+                                                        (context, url) =>
+                                                            Container(
                                                       height:
-                                                      screenHeight(
-                                                          context),
-                                                      width: screenWidth(
-                                                          context),
+                                                          screenHeight(context),
+                                                      width:
+                                                          screenWidth(context),
                                                       decoration: const BoxDecoration(
-                                                          borderRadius: BorderRadius
-                                                              .all(Radius
-                                                              .circular(
-                                                              20)),
-                                                          color: Colors
-                                                              .black),
+                                                          borderRadius:
+                                                              BorderRadius.all(
+                                                                  Radius
+                                                                      .circular(
+                                                                          20)),
+                                                          color: Colors.black),
                                                       child: const Center(
                                                         child:
-                                                        CircularProgressIndicator(
-                                                          color: AppColor
-                                                              .skyBlue,
+                                                            CircularProgressIndicator(
+                                                          color:
+                                                              AppColor.skyBlue,
                                                         ),
                                                       ),
                                                     ),
-                                                errorWidget: (context, url, error) => const Center(
-                                                  child: Icon(
-                                                      Icons.error),
-                                                ),
+                                                    errorWidget: (context, url,
+                                                            error) =>
+                                                        const Icon(Icons.error),
+                                                  );
+                                                },
                                               ),
-                                              swipeUp || swipeDown
-                                                  ? const SizedBox()
-                                                  : Row(
-                                                children: [
-                                                  Expanded(
-                                                    child: InkWell(
-                                                      overlayColor:
-                                                      const MaterialStatePropertyAll(
-                                                          Colors
-                                                              .transparent),
-                                                      onTap: () {
-                                                        setState(() {
-                                                          pageViewIndex >
-                                                              0
-                                                              ? pageViewIndex--
-                                                              : null;
-                                                          image = image;
-                                                        });
-                                                      },
-                                                      child: Container(
-                                                        height:
-                                                        screenHeight(
-                                                            context),
-                                                      ),
-                                                    ),
-                                                  ),
-                                                  Expanded(
-                                                    child: InkWell(
-                                                      overlayColor:
-                                                      const MaterialStatePropertyAll(
-                                                          Colors
-                                                              .transparent),
-                                                      onTap: () {
-                                                        setState(() {
-                                                          setState(() {
-                                                            pageViewIndex >= image.length - 1 ? null : pageViewIndex++;
-                                                          });
-                                                          image = image;
-                                                        });
-                                                      },
-                                                      child: Container(
-                                                        height:
-                                                        screenHeight(
-                                                            context),
-                                                      ),
-                                                    ),
-                                                  ),
-                                                ],
-                                              ),
-                                              swipeUp || swipeDown
-                                                  ? const SizedBox()
-                                                  : Align(
-                                                      alignment:
-                                                          Alignment.topCenter,
-                                                      child: swipeUp == false &&
-                                                              swipeDown == false
-                                                          ? Padding(
-                                                              padding: EdgeInsets.symmetric(
-                                                                  vertical: screenHeight(
+                                              Align(
+                                                  alignment: swipeUp
+                                                      ? Alignment.bottomLeft
+                                                      : swipeDown
+                                                          ? Alignment
+                                                              .bottomRight
+                                                          : Alignment
+                                                              .bottomCenter,
+                                                  child: Padding(
+                                                      padding:
+                                                          EdgeInsets.symmetric(
+                                                              vertical:
+                                                                  screenHeight(
                                                                       context,
                                                                       dividedBy:
-                                                                          35)),
-                                                              child:
-                                                                  TabPageSelector(
-                                                                key: _key1,
-                                                                controller: TabController(
-                                                                    vsync: this,
-                                                                    length: image.isEmpty ? 0 :image.length,
-                                                                    initialIndex:
-                                                                        pageViewIndex),
-                                                                color: AppColor
-                                                                    .gray,
-                                                                borderStyle:
-                                                                    BorderStyle
-                                                                        .none,
-                                                                indicatorSize:
-                                                                    8,
-                                                                selectedColor:
-                                                                    AppColor
-                                                                        .skyBlue,
-                                                              ),
-                                                            )
-                                                          : const SizedBox(),
-                                                    ),
-                                              swipeUp || swipeDown
-                                                  ? const SizedBox()
-                                                  : Align(
-                                                      alignment: Alignment
-                                                          .bottomCenter,
-                                                      child: Container(
-                                                        alignment: Alignment
-                                                            .bottomCenter,
-                                                        height: screenHeight(
-                                                            context,
-                                                            dividedBy: 4.1),
-                                                        width: screenWidth(
-                                                            context),
-                                                        decoration: const BoxDecoration(
-                                                            borderRadius: BorderRadius.only(
-                                                                bottomLeft: Radius
-                                                                    .circular(
-                                                                        20),
-                                                                bottomRight: Radius
-                                                                    .circular(
-                                                                        20)),
-                                                            gradient: LinearGradient(
-                                                                begin: Alignment
-                                                                    .topCenter,
-                                                                end: Alignment
-                                                                    .bottomCenter,
-                                                                colors: [
-                                                                  Colors
-                                                                      .transparent,
-                                                                  Colors.black
-                                                                ])),
-                                                        child: Padding(
-                                                          padding: EdgeInsets.symmetric(
+                                                                          70),
                                                               horizontal:
                                                                   screenWidth(
                                                                       context,
                                                                       dividedBy:
-                                                                          20)),
-                                                          child: Column(
-                                                            crossAxisAlignment:
-                                                                CrossAxisAlignment
-                                                                    .start,
-                                                            children: [
-                                                              Row(
-                                                                mainAxisAlignment:
-                                                                    MainAxisAlignment
-                                                                        .spaceBetween,
-                                                                children: [
-                                                                  SizedBox(
-                                                                    width: screenWidth(
-                                                                        context,
-                                                                        dividedBy:
-                                                                            1.3),
-                                                                    child: Row(
-                                                                      children: [
-                                                                        Text(
-                                                                          allUsersdetails.data?[index].first.name?.trim() ?? '',
-                                                                          style: const TextStyle(
-                                                                              color: AppColor.white,
-                                                                              fontFamily: 'Roboto',
-                                                                              fontSize: 25,
-                                                                              fontWeight: FontWeight.w600),
-                                                                        ),
-                                                                        SizedBox(
-                                                                          width: screenWidth(
-                                                                              context,
-                                                                              dividedBy: 100),
-                                                                        ),
-                                                                        Container(
-                                                                          height: screenHeight(
-                                                                              context,
-                                                                              dividedBy: 45),
-                                                                          width: screenHeight(
-                                                                              context,
-                                                                              dividedBy: 45),
-                                                                          decoration:
-                                                                              const BoxDecoration(image: DecorationImage(image: AssetImage("assets/Images/verified.png"))),
-                                                                        )
-                                                                      ],
-                                                                    ),
-                                                                  ),
-                                                                ],
-                                                              ),
-                                                              Row (
-                                                                children: [
-                                                                  Wrap(
-                                                                    spacing: 7,
-                                                                    direction: Axis
-                                                                        .vertical,
-                                                                    children: [
-                                                                      allUsersdetails.data?[index].first.professionalDetails?.addRole != null ? Row(
-                                                                        children: [
-                                                                          Text(
-                                                                            'Job Title'.tr(),
-                                                                            style: const TextStyle(
-                                                                                fontSize: 14,
-                                                                                fontFamily: 'Roboto',
-                                                                                fontWeight: FontWeight.w500,
-                                                                                color: Colors.white),
-                                                                          ),
-                                                                          const Text(
-                                                                            ": ",
-                                                                            style: TextStyle(
-                                                                                fontSize: 14,
-                                                                                fontFamily: 'Roboto',
-                                                                                fontWeight: FontWeight.w500,
-                                                                                color: Colors.white),
-                                                                          ),
-                                                                          Text(
-                                                                            13 >= allUsersdetails.data![index].first.professionalDetails!.addRole!.length
-                                                                                ? "${allUsersdetails.data?[index].first.professionalDetails?.addRole ?? ''}"
-                                                                                : "${allUsersdetails.data?[index].first.professionalDetails?.addRole?.substring(0, 13) ?? ''}...",
-                                                                            style: const TextStyle(
-                                                                                overflow: TextOverflow.ellipsis,
-                                                                                fontSize: 14,
-                                                                                fontFamily: 'Roboto',
-                                                                                fontWeight: FontWeight.w400,
-                                                                                color: Colors.white),
-                                                                          ),
-                                                                        ],
-                                                                      ) : const SizedBox(),
-                                                                      allUsersdetails.data?[index].first.businessaddress?.country != null ? Row(
-                                                                        children: [
-                                                                          Text(
-                                                                            'City/Country'.tr(),
-                                                                            style: const TextStyle(
-                                                                                fontSize: 14,
-                                                                                fontFamily: 'Roboto',
-                                                                                fontWeight: FontWeight.w500,
-                                                                                color: Colors.white),
-                                                                          ),
-                                                                          const Text(
-                                                                            ": ",
-                                                                            style: TextStyle(
-                                                                                fontSize: 14,
-                                                                                fontFamily: 'Roboto',
-                                                                                fontWeight: FontWeight.w500,
-                                                                                color: Colors.white),
-                                                                          ),
-                                                                          Text(
-                                                                            10 <= allUsersdetails.data![index].first.businessaddress!.country!.length
-                                                                                ? "${allUsersdetails.data?[index].first.businessaddress?.country?.substring(0, 10) ?? ''}..."
-                                                                                : "${allUsersdetails.data?[index].first.businessaddress?.country ?? ''}",
-                                                                            style: const TextStyle(
-                                                                                fontSize: 14,
-                                                                                fontFamily: 'Roboto',
-                                                                                fontWeight: FontWeight.w400,
-                                                                                color: Colors.white),
-                                                                          ),
-                                                                        ],
-                                                                      ) : const SizedBox(),
-                                                                      allUsersdetails.data?[index].first.professionalDetails?.companyName != null ? Row(
-                                                                        children: [
-                                                                          Text(
-                                                                            'Company'.tr(),
-                                                                            style: const TextStyle(
-                                                                                fontSize: 14,
-                                                                                fontFamily: 'Roboto',
-                                                                                fontWeight: FontWeight.w500,
-                                                                                color: Colors.white),
-                                                                          ),
-                                                                          const Text(
-                                                                            ": ",
-                                                                            style: TextStyle(
-                                                                                fontSize: 14,
-                                                                                fontFamily: 'Roboto',
-                                                                                fontWeight: FontWeight.w500,
-                                                                                color: Colors.white),
-                                                                          ),
-                                                                          Text(
-                                                                            15 <= allUsersdetails.data![index].first.professionalDetails!.companyName!.length
-                                                                                ? "${allUsersdetails.data?[index].first.professionalDetails?.companyName?.substring(0, 13) ?? ''}..."
-                                                                                : "${allUsersdetails.data?[index].first.professionalDetails?.companyName ?? ''}",
-                                                                            style: const TextStyle(
-                                                                                fontSize: 14,
-                                                                                fontFamily: 'Roboto',
-                                                                                fontWeight: FontWeight.w400,
-                                                                                color: Colors.white),
-                                                                          ),
-                                                                        ],
-                                                                      ) : const SizedBox(),
-                                                                    ],
-                                                                  ),
-                                                                  const Spacer(),
-                                                                  Wrap(
-                                                                    direction: Axis
-                                                                        .vertical,
-                                                                    spacing: 5,
-                                                                    children: allUsersdetails
-                                                                            .data?[index]
-                                                                            .first
-                                                                            .lookingfor
-                                                                            ?.map((e) => Container(
-                                                                                decoration: BoxDecoration(
-                                                                                    border: Border.all(
-                                                                                        color: AppColor.white
-                                                                                        //const Color(0xff6D9Aff)
-                                                                                        ,
-                                                                                        width: 2),
-                                                                                    borderRadius: BorderRadius.circular(20)),
-                                                                                child: Padding(
-                                                                                  padding: EdgeInsets.symmetric(
-                                                                                    horizontal: screenWidth(context, dividedBy: 45),
-                                                                                    vertical: screenHeight(context, dividedBy: 250),
-                                                                                  ),
-                                                                                  child: Text(
-                                                                                    e,
-                                                                                    style: const TextStyle(fontWeight: FontWeight.w400, fontSize: 12.7, fontFamily: 'Roboto', color: AppColor.white),
-                                                                                  ),
-                                                                                )))
-                                                                            .toList() ??
-                                                                        [],
-                                                                  )
-                                                                ],
-                                                              ),
-                                                              SizedBox(
-                                                                height:
-                                                                    screenHeight(
-                                                                        context,
-                                                                        dividedBy:
-                                                                            100),
-                                                              ),
-                                                              const Spacer(),
-                                                            ],
-                                                          ),
-                                                        ),
-                                                      ),
-                                                    ),
-                                              swipeUp || swipeDown
-                                                  ? Align(
-                                                      alignment: swipeUp
-                                                          ? Alignment
-                                                              .bottomCenter
-                                                          : Alignment.topCenter,
-                                                      child: SizedBox(
-                                                        height: height,
-                                                      ),
-                                                    )
-                                                  : Align(
-                                                      alignment:
-                                                          Alignment.center,
-                                                      child: SizedBox(
-                                                        key: _key3,
-                                                        // margin: EdgeInsets.only(
-                                                        //     top: screenHeight(context,
-                                                        //         dividedBy: 10)),
-                                                        height: 0,
-                                                        width: 0,
-                                                      ),
-                                                    ),
-                                              swipeUp || swipeDown
-                                                  ? const SizedBox()
-                                                  : Align(
-                                                      alignment:
-                                                          Alignment.topRight,
-                                                      child: swipeUp == false &&
-                                                              swipeDown == false
-                                                          ? Padding(
-                                                              padding: EdgeInsets
-                                                                  .symmetric(
-                                                                vertical:
-                                                                    screenHeight(
-                                                                        context,
-                                                                        dividedBy:
-                                                                            120),
-                                                                horizontal:
-                                                                    screenHeight(
-                                                                        context,
-                                                                        dividedBy:
-                                                                            40),
-                                                              ),
-                                                              child: SizedBox(
-                                                                height:
-                                                                    screenHeight(
-                                                                        context,
-                                                                        dividedBy:
-                                                                            17),
-                                                                width:
-                                                                    screenHeight(
-                                                                        context,
-                                                                        dividedBy:
-                                                                            10),
-                                                                child: SvgPicture
-                                                                    .asset(
-                                                                        "assets/Images/premiumTag.svg"),
-                                                              ))
-                                                          : const SizedBox(),
-                                                    ),
-                                            ],
-                                          ),
-                                        ),
-                                      );
-                                    },
-                                    cardBuilder1: (BuildContext context, int index) {
-                                     final image1 = allUsersdetails.data?[index].last.image?.photo1 ?? '';
-                                      return CachedNetworkImage(
-                                              imageUrl:
-                                                  "${apis.baseurl}/${image1}",
-                                              imageBuilder:
-                                                  (context, imageProvider) =>
-                                                      Container(
-                                                decoration: BoxDecoration(
-                                                    image: DecorationImage(
-                                                        image: imageProvider,
-                                                        fit: BoxFit.cover,
-                                                        filterQuality:
-                                                            FilterQuality.high),
-                                                    borderRadius:
-                                                        BorderRadius.all(
-                                                            Radius.circular(
-                                                                20))),
-                                              ),
-                                              placeholder: (context, url) =>
-                                                  Container(
-                                                height: screenHeight(context),
-                                                width: screenWidth(context),
-                                                decoration: const BoxDecoration(
-                                                    borderRadius:
-                                                        BorderRadius.all(
-                                                            Radius.circular(
-                                                                20)),
-                                                    color: Colors.black),
-                                                child: const Center(
-                                                  child:
-                                                      CircularProgressIndicator(
-                                                    color: AppColor.skyBlue,
-                                                  ),
-                                                ),
-                                              ),
-                                              errorWidget:
-                                                  (context, url, error) =>
-                                                      const Center(child: Icon(Icons.error)),
-                                            );
-                                    },
-                                  ),
-                                  Align(
-                                      alignment: swipeUp
-                                          ? Alignment.bottomLeft
-                                          : swipeDown
-                                              ? Alignment.bottomRight
-                                              : Alignment.bottomCenter,
-                                      child: Padding(
-                                          padding: EdgeInsets.symmetric(
-                                              vertical: screenHeight(context,
-                                                  dividedBy: 70),
-                                              horizontal: screenWidth(context,
-                                                  dividedBy: 15)),
-                                          child: swipeUp
-                                              ? FadeIn(
-                                                  duration: const Duration(
-                                                      milliseconds: 1000),
-                                                  animate: true,
-                                                  child: buttons(
-                                                      context: context,
-                                                      img:
-                                                          "assets/Images/button3.svg",
-                                                      onTap: () {},
-                                                      buttonName: "Skip",
-                                                      bool: month),
-                                                )
-                                              : swipeDown
-                                                  ? FadeIn(
-                                                      duration: const Duration(
-                                                          milliseconds: 1000),
-                                                      animate: true,
-                                                      child: buttons(
-                                                          context: context,
-                                                          img:
-                                                              "assets/Images/button2.svg",
-                                                          onTap: () {},
-                                                          buttonName: "Connect",
-                                                          bool: month),
-                                                    )
-                                                  : bottonname == "Connect"
-                                                      ? Row(
-                                                          mainAxisAlignment:
-                                                              MainAxisAlignment
-                                                                  .spaceAround,
-                                                          children: [
-                                                            buttons(
-                                                                context:
-                                                                    context,
-                                                                img:
-                                                                    "assets/Images/button3.svg",
-                                                                onTap: () {
-                                                                  controller.swipeUp();
-                                                                  setState(
-                                                                          () {
-                                                                        bottonname =
-                                                                        "Reject";
-                                                                      });
-                                                                },
-                                                                buttonName:
-                                                                    "Skip",
-                                                                bool: month),
-                                                            buttons(
-                                                                context:
-                                                                    context,
-                                                                img:
-                                                                    "assets/Images/button1.svg",
-                                                                onTap: () {
-                                                                  msgReqbyIDCubit.AcceptNotification(context, id: allUsersdetails.data?[ind].first.id ?? '', name: allUsersdetails.data?[ind].first.name ?? '', image: allUsersdetails.data?[ind].first.profileImage ?? '', uid:allUsersdetails.loginUserId ?? '');
-                                                                },
-                                                                buttonName:
-                                                                    "Chat",
-                                                                bool: month),
-                                                            buttons(
-                                                                context:
-                                                                    context,
-                                                                img:
-                                                                    "assets/Images/button4.svg",
-                                                                onTap: () {
-                                                                  undoUsersCubit
-                                                                          .GetUndoUsers(
-                                                                              id: undoid)
-                                                                      .then(
-                                                                    (value) async {
-                                                                      setState(
-                                                                          () {
-                                                                        image =
-                                                                            image;
-                                                                      });
-                                                                      Navigator.pushReplacement(
+                                                                          15)),
+                                                      child: swipeUp
+                                                          ? FadeIn(
+                                                              duration:
+                                                                  const Duration(
+                                                                      milliseconds:
+                                                                          1000),
+                                                              animate: true,
+                                                              child: buttons(
+                                                                  context:
+                                                                      context,
+                                                                  img:
+                                                                      "assets/Images/button3.svg",
+                                                                  onTap: () {},
+                                                                  buttonName:
+                                                                      "Skip",
+                                                                  bool: month),
+                                                            )
+                                                          : swipeDown
+                                                              ? FadeIn(
+                                                                  duration: const Duration(
+                                                                      milliseconds:
+                                                                          1000),
+                                                                  animate: true,
+                                                                  child: buttons(
+                                                                      context:
                                                                           context,
-                                                                          MaterialPageRoute(
-                                                                        builder:
-                                                                            (context) {
-                                                                          return const Home_screen();
-                                                                        },
-                                                                      ));
-                                                                      setState(
-                                                                          () {});
-                                                                    },
-                                                                  );
-                                                                },
-                                                                buttonName:
-                                                                    "Undo",
-                                                                bool: month),
-                                                          ],
-                                                        )
-                                                      : bottonname == "Reject"
-                                                          ? Row(
-                                                              mainAxisAlignment:
-                                                                  MainAxisAlignment
-                                                                      .spaceAround,
-                                                              children: [
-                                                                buttons(
-                                                                    context:
-                                                                        context,
-                                                                    img:
-                                                                        "assets/Images/button4.svg",
-                                                                    onTap: () {
-                                                                      undoUsersCubit.GetUndoUsers(
-                                                                              id: undoid)
-                                                                          .then(
-                                                                        (value) async {
+                                                                      img:
+                                                                          "assets/Images/button2.svg",
+                                                                      onTap:
+                                                                          () {},
+                                                                      buttonName:
+                                                                          "Connect",
+                                                                      bool:
+                                                                          month),
+                                                                )
+                                                              : bottonname ==
+                                                                      "Connect"
+                                                                  ? Row(
+                                                                      mainAxisAlignment:
+                                                                          MainAxisAlignment
+                                                                              .spaceAround,
+                                                                      children: [
+                                                                        buttons(
+                                                                            context:
+                                                                                context,
+                                                                            img:
+                                                                                "assets/Images/button3.svg",
+                                                                            onTap:
+                                                                                () {
+                                                                              controller.swipeUp();
+                                                                              setState(() {
+                                                                                bottonname = "Reject";
+                                                                              });
+                                                                            },
+                                                                            buttonName:
+                                                                                "Skip",
+                                                                            bool:
+                                                                                month),
+                                                                        buttons(
+                                                                            context:
+                                                                                context,
+                                                                            img:
+                                                                                "assets/Images/button1.svg",
+                                                                            onTap:
+                                                                                () {
+                                                                              msgReqbyIDCubit.AcceptNotification(context, id: filterUserCubit.filterUser.data?[ind].first?.id ?? '', name: filterUserCubit.filterUser.data?[ind].first?.name ?? '', image: filterUserCubit.filterUser.data?[ind].first?.profileImage ?? '', uid: filterUserCubit.filterUser.loginUserId ?? '');
+                                                                            },
+                                                                            buttonName:
+                                                                                "Chat",
+                                                                            bool:
+                                                                                month),
+                                                                        buttons(
+                                                                            context:
+                                                                                context,
+                                                                            img:
+                                                                                "assets/Images/button4.svg",
+                                                                            onTap:
+                                                                                () {
+                                                                              undoUsersCubit.GetUndoUsers(id: undoid).then(
+                                                                                (value) async {
+                                                                                  setState(() {
+                                                                                    image = image;
+                                                                                  });
+                                                                                  Navigator.pushReplacement(context, MaterialPageRoute(
+                                                                                    builder: (context) {
+                                                                                      return const Home_screen();
+                                                                                    },
+                                                                                  ));
+                                                                                  setState(() {});
+                                                                                },
+                                                                              );
+                                                                            },
+                                                                            buttonName:
+                                                                                "Undo",
+                                                                            bool:
+                                                                                month),
+                                                                      ],
+                                                                    )
+                                                                  : bottonname ==
+                                                                          "Reject"
+                                                                      ? Row(
+                                                                          mainAxisAlignment:
+                                                                              MainAxisAlignment.spaceAround,
+                                                                          children: [
+                                                                            buttons(
+                                                                                context: context,
+                                                                                img: "assets/Images/button4.svg",
+                                                                                onTap: () {
+                                                                                  undoUsersCubit.GetUndoUsers(id: undoid).then(
+                                                                                    (value) async {
+                                                                                      setState(() {
+                                                                                        image = image;
+                                                                                      });
+                                                                                      Navigator.pushReplacement(context, MaterialPageRoute(
+                                                                                        builder: (context) {
+                                                                                          return const Home_screen();
+                                                                                        },
+                                                                                      ));
+                                                                                      setState(() {});
+                                                                                    },
+                                                                                  );
+                                                                                },
+                                                                                buttonName: "Undo",
+                                                                                bool: month),
+                                                                            buttons(
+                                                                                context: context,
+                                                                                img: "assets/Images/button1.svg",
+                                                                                onTap: () {
+                                                                                  msgReqbyIDCubit.AcceptNotification(context, id: filterUserCubit.filterUser.data?[ind].first?.id ?? '', name: filterUserCubit.filterUser.data?[ind].first?.name ?? '', image: filterUserCubit.filterUser.data?[ind].first?.profileImage ?? '', uid: filterUserCubit.filterUser.loginUserId ?? '');
+                                                                                },
+                                                                                buttonName: "Chat",
+                                                                                bool: month),
+                                                                            buttons(
+                                                                                context: context,
+                                                                                img: "assets/Images/button2.svg",
+                                                                                onTap: () {
+                                                                                  controller.swipeDown();
+                                                                                  setState(() {
+                                                                                    bottonname = "Connect";
+                                                                                  });
+                                                                                },
+                                                                                buttonName: "Connect",
+                                                                                bool: month),
+                                                                          ],
+                                                                        )
+                                                                      : Row(
+                                                                          mainAxisAlignment:
+                                                                              MainAxisAlignment.spaceAround,
+                                                                          children: [
+                                                                            buttons(
+                                                                                context: context,
+                                                                                img: "assets/Images/button3.svg",
+                                                                                onTap: () {
+                                                                                  controller.swipeUp();
+                                                                                  setState(() {
+                                                                                    bottonname = "Reject";
+                                                                                  });
+                                                                                },
+                                                                                buttonName: "Skip",
+                                                                                bool: month),
+                                                                            buttons(
+                                                                                context: context,
+                                                                                img: "assets/Images/button1.svg",
+                                                                                onTap: () {
+                                                                                  msgReqbyIDCubit.AcceptNotification(context, id: filterUserCubit.filterUser.data?[ind].first?.id ?? '', name: filterUserCubit.filterUser.data?[ind].first?.name ?? '', image: filterUserCubit.filterUser.data?[ind].first?.profileImage ?? '', uid: filterUserCubit.filterUser.loginUserId ?? '');
+                                                                                },
+                                                                                buttonName: "Chat",
+                                                                                bool: month),
+                                                                            buttons(
+                                                                                context: context,
+                                                                                img: "assets/Images/button2.svg",
+                                                                                onTap: () {
+                                                                                  controller.swipeDown();
+                                                                                  setState(() {
+                                                                                    bottonname = "Connect";
+                                                                                  });
+                                                                                },
+                                                                                buttonName: "Connect",
+                                                                                bool: month),
+                                                                          ],
+                                                                        )))
+                                            ],
+                                          ));
+                              }
+                              if (state is FilterUserLoading) {
+                                return Expanded(
+                                    child: Center(child: customLoader()));
+                              }
+                              if (state is FilterUserError) {
+                                return Center(
+                                  child: Text("Somthing went wrong ...."),
+                                );
+                              }
+                              return const Center(
+                                child: Text("Somthing went wrong ...."),
+                              );
+                            },
+                          )
+                        else
+                          BlocBuilder<AllUsersDetailsCubit,
+                              AllUsersDetailsState>(
+                            builder: (context, state) {
+                              if (state is AllUsersDetailsSuccess) {
+                                return Expanded(
+                                    child: theEnd
+                                        ? Center(
+                                            child: Text("No User!"),
+                                          )
+                                        : Stack(
+                                            children: [
+                                              AppinioSwiper(
+                                                controller: controller,
+                                                invertAngleOnBottomDrag: true,
+                                                onEnd: () {
+                                                  print("hello to this is end");
+                                                  theEnd = true;
+                                                  setState(() {});
+                                                },
+                                                onCardPositionChanged:
+                                                    (position) {
+                                                  if (position
+                                                          .offset.direction >
+                                                      0) {
+                                                    setState(() {
+                                                      swipeDown = true;
+                                                      height = height + 20;
+                                                      height1 = height1 >= 1.60
+                                                          ? height1 + 0.001
+                                                          : height1 + 0.004;
+                                                      height1 >= 1.50 &&
+                                                              fontsize >= 20
+                                                          ? fontsize =
+                                                              fontsize - 1
+                                                          : fontsize = fontsize;
+                                                      print(height1);
+                                                      wight = height1 >= 1.60
+                                                          ? wight + 0.001
+                                                          : wight + 0.003;
+                                                      swipeUp = false;
+                                                      bottonname = "Connect";
+                                                    });
+                                                  }
+                                                  if (position
+                                                          .offset.direction <
+                                                      0) {
+                                                    setState(() {
+                                                      swipeUp = true;
+                                                      bottonname = "Reject";
+                                                      height1 = height1 >= 1.60
+                                                          ? height1 + 0.001
+                                                          : height1 + 0.004;
+                                                      height1 >= 1.50 &&
+                                                              fontsize >= 20
+                                                          ? fontsize =
+                                                              fontsize - 1
+                                                          : fontsize = fontsize;
+                                                      wight = height1 >= 1.60
+                                                          ? wight + 0.001
+                                                          : wight + 0.003;
+                                                      // print("wight ===> $wight");
+                                                      height = height + 20;
+                                                      swipeDown = false;
+                                                    });
+                                                  }
+                                                },
+                                                onSwipeCancelled: (activity) {
+                                                  bottonname = '';
+                                                  setState(() {
+                                                    image.clear();
+                                                    swipeUp = false;
+                                                    swipeDown = false;
+                                                    fontsize = 70;
+                                                    height1 = 1.2;
+                                                    wight = 1;
+                                                    height = 0;
+                                                  });
+                                                },
+                                                onSwipeEnd: (previousIndex,
+                                                    targetIndex, activity) {
+                                                  setState(() {
+                                                    undoid = allUsersdetails
+                                                            .data?[ind]
+                                                            .first
+                                                            .id ??
+                                                        '';
+                                                    print(
+                                                        "undoid =======> $undoid");
+                                                    activity.direction == AxisDirection.up
+                                                        ? rejectUserCubit.GetRejectUser(
+                                                                id: allUsersdetails
+                                                                        .data?[
+                                                                            ind]
+                                                                        .first
+                                                                        .id ??
+                                                                    '')
+                                                            .then((value) =>
+                                                                pageViewIndex =
+                                                                    0)
+                                                        : connectUserCubit.GetConnectUser(
+                                                                id: allUsersdetails
+                                                                        .data?[
+                                                                            ind]
+                                                                        .first
+                                                                        .id ??
+                                                                    '')
+                                                            .then((value) =>
+                                                                pageViewIndex = 0);
+                                                    ind >=
+                                                            allUsersdetails
+                                                                    .data!
+                                                                    .length -
+                                                                1
+                                                        ? ind = ind
+                                                        : ind = targetIndex;
+                                                    height = 0;
+                                                    fontsize = 70;
+                                                    height1 = 1.2;
+                                                    wight = 1;
+                                                    swipeUp = false;
+                                                    swipeDown = false;
+                                                    image.clear();
+                                                  });
+                                                },
+                                                threshold: screenHeight(context,
+                                                    dividedBy: 4.5),
+                                                maxAngle: screenHeight(context,
+                                                    dividedBy: 7),
+                                                swipeOptions:
+                                                    const SwipeOptions.only(
+                                                        down: true, up: true),
+                                                cardCount: allUsersdetails
+                                                        .data?.length ??
+                                                    0,
+                                                cardBuilder:
+                                                    (BuildContext context,
+                                                        int index) {
+                                                  getImage(index);
+                                                  return Padding(
+                                                    padding:
+                                                        EdgeInsets.symmetric(
+                                                      horizontal: screenWidth(
+                                                          context,
+                                                          dividedBy: 100),
+                                                    ),
+                                                    child: Container(
+                                                      decoration: const BoxDecoration(
+                                                          borderRadius:
+                                                              BorderRadius.all(
+                                                                  Radius
+                                                                      .circular(
+                                                                          20))),
+                                                      child: Stack(
+                                                        children: [
+                                                          swipeUp || swipeDown
+                                                              ? image[pageViewIndex]
+                                                                          .toString()
+                                                                          .endsWith(
+                                                                              ".mp4") ||
+                                                                      image[pageViewIndex]
+                                                                          .toString()
+                                                                          .endsWith(
+                                                                              ".3gpp")
+                                                                  ? Center(
+                                                                      child:
+                                                                          SizedBox(
+                                                                        height: screenHeight(
+                                                                            context,
+                                                                            dividedBy: swipeDown
+                                                                                ? 1.2
+                                                                                : height1),
+                                                                        width: screenWidth(
+                                                                            context,
+                                                                            dividedBy: swipeDown
+                                                                                ? 1
+                                                                                : wight),
+                                                                        child:
+                                                                            Stack(
+                                                                          children: [
+                                                                            VideoWidget(
+                                                                              videoUrl: "${apis.baseurl}/${image[pageViewIndex]}",
+                                                                              play: false,
+                                                                            ),
+                                                                            Container(
+                                                                                height: screenHeight(context, dividedBy: swipeDown ? 1.2 : height1),
+                                                                                width: screenWidth(context, dividedBy: swipeDown ? 1 : wight),
+                                                                                decoration: const BoxDecoration(gradient: LinearGradient(begin: Alignment.bottomCenter, end: Alignment.topCenter, colors: [Colors.black, Colors.black38]), borderRadius: BorderRadius.all(Radius.circular(20))),
+                                                                                child: swipeUp
+                                                                                    ? Center(
+                                                                                        child: Text(
+                                                                                          "Skip".tr(),
+                                                                                          style: TextStyle(
+                                                                                              fontSize: fontsize,
+                                                                                              fontFamily: 'Roboto',
+                                                                                              fontWeight: FontWeight.w700,
+                                                                                              // color: AppColor.skyBlue
+                                                                                              color: AppColor.white),
+                                                                                        ),
+                                                                                      )
+                                                                                    : Center(
+                                                                                        child: Text(
+                                                                                          "Connect".tr(),
+                                                                                          style: TextStyle(
+                                                                                              fontSize: fontsize,
+                                                                                              fontFamily: 'Roboto',
+                                                                                              fontWeight: FontWeight.w700,
+                                                                                              // color: AppColor.skyBlue
+                                                                                              color: AppColor.white),
+                                                                                        ),
+                                                                                      )),
+                                                                          ],
+                                                                        ),
+                                                                      ),
+                                                                    )
+                                                                  : Align(
+                                                                      alignment:
+                                                                          Alignment
+                                                                              .topCenter,
+                                                                      child:
+                                                                          SizedBox(
+                                                                        child:
+                                                                            Stack(
+                                                                          children: [
+                                                                            CachedNetworkImage(
+                                                                              imageUrl: "${apis.baseurl}/${image[pageViewIndex]}",
+                                                                              imageBuilder: (context, imageProvider) => Container(
+                                                                                height: screenHeight(context, dividedBy: swipeDown ? 1.2 : height1),
+                                                                                width: screenWidth(context, dividedBy: swipeDown ? 1 : wight),
+                                                                                decoration: BoxDecoration(image: DecorationImage(image: imageProvider, fit: BoxFit.cover, filterQuality: FilterQuality.high), borderRadius: const BorderRadius.all(Radius.circular(20))),
+                                                                              ),
+                                                                              placeholder: (context, url) => Container(
+                                                                                height: screenHeight(context),
+                                                                                width: screenWidth(context),
+                                                                                decoration: const BoxDecoration(borderRadius: BorderRadius.only(topRight: Radius.circular(20), topLeft: Radius.circular(20)), color: Colors.black),
+                                                                                child: const Center(
+                                                                                  child: CircularProgressIndicator(
+                                                                                    color: AppColor.skyBlue,
+                                                                                  ),
+                                                                                ),
+                                                                              ),
+                                                                              errorWidget: (context, url, error) => const Icon(Icons.error),
+                                                                            ),
+                                                                            Container(
+                                                                                height: screenHeight(context, dividedBy: swipeDown ? 1.2 : height1),
+                                                                                width: screenWidth(context, dividedBy: swipeDown ? 1 : wight),
+                                                                                decoration: const BoxDecoration(gradient: LinearGradient(begin: Alignment.bottomCenter, end: Alignment.topCenter, colors: [Colors.black, Colors.black38]), borderRadius: BorderRadius.all(Radius.circular(20))),
+                                                                                child: swipeUp
+                                                                                    ? Center(
+                                                                                        child: Text(
+                                                                                          "Skip".tr(),
+                                                                                          style: TextStyle(
+                                                                                              fontSize: fontsize,
+                                                                                              fontFamily: 'Roboto',
+                                                                                              fontWeight: FontWeight.w700,
+                                                                                              // color: AppColor.skyBlue
+                                                                                              color: AppColor.white),
+                                                                                        ),
+                                                                                      )
+                                                                                    : Center(
+                                                                                        child: Text(
+                                                                                          "Connect".tr(),
+                                                                                          style: TextStyle(
+                                                                                              fontSize: fontsize,
+                                                                                              fontFamily: 'Roboto',
+                                                                                              fontWeight: FontWeight.w700,
+                                                                                              // color: AppColor.skyBlue
+                                                                                              color: AppColor.white),
+                                                                                        ),
+                                                                                      )),
+                                                                          ],
+                                                                        ),
+                                                                      ))
+                                                              : image[pageViewIndex]
+                                                                          .toString()
+                                                                          .endsWith(
+                                                                              ".mp4") ||
+                                                                      image[pageViewIndex]
+                                                                          .toString()
+                                                                          .endsWith(
+                                                                              ".3gpp")
+                                                                  ? VideoWidget(
+                                                                      videoUrl:
+                                                                          "${apis.baseurl}/${image[pageViewIndex]}",
+                                                                      play:
+                                                                          true,
+                                                                    )
+                                                                  : CachedNetworkImage(
+                                                                      imageUrl:
+                                                                          "${apis.baseurl}/${image[pageViewIndex]}",
+                                                                      imageBuilder:
+                                                                          (context, imageProvider) =>
+                                                                              Container(
+                                                                        decoration: BoxDecoration(
+                                                                            image: DecorationImage(
+                                                                                image: imageProvider,
+                                                                                fit: BoxFit.cover,
+                                                                                filterQuality: FilterQuality.high),
+                                                                            borderRadius: const BorderRadius.all(Radius.circular(20))),
+                                                                      ),
+                                                                      placeholder:
+                                                                          (context, url) =>
+                                                                              Container(
+                                                                        height:
+                                                                            screenHeight(context),
+                                                                        width: screenWidth(
+                                                                            context),
+                                                                        decoration: const BoxDecoration(
+                                                                            borderRadius:
+                                                                                BorderRadius.all(Radius.circular(20)),
+                                                                            color: Colors.black),
+                                                                        child:
+                                                                            const Center(
+                                                                          child:
+                                                                              CircularProgressIndicator(
+                                                                            color:
+                                                                                AppColor.skyBlue,
+                                                                          ),
+                                                                        ),
+                                                                      ),
+                                                                      errorWidget: (context,
+                                                                              url,
+                                                                              error) =>
+                                                                          const Center(
+                                                                        child: Icon(
+                                                                            Icons.error),
+                                                                      ),
+                                                                    ),
+                                                          swipeUp || swipeDown
+                                                              ? const SizedBox()
+                                                              : Row(
+                                                                  children: [
+                                                                    Expanded(
+                                                                      child:
+                                                                          InkWell(
+                                                                        overlayColor:
+                                                                            const MaterialStatePropertyAll(Colors.transparent),
+                                                                        onTap:
+                                                                            () {
                                                                           setState(
                                                                               () {
+                                                                            pageViewIndex > 0
+                                                                                ? pageViewIndex--
+                                                                                : null;
                                                                             image =
                                                                                 image;
                                                                           });
-                                                                          Navigator.pushReplacement(
-                                                                              context,
-                                                                              MaterialPageRoute(
-                                                                            builder:
-                                                                                (context) {
-                                                                              return const Home_screen();
-                                                                            },
-                                                                          ));
-                                                                          setState(
-                                                                              () {});
                                                                         },
-                                                                      );
-                                                                    },
-                                                                    buttonName:
-                                                                        "Undo",
-                                                                    bool:
-                                                                        month),
-                                                                buttons(
-                                                                    context:
-                                                                        context,
-                                                                    img:
-                                                                        "assets/Images/button1.svg",
-                                                                    onTap: () {
-                                                                      msgReqbyIDCubit.AcceptNotification(context, id: allUsersdetails.data?[ind].first.id ?? '', name: allUsersdetails.data?[ind].first.name ?? '', image: allUsersdetails.data?[ind].first.profileImage ?? '', uid:allUsersdetails.loginUserId ?? '');
-                                                                    },
-                                                                    buttonName:
-                                                                        "Chat",
-                                                                    bool:
-                                                                        month),
-                                                                buttons(
-                                                                    context:
-                                                                        context,
-                                                                    img:
-                                                                        "assets/Images/button2.svg",
-                                                                    onTap: () {
-                                                                      controller.swipeDown();
-                                                                      setState(
+                                                                        child:
+                                                                            Container(
+                                                                          height:
+                                                                              screenHeight(context),
+                                                                        ),
+                                                                      ),
+                                                                    ),
+                                                                    Expanded(
+                                                                      child:
+                                                                          InkWell(
+                                                                        overlayColor:
+                                                                            const MaterialStatePropertyAll(Colors.transparent),
+                                                                        onTap:
+                                                                            () {
+                                                                          setState(
                                                                               () {
-                                                                            bottonname =
-                                                                            "Connect";
+                                                                            setState(() {
+                                                                              pageViewIndex >= image.length - 1 ? null : pageViewIndex++;
+                                                                            });
+                                                                            image =
+                                                                                image;
                                                                           });
-                                                                    },
-                                                                    buttonName:
-                                                                        "Connect",
-                                                                    bool:
-                                                                        month),
-                                                              ],
+                                                                        },
+                                                                        child:
+                                                                            Container(
+                                                                          height:
+                                                                              screenHeight(context),
+                                                                        ),
+                                                                      ),
+                                                                    ),
+                                                                  ],
+                                                                ),
+                                                          swipeUp || swipeDown
+                                                              ? const SizedBox()
+                                                              : Align(
+                                                                  alignment:
+                                                                      Alignment
+                                                                          .topCenter,
+                                                                  child: swipeUp ==
+                                                                              false &&
+                                                                          swipeDown ==
+                                                                              false
+                                                                      ? Padding(
+                                                                          padding:
+                                                                              EdgeInsets.symmetric(vertical: screenHeight(context, dividedBy: 35)),
+                                                                          child:
+                                                                              TabPageSelector(
+                                                                            key:
+                                                                                _key1,
+                                                                            controller: TabController(
+                                                                                vsync: this,
+                                                                                length: image.isEmpty ? 0 : image.length,
+                                                                                initialIndex: pageViewIndex),
+                                                                            color:
+                                                                                AppColor.gray,
+                                                                            borderStyle:
+                                                                                BorderStyle.none,
+                                                                            indicatorSize:
+                                                                                8,
+                                                                            selectedColor:
+                                                                                AppColor.skyBlue,
+                                                                          ),
+                                                                        )
+                                                                      : const SizedBox(),
+                                                                ),
+                                                          swipeUp || swipeDown
+                                                              ? const SizedBox()
+                                                              : Align(
+                                                                  alignment:
+                                                                      Alignment
+                                                                          .bottomCenter,
+                                                                  child:
+                                                                      Container(
+                                                                    alignment:
+                                                                        Alignment
+                                                                            .bottomCenter,
+                                                                    height: screenHeight(
+                                                                        context,
+                                                                        dividedBy:
+                                                                            4.1),
+                                                                    width: screenWidth(
+                                                                        context),
+                                                                    decoration: const BoxDecoration(
+                                                                        borderRadius: BorderRadius.only(
+                                                                            bottomLeft: Radius.circular(
+                                                                                20),
+                                                                            bottomRight: Radius.circular(
+                                                                                20)),
+                                                                        gradient: LinearGradient(
+                                                                            begin:
+                                                                                Alignment.topCenter,
+                                                                            end: Alignment.bottomCenter,
+                                                                            colors: [
+                                                                              Colors.transparent,
+                                                                              Colors.black
+                                                                            ])),
+                                                                    child:
+                                                                        Padding(
+                                                                      padding: EdgeInsets.symmetric(
+                                                                          horizontal: screenWidth(
+                                                                              context,
+                                                                              dividedBy: 20)),
+                                                                      child:
+                                                                          Column(
+                                                                        crossAxisAlignment:
+                                                                            CrossAxisAlignment.start,
+                                                                        children: [
+                                                                          Row(
+                                                                            mainAxisAlignment:
+                                                                                MainAxisAlignment.spaceBetween,
+                                                                            children: [
+                                                                              SizedBox(
+                                                                                width: screenWidth(context, dividedBy: 1.3),
+                                                                                child: Row(
+                                                                                  children: [
+                                                                                    Text(
+                                                                                      allUsersdetails.data?[index].first.name?.trim() ?? '',
+                                                                                      style: const TextStyle(color: AppColor.white, fontFamily: 'Roboto', fontSize: 25, fontWeight: FontWeight.w600),
+                                                                                    ),
+                                                                                    SizedBox(
+                                                                                      width: screenWidth(context, dividedBy: 100),
+                                                                                    ),
+                                                                                    Container(
+                                                                                      height: screenHeight(context, dividedBy: 45),
+                                                                                      width: screenHeight(context, dividedBy: 45),
+                                                                                      decoration: const BoxDecoration(image: DecorationImage(image: AssetImage("assets/Images/verified.png"))),
+                                                                                    )
+                                                                                  ],
+                                                                                ),
+                                                                              ),
+                                                                            ],
+                                                                          ),
+                                                                          Row(
+                                                                            children: [
+                                                                              Wrap(
+                                                                                spacing: 7,
+                                                                                direction: Axis.vertical,
+                                                                                children: [
+                                                                                  allUsersdetails.data?[index].first.professionalDetails?.addRole != null
+                                                                                      ? Row(
+                                                                                          children: [
+                                                                                            Text(
+                                                                                              'Job Title'.tr(),
+                                                                                              style: const TextStyle(fontSize: 14, fontFamily: 'Roboto', fontWeight: FontWeight.w500, color: Colors.white),
+                                                                                            ),
+                                                                                            const Text(
+                                                                                              ": ",
+                                                                                              style: TextStyle(fontSize: 14, fontFamily: 'Roboto', fontWeight: FontWeight.w500, color: Colors.white),
+                                                                                            ),
+                                                                                            Text(
+                                                                                              13 >= allUsersdetails.data![index].first.professionalDetails!.addRole!.length ? "${allUsersdetails.data?[index].first.professionalDetails?.addRole ?? ''}" : "${allUsersdetails.data?[index].first.professionalDetails?.addRole?.substring(0, 13) ?? ''}...",
+                                                                                              style: const TextStyle(overflow: TextOverflow.ellipsis, fontSize: 14, fontFamily: 'Roboto', fontWeight: FontWeight.w400, color: Colors.white),
+                                                                                            ),
+                                                                                          ],
+                                                                                        )
+                                                                                      : const SizedBox(),
+                                                                                  allUsersdetails.data?[index].first.businessaddress?.country != null
+                                                                                      ? Row(
+                                                                                          children: [
+                                                                                            Text(
+                                                                                              'City/Country'.tr(),
+                                                                                              style: const TextStyle(fontSize: 14, fontFamily: 'Roboto', fontWeight: FontWeight.w500, color: Colors.white),
+                                                                                            ),
+                                                                                            const Text(
+                                                                                              ": ",
+                                                                                              style: TextStyle(fontSize: 14, fontFamily: 'Roboto', fontWeight: FontWeight.w500, color: Colors.white),
+                                                                                            ),
+                                                                                            Text(
+                                                                                              10 <= allUsersdetails.data![index].first.businessaddress!.country!.length ? "${allUsersdetails.data?[index].first.businessaddress?.country?.substring(0, 10) ?? ''}..." : "${allUsersdetails.data?[index].first.businessaddress?.country ?? ''}",
+                                                                                              style: const TextStyle(fontSize: 14, fontFamily: 'Roboto', fontWeight: FontWeight.w400, color: Colors.white),
+                                                                                            ),
+                                                                                          ],
+                                                                                        )
+                                                                                      : const SizedBox(),
+                                                                                  allUsersdetails.data?[index].first.professionalDetails?.companyName != null
+                                                                                      ? Row(
+                                                                                          children: [
+                                                                                            Text(
+                                                                                              'Company'.tr(),
+                                                                                              style: const TextStyle(fontSize: 14, fontFamily: 'Roboto', fontWeight: FontWeight.w500, color: Colors.white),
+                                                                                            ),
+                                                                                            const Text(
+                                                                                              ": ",
+                                                                                              style: TextStyle(fontSize: 14, fontFamily: 'Roboto', fontWeight: FontWeight.w500, color: Colors.white),
+                                                                                            ),
+                                                                                            Text(
+                                                                                              15 <= allUsersdetails.data![index].first.professionalDetails!.companyName!.length ? "${allUsersdetails.data?[index].first.professionalDetails?.companyName?.substring(0, 13) ?? ''}..." : "${allUsersdetails.data?[index].first.professionalDetails?.companyName ?? ''}",
+                                                                                              style: const TextStyle(fontSize: 14, fontFamily: 'Roboto', fontWeight: FontWeight.w400, color: Colors.white),
+                                                                                            ),
+                                                                                          ],
+                                                                                        )
+                                                                                      : const SizedBox(),
+                                                                                ],
+                                                                              ),
+                                                                              const Spacer(),
+                                                                              Wrap(
+                                                                                direction: Axis.vertical,
+                                                                                spacing: 5,
+                                                                                children: allUsersdetails.data?[index].first.lookingfor
+                                                                                        ?.map((e) => Container(
+                                                                                            decoration: BoxDecoration(
+                                                                                                border: Border.all(
+                                                                                                    color: AppColor.white
+                                                                                                    //const Color(0xff6D9Aff)
+                                                                                                    ,
+                                                                                                    width: 2),
+                                                                                                borderRadius: BorderRadius.circular(20)),
+                                                                                            child: Padding(
+                                                                                              padding: EdgeInsets.symmetric(
+                                                                                                horizontal: screenWidth(context, dividedBy: 45),
+                                                                                                vertical: screenHeight(context, dividedBy: 250),
+                                                                                              ),
+                                                                                              child: Text(
+                                                                                                e,
+                                                                                                style: const TextStyle(fontWeight: FontWeight.w400, fontSize: 12.7, fontFamily: 'Roboto', color: AppColor.white),
+                                                                                              ),
+                                                                                            )))
+                                                                                        .toList() ??
+                                                                                    [],
+                                                                              )
+                                                                            ],
+                                                                          ),
+                                                                          SizedBox(
+                                                                            height:
+                                                                                screenHeight(context, dividedBy: 100),
+                                                                          ),
+                                                                          const Spacer(),
+                                                                        ],
+                                                                      ),
+                                                                    ),
+                                                                  ),
+                                                                ),
+                                                          swipeUp || swipeDown
+                                                              ? Align(
+                                                                  alignment: swipeUp
+                                                                      ? Alignment
+                                                                          .bottomCenter
+                                                                      : Alignment
+                                                                          .topCenter,
+                                                                  child:
+                                                                      SizedBox(
+                                                                    height:
+                                                                        height,
+                                                                  ),
+                                                                )
+                                                              : Align(
+                                                                  alignment:
+                                                                      Alignment
+                                                                          .center,
+                                                                  child:
+                                                                      SizedBox(
+                                                                    key: _key3,
+                                                                    // margin: EdgeInsets.only(
+                                                                    //     top: screenHeight(context,
+                                                                    //         dividedBy: 10)),
+                                                                    height: 0,
+                                                                    width: 0,
+                                                                  ),
+                                                                ),
+                                                          swipeUp || swipeDown
+                                                              ? const SizedBox()
+                                                              : Align(
+                                                                  alignment:
+                                                                      Alignment
+                                                                          .topRight,
+                                                                  child: swipeUp ==
+                                                                              false &&
+                                                                          swipeDown ==
+                                                                              false
+                                                                      ? Padding(
+                                                                          padding: EdgeInsets
+                                                                              .symmetric(
+                                                                            vertical:
+                                                                                screenHeight(context, dividedBy: 120),
+                                                                            horizontal:
+                                                                                screenHeight(context, dividedBy: 40),
+                                                                          ),
+                                                                          child:
+                                                                              SizedBox(
+                                                                            height:
+                                                                                screenHeight(context, dividedBy: 17),
+                                                                            width:
+                                                                                screenHeight(context, dividedBy: 10),
+                                                                            child:
+                                                                                SvgPicture.asset("assets/Images/premiumTag.svg"),
+                                                                          ))
+                                                                      : const SizedBox(),
+                                                                ),
+                                                        ],
+                                                      ),
+                                                    ),
+                                                  );
+                                                },
+                                                cardBuilder1: (BuildContext context, int index) {
+                                                 final image1 = allUsersdetails.data?[index].last.image?.photo1 ?? '';
+                                                  return CachedNetworkImage(
+                                                          imageUrl:
+                                                              "${apis.baseurl}/${image1}",
+                                                          imageBuilder:
+                                                              (context, imageProvider) =>
+                                                                  Container(
+                                                            decoration: BoxDecoration(
+                                                                image: DecorationImage(
+                                                                    image: imageProvider,
+                                                                    fit: BoxFit.cover,
+                                                                    filterQuality:
+                                                                        FilterQuality.high),
+                                                                borderRadius:
+                                                                    BorderRadius.all(
+                                                                        Radius.circular(
+                                                                            20))),
+                                                          ),
+                                                          placeholder: (context, url) =>
+                                                              Container(
+                                                            height: screenHeight(context),
+                                                            width: screenWidth(context),
+                                                            decoration: const BoxDecoration(
+                                                                borderRadius:
+                                                                    BorderRadius.all(
+                                                                        Radius.circular(
+                                                                            20)),
+                                                                color: Colors.black),
+                                                            child: const Center(
+                                                              child:
+                                                                  CircularProgressIndicator(
+                                                                color: AppColor.skyBlue,
+                                                              ),
+                                                            ),
+                                                          ),
+                                                          errorWidget:
+                                                              (context, url, error) =>
+                                                                  const Center(child: Icon(Icons.error)),
+                                                        );
+                                                },
+                                              ),
+                                              Align(
+                                                  alignment: swipeUp
+                                                      ? Alignment.bottomLeft
+                                                      : swipeDown
+                                                          ? Alignment
+                                                              .bottomRight
+                                                          : Alignment
+                                                              .bottomCenter,
+                                                  child: Padding(
+                                                      padding:
+                                                          EdgeInsets.symmetric(
+                                                              vertical:
+                                                                  screenHeight(
+                                                                      context,
+                                                                      dividedBy:
+                                                                          70),
+                                                              horizontal:
+                                                                  screenWidth(
+                                                                      context,
+                                                                      dividedBy:
+                                                                          15)),
+                                                      child: swipeUp
+                                                          ? FadeIn(
+                                                              duration:
+                                                                  const Duration(
+                                                                      milliseconds:
+                                                                          1000),
+                                                              animate: true,
+                                                              child: buttons(
+                                                                  context:
+                                                                      context,
+                                                                  img:
+                                                                      "assets/Images/button3.svg",
+                                                                  onTap: () {},
+                                                                  buttonName:
+                                                                      "Skip",
+                                                                  bool: month),
                                                             )
-                                                          : Row(
-                                                              mainAxisAlignment:
-                                                                  MainAxisAlignment
-                                                                      .spaceAround,
-                                                              children: [
-                                                                buttons(
-                                                                    context:
-                                                                        context,
-                                                                    img:
-                                                                        "assets/Images/button3.svg",
-                                                                    onTap: () {
-                                                                      controller.swipeUp();
-                                                                      setState(
-                                                                              () {
-                                                                            bottonname =
-                                                                            "Reject";
-                                                                          });
-                                                                    },
-                                                                    buttonName:
-                                                                        "Skip",
-                                                                    bool:
-                                                                        month),
-                                                                buttons(
-                                                                    context:
-                                                                        context,
-                                                                    img:
-                                                                        "assets/Images/button1.svg",
-                                                                    onTap: () {
-                                                                      print(allUsersdetails.loginUserId);
-                                                                      msgReqbyIDCubit.AcceptNotification(context, id: allUsersdetails.data?[ind].first.id ?? '', name: allUsersdetails.data?[ind].first.name ?? '', image: allUsersdetails.data?[ind].first.profileImage ?? '', uid:allUsersdetails.loginUserId ?? '');
-                                                                    },
-                                                                    buttonName:
-                                                                        "Chat",
-                                                                    bool:
-                                                                        month),
-                                                                buttons(
-                                                                    context:
-                                                                        context,
-                                                                    img:
-                                                                        "assets/Images/button2.svg",
-                                                                    onTap: () {
-                                                                      controller.swipeDown();
-                                                                      setState(
-                                                                              () {
-                                                                            bottonname =
-                                                                            "Connect";
-                                                                          });
-                                                                      // connectUserCubit.GetConnectUser(
-                                                                      //         id: allUsersdetails.data?[ind].first.id ?? '')
-                                                                      //     .then(
-                                                                      //   (value) {
-                                                                      //
-                                                                      //   },
-                                                                      // );
-                                                                    },
-                                                                    buttonName:
-                                                                        "Connect",
-                                                                    bool:
-                                                                        month),
-                                                              ],
-                                                            )))
-                                ],
-                              ));
+                                                          : swipeDown
+                                                              ? FadeIn(
+                                                                  duration: const Duration(
+                                                                      milliseconds:
+                                                                          1000),
+                                                                  animate: true,
+                                                                  child: buttons(
+                                                                      context:
+                                                                          context,
+                                                                      img:
+                                                                          "assets/Images/button2.svg",
+                                                                      onTap:
+                                                                          () {},
+                                                                      buttonName:
+                                                                          "Connect",
+                                                                      bool:
+                                                                          month),
+                                                                )
+                                                              : bottonname ==
+                                                                      "Connect"
+                                                                  ? Row(
+                                                                      mainAxisAlignment:
+                                                                          MainAxisAlignment
+                                                                              .spaceAround,
+                                                                      children: [
+                                                                        buttons(
+                                                                            context:
+                                                                                context,
+                                                                            img:
+                                                                                "assets/Images/button3.svg",
+                                                                            onTap:
+                                                                                () {
+                                                                              controller.swipeUp();
+                                                                              setState(() {
+                                                                                bottonname = "Reject";
+                                                                              });
+                                                                            },
+                                                                            buttonName:
+                                                                                "Skip",
+                                                                            bool:
+                                                                                month),
+                                                                        buttons(
+                                                                            context:
+                                                                                context,
+                                                                            img:
+                                                                                "assets/Images/button1.svg",
+                                                                            onTap:
+                                                                                () {
+                                                                              msgReqbyIDCubit.AcceptNotification(context, id: allUsersdetails.data?[ind].first.id ?? '', name: allUsersdetails.data?[ind].first.name ?? '', image: allUsersdetails.data?[ind].first.profileImage ?? '', uid: allUsersdetails.loginUserId ?? '');
+                                                                            },
+                                                                            buttonName:
+                                                                                "Chat",
+                                                                            bool:
+                                                                                month),
+                                                                        buttons(
+                                                                            context:
+                                                                                context,
+                                                                            img:
+                                                                                "assets/Images/button4.svg",
+                                                                            onTap:
+                                                                                () {
+                                                                              undoUsersCubit.GetUndoUsers(id: undoid).then(
+                                                                                (value) async {
+                                                                                  setState(() {
+                                                                                    image = image;
+                                                                                  });
+                                                                                  Navigator.pushReplacement(context, MaterialPageRoute(
+                                                                                    builder: (context) {
+                                                                                      return const Home_screen();
+                                                                                    },
+                                                                                  ));
+                                                                                  setState(() {});
+                                                                                },
+                                                                              );
+                                                                            },
+                                                                            buttonName:
+                                                                                "Undo",
+                                                                            bool:
+                                                                                month),
+                                                                      ],
+                                                                    )
+                                                                  : bottonname ==
+                                                                          "Reject"
+                                                                      ? Row(
+                                                                          mainAxisAlignment:
+                                                                              MainAxisAlignment.spaceAround,
+                                                                          children: [
+                                                                            buttons(
+                                                                                context: context,
+                                                                                img: "assets/Images/button4.svg",
+                                                                                onTap: () {
+                                                                                  undoUsersCubit.GetUndoUsers(id: undoid).then(
+                                                                                    (value) async {
+                                                                                      setState(() {
+                                                                                        image = image;
+                                                                                      });
+                                                                                      Navigator.pushReplacement(context, MaterialPageRoute(
+                                                                                        builder: (context) {
+                                                                                          return const Home_screen();
+                                                                                        },
+                                                                                      ));
+                                                                                      setState(() {});
+                                                                                    },
+                                                                                  );
+                                                                                },
+                                                                                buttonName: "Undo",
+                                                                                bool: month),
+                                                                            buttons(
+                                                                                context: context,
+                                                                                img: "assets/Images/button1.svg",
+                                                                                onTap: () {
+                                                                                  msgReqbyIDCubit.AcceptNotification(context, id: allUsersdetails.data?[ind].first.id ?? '', name: allUsersdetails.data?[ind].first.name ?? '', image: allUsersdetails.data?[ind].first.profileImage ?? '', uid: allUsersdetails.loginUserId ?? '');
+                                                                                },
+                                                                                buttonName: "Chat",
+                                                                                bool: month),
+                                                                            buttons(
+                                                                                context: context,
+                                                                                img: "assets/Images/button2.svg",
+                                                                                onTap: () {
+                                                                                  controller.swipeDown();
+                                                                                  setState(() {
+                                                                                    bottonname = "Connect";
+                                                                                  });
+                                                                                },
+                                                                                buttonName: "Connect",
+                                                                                bool: month),
+                                                                          ],
+                                                                        )
+                                                                      : Row(
+                                                                          mainAxisAlignment:
+                                                                              MainAxisAlignment.spaceAround,
+                                                                          children: [
+                                                                            buttons(
+                                                                                context: context,
+                                                                                img: "assets/Images/button3.svg",
+                                                                                onTap: () {
+                                                                                  controller.swipeUp();
+                                                                                  setState(() {
+                                                                                    bottonname = "Reject";
+                                                                                  });
+                                                                                },
+                                                                                buttonName: "Skip",
+                                                                                bool: month),
+                                                                            buttons(
+                                                                                context: context,
+                                                                                img: "assets/Images/button1.svg",
+                                                                                onTap: () {
+                                                                                  print(allUsersdetails.loginUserId);
+                                                                                  msgReqbyIDCubit.AcceptNotification(context, id: allUsersdetails.data?[ind].first.id ?? '', name: allUsersdetails.data?[ind].first.name ?? '', image: allUsersdetails.data?[ind].first.profileImage ?? '', uid: allUsersdetails.loginUserId ?? '');
+                                                                                },
+                                                                                buttonName: "Chat",
+                                                                                bool: month),
+                                                                            buttons(
+                                                                                context: context,
+                                                                                img: "assets/Images/button2.svg",
+                                                                                onTap: () {
+                                                                                  controller.swipeDown();
+                                                                                  setState(() {
+                                                                                    bottonname = "Connect";
+                                                                                  });
+                                                                                  // connectUserCubit.GetConnectUser(
+                                                                                  //         id: allUsersdetails.data?[ind].first.id ?? '')
+                                                                                  //     .then(
+                                                                                  //   (value) {
+                                                                                  //
+                                                                                  //   },
+                                                                                  // );
+                                                                                },
+                                                                                buttonName: "Connect",
+                                                                                bool: month),
+                                                                          ],
+                                                                        )))
+                                            ],
+                                          ));
+                              }
+                              if (state is AllUsersDetailsLoading) {
+                                return Expanded(
+                                    child: Center(child: customLoader()));
+                              }
+                              if (state is AllUsersDetailsError) {
+                                return const Center(
+                                  child: Text("Somthing went wrong ...."),
+                                );
+                              }
+                              return const Center(
+                                child: Text("Somthing went wrong ...."),
+                              );
+                            },
+                          )
+                      ],
+                    ),
+                  ),
+                  filterData
+                      ? BlocBuilder<FilterUserCubit, FilterUserState>(
+                          builder: (context, state) {
+                            if (state is FilterUserSuccess) {
+                              return UsersDetails(
+                                list: image,
+                                onTap: () {
+                                  _pageController.animateToPage(
+                                    0,
+                                    duration: const Duration(milliseconds: 500),
+                                    curve: Curves.ease,
+                                  );
+                                },
+                                country: filterUserCubit.filterUser.data?[ind]
+                                        .first?.businessaddress?.country ??
+                                    '',
+                                file1: filterUserCubit.filterUser.data?[ind]
+                                        .last?.file?.file1 ??
+                                    '',
+                                file3: filterUserCubit.filterUser.data?[ind]
+                                        .last?.file?.file3 ??
+                                    '',
+                                file2: filterUserCubit.filterUser.data?[ind]
+                                        .last?.file?.file2 ??
+                                    '',
+                                bio: filterUserCubit
+                                        .filterUser.data?[ind].last?.bio ??
+                                    '',
+                                Company: filterUserCubit
+                                        .filterUser
+                                        .data?[ind]
+                                        .first
+                                        ?.professionalDetails
+                                        ?.companyName ??
+                                    '',
+                                looking_for: filterUserCubit.filterUser
+                                        .data?[ind].last?.lookingfor ??
+                                    [],
+                                Name: filterUserCubit
+                                        .filterUser.data?[ind].first?.name ??
+                                    '',
+                                role: filterUserCubit.filterUser.data?[ind]
+                                        .first?.professionalDetails?.addRole ??
+                                    '',
+                              );
                             }
                             if (state is AllUsersDetailsLoading) {
-                              return Expanded(
-                                  child: Center(child: customLoader()));
+                              return customLoader();
+                            }
+                            if (state is AllUsersDetailsError) {
+                              return Center(
+                                child: Text("Somthing went wrong ...."),
+                              );
+                            }
+                            return Center(
+                              child: Text("Somthing went wrong ...."),
+                            );
+                          },
+                        )
+                      : BlocBuilder<AllUsersDetailsCubit, AllUsersDetailsState>(
+                          builder: (context, state) {
+                            if (state is AllUsersDetailsSuccess) {
+                              return UsersDetails(
+                                list: image,
+                                onTap: () {
+                                  _pageController.animateToPage(
+                                    0,
+                                    duration: const Duration(milliseconds: 500),
+                                    curve: Curves.ease,
+                                  );
+                                },
+                                country: allUsersdetails.data?[ind].first
+                                        .businessaddress?.country ??
+                                    '',
+                                file1: allUsersdetails
+                                        .data?[ind].last.file?.file1 ??
+                                    '',
+                                file3: allUsersdetails
+                                        .data?[ind].last.file?.file3 ??
+                                    '',
+                                file2: allUsersdetails
+                                        .data?[ind].last.file?.file2 ??
+                                    '',
+                                bio: allUsersdetails.data?[ind].last.bio ?? '',
+                                Company: allUsersdetails.data?[ind].first
+                                        .professionalDetails?.companyName ??
+                                    '',
+                                looking_for: allUsersdetails
+                                        .data?[ind].first.lookingfor ??
+                                    [],
+                                Name:
+                                    allUsersdetails.data?[ind].first.name ?? '',
+                                role: allUsersdetails.data?[ind].first
+                                        .professionalDetails?.addRole ??
+                                    '',
+                              );
+                            }
+                            if (state is AllUsersDetailsLoading) {
+                              return customLoader();
                             }
                             if (state is AllUsersDetailsError) {
                               return const Center(
@@ -2329,98 +2277,6 @@ class _Home_PageState extends State<Home_Page> with TickerProviderStateMixin {
                             );
                           },
                         )
-                      ],
-                    ),
-                  ),
-                  filterData ? BlocBuilder<FilterUserCubit, FilterUserState>(
-                    builder: (context, state) {
-                      if (state is FilterUserSuccess) {
-                        return UsersDetails(
-                          list: image,
-                          onTap: () {
-                            _pageController.animateToPage(
-                              0,
-                              duration: const Duration(milliseconds: 500),
-                              curve: Curves.ease,
-                            );
-                          },
-                          country: filterUserCubit.filterUser.data?[ind].first?.businessaddress?.country ?? '',
-                          file1:
-                          filterUserCubit.filterUser.data?[ind].last?.file?.file1 ?? '',
-                          file3:
-                          filterUserCubit.filterUser.data?[ind].last?.file?.file3 ?? '',
-                          file2:
-                          filterUserCubit.filterUser.data?[ind].last?.file?.file2 ?? '',
-                          bio: filterUserCubit.filterUser.data?[ind].last?.bio ?? '',
-                          Company: filterUserCubit.filterUser.data?[ind].first
-                                  ?.professionalDetails?.companyName ??
-                              '',
-                          looking_for:
-                          filterUserCubit.filterUser.data?[ind].last?.lookingfor ?? [],
-                          Name: filterUserCubit.filterUser.data?[ind].first?.name ?? '',
-                          role: filterUserCubit.filterUser.data?[ind].first
-                                  ?.professionalDetails?.addRole ??
-                              '',
-                        );
-                      }
-                      if (state is AllUsersDetailsLoading) {
-                        return customLoader();
-                      }
-                      if (state is AllUsersDetailsError) {
-                        return Center(
-                          child: Text("Somthing went wrong ...."),
-                        );
-                      }
-                      return Center(
-                        child: Text("Somthing went wrong ...."),
-                      );
-                    },
-                  ) :
-                  BlocBuilder<AllUsersDetailsCubit, AllUsersDetailsState>(
-                    builder: (context, state) {
-                      if (state is AllUsersDetailsSuccess) {
-                        return UsersDetails(
-                          list: image,
-                          onTap: () {
-                            _pageController.animateToPage(
-                              0,
-                              duration: const Duration(milliseconds: 500),
-                              curve: Curves.ease,
-                            );
-                          },
-                          country: allUsersdetails
-                                  .data?[ind].first.businessaddress?.country ??
-                              '',
-                          file1:
-                              allUsersdetails.data?[ind].last.file?.file1 ?? '',
-                          file3:
-                              allUsersdetails.data?[ind].last.file?.file3 ?? '',
-                          file2:
-                              allUsersdetails.data?[ind].last.file?.file2 ?? '',
-                          bio: allUsersdetails.data?[ind].last.bio ?? '',
-                          Company: allUsersdetails.data?[ind].first
-                                  .professionalDetails?.companyName ??
-                              '',
-                          looking_for: allUsersdetails.data?[ind].first.lookingfor ?? [],
-                          Name: allUsersdetails.data?[ind].first.name ?? '',
-                          role: allUsersdetails.data?[ind].first
-                                  .professionalDetails?.addRole ??
-                              '',
-                        );
-                      }
-                      if (state is AllUsersDetailsLoading) {
-                        return customLoader();
-                      }
-                      if (state is AllUsersDetailsError) {
-                        return const Center(
-                          child: Text("Somthing went wrong ...."),
-                        );
-                      }
-                      return const Center(
-                        child: Text("Somthing went wrong ...."),
-                      );
-                    },
-                  )
                 ],
               )
             ],
@@ -2567,8 +2423,8 @@ class _Home_PageState extends State<Home_Page> with TickerProviderStateMixin {
                     width: screenHeight(context, dividedBy: 5),
                     decoration: const BoxDecoration(
                         image: DecorationImage(
-                            image:
-                            AssetImage("assets/Images/SwipeUp-unscreen.gif"),
+                            image: AssetImage(
+                                "assets/Images/SwipeUp-unscreen.gif"),
                             fit: BoxFit.cover)),
                   ),
                   const Card(
@@ -2735,8 +2591,9 @@ Widget buttons(
 
 class VideoWidget extends StatefulWidget {
   final String videoUrl;
-bool play;
-   VideoWidget({Key? key, required this.videoUrl,required this.play}) : super(key: key);
+  bool play;
+  VideoWidget({Key? key, required this.videoUrl, required this.play})
+      : super(key: key);
 
   @override
   _VideoWidgetState createState() => _VideoWidgetState();
@@ -2744,19 +2601,20 @@ bool play;
 
 class _VideoWidgetState extends State<VideoWidget> {
   late VideoPlayerController _controller;
-startvideo(){
-  print("video ===> ${widget.videoUrl}");
-  _controller = VideoPlayerController.network(widget.videoUrl)
-    ..initialize().then((_) {
-      print(widget.videoUrl);
-      _controller.setVolume(0);
-     widget.play ? _controller.play() : _controller.pause();
-      _controller.setLooping(true); // Auto-repeating the video
-      setState(() { });
-    });
-  setState(() {});
-}
-@override
+  startvideo() {
+    print("video ===> ${widget.videoUrl}");
+    _controller = VideoPlayerController.network(widget.videoUrl)
+      ..initialize().then((_) {
+        print(widget.videoUrl);
+        _controller.setVolume(0);
+        widget.play ? _controller.play() : _controller.pause();
+        _controller.setLooping(true); // Auto-repeating the video
+        setState(() {});
+      });
+    setState(() {});
+  }
+
+  @override
   void initState() {
     // TODO: implement initState
     super.initState();
@@ -2764,6 +2622,7 @@ startvideo(){
       startvideo();
     });
   }
+
   @override
   void dispose() {
     _controller.dispose();
@@ -2775,7 +2634,8 @@ startvideo(){
     return _controller.value.isInitialized
         ? ClipRRect(
             borderRadius: BorderRadius.circular(20),
-            child: VideoPlayer(_controller),)
+            child: VideoPlayer(_controller),
+          )
         : Container(
             height: screenHeight(context),
             width: screenWidth(context),

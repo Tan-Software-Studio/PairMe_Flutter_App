@@ -7,6 +7,7 @@ class apis{
   //Sign up
   static const String Login = "$baseurl/login";
   static const String signUp = "$baseurl/signup";
+  static const String signInWithGoogleOrFacebook = "$baseurl/google_facebook_login";
   static const String verify = "$baseurl/verify";
   static const String Address = "$baseurl/address_details";
   static const String business_profile = "$baseurl/profile";
@@ -18,6 +19,10 @@ class apis{
   static const String verify_forgot_otp = "$baseurl/verify_forgot_otp";
   static const String reset_password = "$baseurl/reset_password";
   static const String resendOtp = "$baseurl/resendOtp";
+  static const String translation = "$baseurl/translation";
+  static const String languageUpdate = "$baseurl/language_Update";
+
+
 
 
 

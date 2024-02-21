@@ -4,20 +4,6 @@
 <dict>
 	<key>CADisableMinimumFrameDurationOnPhone</key>
 	<true/>
-	<key>CFBundleLocalizations</key>
-	<array>
-		<string>en</string>
-		<string>hi</string>
-		<string>sp</string>
-		<string>zh_CN</string>
-		<string>zh_TW</string>
-	</array>
-	<key>NSMicrophoneUsageDescription</key>
-    <string>Some message to describe why you need this permission</string>
-    <key>UIBackgroundModes</key>
-    <array>
-       <string>audio</string>
-    </array>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleDisplayName</key>
@@ -28,6 +14,14 @@
 	<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
+	<key>CFBundleLocalizations</key>
+	<array>
+		<string>en</string>
+		<string>hi</string>
+		<string>sp</string>
+		<string>zh_CN</string>
+		<string>zh_TW</string>
+	</array>
 	<key>CFBundleName</key>
 	<string>pair_me</string>
 	<key>CFBundlePackageType</key>
@@ -40,20 +34,20 @@
 	<string>$(FLUTTER_BUILD_NUMBER)</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSCameraUsageDescription</key>
+	<string>We require camera access to connect to a call</string>
 	<key>NSLocationAlwaysUsageDescription</key>
 	<string>This app needs access to location when in the background.</string>
 	<key>NSLocationTemporaryUsageDescriptionDictionary</key>
 	<dict>
 		<key>YourPurposeKey</key>
-		<string>The example App requires temporary access to the device&apos;s precise location.</string>
+		<string>The example App requires temporary access to the device's precise location.</string>
 	</dict>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>This app needs access to location when open.</string>
 	<key>NSMicrophoneUsageDescription</key>
-	<string>your usage description here</string>
+	<string>We require microphone access to connect to a call</string>
 	<key>NSPhotoLibraryUsageDescription</key>
-	<string>your usage description here</string>
-	<key>NSCameraUsageDescription</key>
 	<string>your usage description here</string>
 	<key>UIApplicationSupportsIndirectInputEvents</key>
 	<true/>
@@ -74,5 +68,32 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>NSAppTransportSecurity</key>
+        <dict>
+            <key>NSAllowsLocalNetworking</key>
+            <true/>
+        </dict>
+        <key>GIDClientID</key>
+        <string>658934152118-01nhdol7l82dk4vtt7hkgpd744c0il4f.apps.googleusercontent.com</string>
+        <key>CFBundleURLTypes</key>
+        <array>
+        	<dict>
+        		<key>CFBundleTypeRole</key>
+        		<string>Editor</string>
+        		<key>CFBundleURLSchemes</key>
+
+        		<array>
+        			<!-- Copied from GoogleService-Info.plist key REVERSED_CLIENT_ID -->
+        			<string>fb313128555073734</string>
+        			<string>com.googleusercontent.apps.658934152118-01nhdol7l82dk4vtt7hkgpd744c0il4f</string>
+        		</array>
+        	</dict>
+        </array>
+        <key>FacebookAppID</key>
+        <string>313128555073734</string>
+        <key>FacebookClientToken</key>
+        <string>4726ff3abf6cf96f1357c928aaeaf32b</string>
+        <key>FacebookDisplayName</key>
+        <string>Pair-me</string>
 </dict>
 </plist>

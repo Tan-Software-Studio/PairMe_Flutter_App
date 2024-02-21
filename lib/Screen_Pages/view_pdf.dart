@@ -3,7 +3,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:pair_me/Widgets/custom_texts.dart';
 import 'package:pair_me/helper/Size_page.dart';
-import 'package:syncfusion_flutter_pdfviewer/pdfviewer.dart';
+// import 'package:syncfusion_flutter_pdfviewer/pdfviewer.dart';
 
 class Pdfview extends StatefulWidget {
   final String pdfUrl;
@@ -15,7 +15,7 @@ class Pdfview extends StatefulWidget {
 }
 
 class _PdfviewState extends State<Pdfview> {
-  final GlobalKey<SfPdfViewerState> _pdfViewerKey = GlobalKey();
+  // final GlobalKey<SfPdfViewerState> _pdfViewerKey = GlobalKey();
 
   @override
   Widget build(BuildContext context) {
@@ -32,10 +32,11 @@ class _PdfviewState extends State<Pdfview> {
           child: custom_header(text: "Document"),
         ),
       ),
-      body: SfPdfViewer.network(
-        widget.pdfUrl,
-        key: _pdfViewerKey,
-      ),
+      // body: SfPdfViewer.network(
+      //   widget.pdfUrl,
+      //   key: _pdfViewerKey,
+      // ),
+       body: SizedBox(),
     );
   }
 }
@@ -50,24 +51,27 @@ class pdfviewshow extends StatefulWidget {
 }
 
 class _pdfviewshowState extends State<pdfviewshow> {
-  final GlobalKey<SfPdfViewerState> _pdfViewerKey = GlobalKey();
+  // final GlobalKey<SfPdfViewerState> _pdfViewerKey = GlobalKey();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          // automaticallyImplyLeading: false,
-          backgroundColor: Colors.transparent,
-          surfaceTintColor: Colors.transparent,
-          centerTitle: false,
-          titleSpacing: -10,
+      appBar: AppBar(
+        // automaticallyImplyLeading: false,
+        backgroundColor: Colors.transparent,
+        surfaceTintColor: Colors.transparent,
+        centerTitle: false,
+        titleSpacing: -10,
 
-          title: Padding(
-            padding: EdgeInsets.only(left: screenWidth(context, dividedBy: 30)),
-            child: custom_header(text: "Document"),
-          ),
+        title: Padding(
+          padding: EdgeInsets.only(left: screenWidth(context, dividedBy: 30)),
+          child: custom_header(text: "Document"),
         ),
-        body: SfPdfViewer.file(File(widget.pdfUrl)));
-
+      ),
+      // body: SfPdfViewer.file(
+      //   File(widget.pdfUrl),
+      // ),
+      body: SizedBox(),
+    );
   }
 }

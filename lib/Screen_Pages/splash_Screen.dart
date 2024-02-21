@@ -5,6 +5,7 @@ import 'package:pair_me/Screen_Pages/bottom_bar/home_screen.dart';
 import 'package:pair_me/Screen_Pages/language.dart';
 import 'package:pair_me/helper/Size_page.dart';
 import 'package:pair_me/helper/pref_Service.dart';
+import 'package:pair_me/zego_chat/login_page.dart';
 
 class SpleshScreen extends StatefulWidget {
   const SpleshScreen({super.key});
@@ -30,6 +31,7 @@ class _SpleshScreenState extends State<SpleshScreen> {
           Navigator.pushAndRemoveUntil(
               context,
               MaterialPageRoute(builder: (context) => const Home_screen()),
+              // MaterialPageRoute(builder: (context) => const LoginPage()),
                   (route) => false);
         });
       } else {
