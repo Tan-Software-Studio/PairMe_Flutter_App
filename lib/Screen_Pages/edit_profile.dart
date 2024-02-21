@@ -52,11 +52,13 @@ class _Edit_ProfileState extends State<Edit_Profile> {
         userDetailsCubit.userProfile.data?.first.name?.split(" ") ?? [];
     print("name ==> $nameParts");
     // Assuming the first part is the first name and the last part is the last name
-    String firstName = nameParts[0];
-    String lastName =  nameParts.last;
-    _firstName.text = firstName;
-    _lastName.text = lastName;
-    setState(() {});
+    if(nameParts.isNotEmpty && nameParts != null){
+      String firstName = nameParts[0];
+      String lastName =  nameParts.last;
+      _firstName.text = firstName;
+      _lastName.text = lastName;
+      setState(() {});
+    }
     countryCodeSelect = userDetailsCubit.userProfile.data?.first.countryCode ?? '';
     print(countryCodeSelect);
     _phoneNumber.text = userDetailsCubit.userProfile.data?.first.phoneNumber.toString() ?? '';

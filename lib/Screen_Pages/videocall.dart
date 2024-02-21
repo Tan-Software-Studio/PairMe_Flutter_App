@@ -35,16 +35,12 @@ class _VideoCallPageState extends State<VideoCallPage> {
                         onTap: () {
                           Navigator.pop(context);
                         },
-                        child: Icon(Icons.arrow_back_ios_new,color: AppColor.white,)
+                        child: const Icon(Icons.arrow_back_ios_new,color: AppColor.white,)
                     ),
                   ],
                 ),
               ),
-              Spacer(),
-
-              // Row for button a chang camera position,mic on/off
-
-              // Button for ending Call
+              const Spacer(),
               SizedBox(
                 height: screenHeight(context,dividedBy: 4),
                 width: screenWidth(context),
@@ -103,13 +99,13 @@ class _VideoCallPageState extends State<VideoCallPage> {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Image(
-                      image: AssetImage('assets/Images/cameraposition.png'),
+                      image: const AssetImage('assets/Images/cameraposition.png'),
                       height: screenHeight(context,dividedBy: 20),
                       width: screenHeight(context,dividedBy: 20),
                       color: AppColor.white,
                     ),
                     Image(
-                      image: AssetImage('assets/Images/chaticon.png'),
+                      image: const AssetImage('assets/Images/chaticon.png'),
                       height: screenHeight(context,dividedBy: 20),
                       width: screenHeight(context,dividedBy: 20),
                       color: AppColor.white,
@@ -121,7 +117,7 @@ class _VideoCallPageState extends State<VideoCallPage> {
                         });
                       },
                       child: Image(
-                        image: mic ? AssetImage('assets/Images/mic.png') :AssetImage('assets/Images/micoff.png'),
+                        image: mic ? const AssetImage('assets/Images/mic.png') :const AssetImage('assets/Images/micoff.png'),
                         height: screenHeight(context,dividedBy: 20),
                         width: screenHeight(context,dividedBy: 20),
                         color: AppColor.white,

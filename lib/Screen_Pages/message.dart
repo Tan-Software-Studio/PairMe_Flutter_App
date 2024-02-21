@@ -146,7 +146,7 @@ class _Message_pageState extends State<Message_page> {
                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                      children: [
                        custom_header(text: 'Message'),
-                       messageRequestCubit.userMssageReq.data != null ? GestureDetector(
+                       messageRequestCubit.userMssageReq.data != null? GestureDetector(
                          onTap: () {
                            Navigator.push(context, MaterialPageRoute(builder:(context) {
                              return const MessageRequest();
@@ -155,7 +155,7 @@ class _Message_pageState extends State<Message_page> {
                            child: Row(
                              children: [
                                Text('Requests'.tr(),style: const TextStyle(fontSize: 15,fontFamily: 'Roboto',fontWeight: FontWeight.w500,color: AppColor.skyBlue),),
-                                Text('(${messageRequestCubit.userMssageReq.data?.withoutConnect?.length ?? 0})',style: TextStyle(fontSize: 15,fontFamily: 'Roboto',fontWeight: FontWeight.w500,color: AppColor.skyBlue),),
+                                Text('(${messageRequestCubit.userMssageReq.data?.withoutConnect?.length ?? 0})',style: const TextStyle(fontSize: 15,fontFamily: 'Roboto',fontWeight: FontWeight.w500,color: AppColor.skyBlue),),
                              ],
                            ),) : const SizedBox(),
                      ],

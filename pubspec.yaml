@@ -76,6 +76,8 @@ dependencies:
   google_sign_in:
   firebase_auth:
   flutter_facebook_auth:
+  translator: ^1.0.0
+
 
 
 

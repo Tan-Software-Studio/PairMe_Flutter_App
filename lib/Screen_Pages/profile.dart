@@ -143,7 +143,7 @@ class _Profile_pageState extends State<Profile_page> {
                                           MainAxisAlignment.spaceBetween,
                                       children: [
                                         Text(
-                                          userProfile.data?.first.name ?? '',
+                                          userProfile.data?[0].name ?? '',
                                           style: const TextStyle(
                                               fontFamily: 'Roboto',
                                               fontSize: 16,
@@ -451,7 +451,7 @@ class _Profile_pageState extends State<Profile_page> {
                                   ),
                                 ),
                               ],
-                              custom_textfield_header(text: 'My Documents'),
+                             file1 ?  custom_textfield_header(text: 'My Documents') : const SizedBox(),
                               SizedBox(
                                 height: screenHeight(context, dividedBy: 150),
                               ),

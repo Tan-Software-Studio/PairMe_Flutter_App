@@ -1,5 +1,4 @@
 import 'dart:async';
-
 import 'package:animate_do/animate_do.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
@@ -7,9 +6,7 @@ import 'package:pair_me/Screen_Pages/login_page.dart';
 import 'package:pair_me/Widgets/Background_img.dart';
 import 'package:pair_me/Widgets/custom_button.dart';
 import 'package:pair_me/Widgets/custom_texts.dart';
-import 'package:pair_me/Widgets/stepper.dart';
 import 'package:pair_me/helper/App_Colors.dart';
-import 'package:pair_me/helper/App_Language.dart';
 import 'package:pair_me/helper/Size_page.dart';
 
 class Language_Screen extends StatefulWidget {
@@ -145,18 +142,23 @@ class _Language_ScreenState extends State<Language_Screen> {
                                    show_box = !show_box;
                                    if(_selected_language == 'English') {
                                      context.setLocale(const Locale('en'));
+                                     Language = "english";
                                    }
                                    if(_selected_language == 'Spanish') {
                                      context.setLocale(const Locale('es'));
+                                     Language = "spanish";
                                    }
                                    if(_selected_language == 'Hindi') {
                                      context.setLocale(const Locale('hi'));
+                                     Language = "hindi";
                                    }
                                    if(_selected_language == 'Cantonese') {
                                      context.setLocale(const Locale('zh', 'TW'));
+                                     Language = "cantonese";
                                    }
                                    if(_selected_language == 'Mandarin') {
                                      context.setLocale(const Locale('zh', 'CN'));
+                                     Language = "mandarin";
                                    }
                                   // _selected_language == 'English' ? context.setLocale(const Locale('en')) :_selected_language == 'Spanish' ? context.setLocale(Locale('sp')) : context.setLocale(Locale('man'));
                                    Timer(const Duration(milliseconds: 600), () {

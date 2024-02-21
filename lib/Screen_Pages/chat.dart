@@ -392,7 +392,7 @@ class _Chatting_PageState extends State<Chatting_Page> {
                             Navigator.push(context, MaterialPageRoute(
                               builder: (context) {
                                 return VoiceCallPage(
-                                  img: "${apis.baseurl}/${widget.image}",);
+                                  img: "${apis.baseurl}/${widget.image}", name: '', uid: '',);
                               },
                             ));
                           },
@@ -1071,7 +1071,7 @@ class _Chatting_PageState extends State<Chatting_Page> {
       onTap: () =>  Navigator.push(context, MaterialPageRoute(
         builder: (context) {
           return Image_Screen(
-            image: thumbnail,
+            image: thumbnail, name: '',
           );
         },
       )),
@@ -1150,7 +1150,7 @@ class _Chatting_PageState extends State<Chatting_Page> {
       onTap: () =>  Navigator.push(context, MaterialPageRoute(
         builder: (context) {
           return Image_Screen(
-            image: thumbnail,
+            image: thumbnail, name: '',
           );
         },
       )),

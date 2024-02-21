@@ -55,13 +55,13 @@ class UserUpdateCubit extends Cubit<UserUpdateState> {
         MapEntry('photo_1', await MultipartFile.fromFile(photo_1.path ?? "", filename: fileName,contentType: MediaType("image", "jpeg"))),
       );
     }
-    formData.fields.add(MapEntry("firstName", firstname));
-    formData.fields.add(MapEntry("lastName", lastname));
-    formData.fields.add(MapEntry("gender", gendar));
-    formData.fields.add(MapEntry("dateOfBirth", dateofbirth));
-    formData.fields.add(MapEntry("phoneNumber", phonenumber));
-    formData.fields.add(MapEntry("countryCode", countryCodeSelect.trim()));
-    formData.fields.add(MapEntry("email", email));
+   firstname.isNotEmpty ? formData.fields.add(MapEntry("firstName", firstname)) : null;
+   lastname.isNotEmpty ? formData.fields.add(MapEntry("lastName", lastname)) : null;
+   gendar.isNotEmpty ? formData.fields.add(MapEntry("gender", gendar)): null;
+   dateofbirth.isNotEmpty ? formData.fields.add(MapEntry("dateOfBirth", dateofbirth)): null;
+   phonenumber.isNotEmpty ? formData.fields.add(MapEntry("phoneNumber", phonenumber)): null;
+   countryCodeSelect.isNotEmpty ? formData.fields.add(MapEntry("countryCode", countryCodeSelect.trim())): null;
+   email.isNotEmpty ? formData.fields.add(MapEntry("email", email)): null;
 
     print("Body is ${formData.fields}");
     print("Body is ${formData.files}");

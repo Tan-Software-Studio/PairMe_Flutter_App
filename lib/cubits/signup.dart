@@ -62,6 +62,8 @@ class SignUpCubit extends Cubit<SignUpState> {
       "isFacebookSignin": isFacebookSignIn,
       if (isGoogleSignIn != true && isFacebookSignIn != true) "password": password,
       if (isGoogleSignIn != true && isFacebookSignIn != true) "confirmPassword": confirmPassword,
+      "language":Language
+
     };
     print("Body is $body");
     try {

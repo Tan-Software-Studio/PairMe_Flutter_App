@@ -129,7 +129,7 @@ class _UsersDetailsState extends State<UsersDetails> with TickerProviderStateMix
                             Navigator.push(context, MaterialPageRoute(
                               builder: (context) {
                                 return Image_Screen(
-                                  image: "${apis.baseurl}/${widget.list[pageViewIndex]}",
+                                  image: "${apis.baseurl}/${widget.list[pageViewIndex]}", name: '',
                                 );
                               },
                             ));

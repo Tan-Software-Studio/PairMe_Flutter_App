@@ -10,6 +10,7 @@ import 'package:pair_me/Widgets/Background_img.dart';
 import 'package:pair_me/Widgets/custom_texts.dart';
 import 'package:pair_me/Widgets/header_space.dart';
 import 'package:pair_me/cubits/Delete_logout_user.dart';
+import 'package:pair_me/cubits/Update_Language_.dart';
 import 'package:pair_me/helper/App_Colors.dart';
 import 'package:pair_me/helper/Size_page.dart';
 
@@ -24,6 +25,7 @@ class _Setting_pageState extends State<Setting_page> {
 
   DeleteUserCubit deleteUserCubit = DeleteUserCubit();
   LogoutUserCubit logoutUserCubit = LogoutUserCubit();
+  UpdateLanguageCubit updateLanguageCubit = UpdateLanguageCubit();
   bool language = false;
   bool show_box = false;
   bool icon = false;
@@ -222,7 +224,7 @@ class _Setting_pageState extends State<Setting_page> {
                       animate: true,
                       from: 10,
                       child: Container(
-                        margin: EdgeInsets.only(bottom: screenHeight(context,dividedBy: 60)),
+                        margin: EdgeInsets.only(bottom: screenHeight(context,dividedBy: 70)),
                         height: screenHeight(context,dividedBy: 7),
                         width: screenWidth(context),
                         decoration: BoxDecoration(
@@ -241,7 +243,7 @@ class _Setting_pageState extends State<Setting_page> {
                             ]
                         ),
                         child: Padding(
-                            padding: const EdgeInsets.symmetric(vertical: 8,horizontal: 13),
+                            padding: const EdgeInsets.symmetric(vertical: 6,horizontal: 13),
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -250,6 +252,7 @@ class _Setting_pageState extends State<Setting_page> {
                                   onTap: () {
                                     setState(() {
                                       context.setLocale(const Locale('en'));
+                                      updateLanguageCubit.UpdateLanguageService(array: "english", context: context);
                                     });
                                   },
                                     child: custom_text(text: "English", color: AppColor.fontdarkgray)),
@@ -257,6 +260,7 @@ class _Setting_pageState extends State<Setting_page> {
                                   onTap: () {
                                     setState(() {
                                       context.setLocale(const Locale('es'));
+                                      updateLanguageCubit.UpdateLanguageService(array: "spanish", context: context);
                                     });
                                   },
                                     child: custom_text(text: "Spanish", color: AppColor.fontdarkgray)),
@@ -264,6 +268,7 @@ class _Setting_pageState extends State<Setting_page> {
                                   onTap: () {
                                     setState(() {
                                       context.setLocale(const Locale('hi'));
+                                      updateLanguageCubit.UpdateLanguageService(array: "hindi", context: context);
                                     });
                                   },
                                     child: custom_text(text: "Hindi", color: AppColor.fontdarkgray)),
@@ -271,6 +276,7 @@ class _Setting_pageState extends State<Setting_page> {
                                   onTap: () {
                                     setState(() {
                                       context.setLocale(const Locale('zh', 'TW'));
+                                      updateLanguageCubit.UpdateLanguageService(array: "cantonese", context: context);
                                     });
                                   },
                                     child: custom_text(text: "Cantonese", color: AppColor.fontdarkgray)),
@@ -278,6 +284,7 @@ class _Setting_pageState extends State<Setting_page> {
                                   onTap: () {
                                     setState(() {
                                       context.setLocale(const Locale('zh', 'CN'));
+                                      updateLanguageCubit.UpdateLanguageService(array: "mandarin", context: context);
                                     });
                                   },
                                     child: custom_text(text: "Mandarin", color: AppColor.fontdarkgray)),
@@ -337,7 +344,6 @@ class _Setting_pageState extends State<Setting_page> {
                                 1,
                               ),
                               blurRadius: 4,
-                              // spreadRadius: 1.0,
                             ),
                           ]
                       ),
@@ -374,7 +380,6 @@ class _Setting_pageState extends State<Setting_page> {
                                 1,
                               ),
                               blurRadius: 4,
-                              // spreadRadius: 1.0,
                             ),
                           ]
                       ),
@@ -382,26 +387,12 @@ class _Setting_pageState extends State<Setting_page> {
                         padding: EdgeInsets.symmetric(horizontal: screenWidth(context,dividedBy: 30)),
                         child:   InkWell(
                           onTap: () {
-                            // setState(() {
-                            //   language = !language;
-                            //   if(language == false){
-                            //     show_box = !show_box;
-                            //     Timer(Duration(milliseconds: 600), () {
-                            //       setState(() {
-                            //         show_box = !show_box;
-                            //       });
-                            //     });
-                            //   }
-                            //
-                            // });
+
                           },
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              //_selected_language == '' ?  const
                                Text("Privacy Policy".tr(),style: const TextStyle(color: AppColor.black,fontSize: 15,fontWeight: FontWeight.w500,fontFamily: "Roboto"),),
-                              //:
-                              // Text(_selected_language,style: const TextStyle(color: AppColor.black,fontSize: 12,fontWeight: FontWeight.w400,fontFamily: "Roboto"),),
                               icon ? const Icon(Icons.keyboard_arrow_down_outlined,size: 25,color: AppColor.black,) : const Icon(Icons.arrow_forward_ios_sharp,size: 15,color: AppColor.black,)
                             ],
                           ),
@@ -431,26 +422,12 @@ class _Setting_pageState extends State<Setting_page> {
                         padding: EdgeInsets.symmetric(horizontal: screenWidth(context,dividedBy: 30)),
                         child:   InkWell(
                           onTap: () {
-                            // setState(() {
-                            //   language = !language;
-                            //   if(language == false){
-                            //     show_box = !show_box;
-                            //     Timer(Duration(milliseconds: 600), () {
-                            //       setState(() {
-                            //         show_box = !show_box;
-                            //       });
-                            //     });
-                            //   }
-                            //
-                            // });
+
                           },
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              //_selected_language == '' ?  const
                                Text("Terms & Conditions".tr(),style: const TextStyle(color: AppColor.black,fontSize: 15,fontWeight: FontWeight.w500,fontFamily: "Roboto"),),
-                              //:
-                              // Text(_selected_language,style: const TextStyle(color: AppColor.black,fontSize: 12,fontWeight: FontWeight.w400,fontFamily: "Roboto"),),
                               icon ? const Icon(Icons.keyboard_arrow_down_outlined,size: 25,color: AppColor.black,) : const Icon(Icons.arrow_forward_ios_sharp,size: 15,color: AppColor.black,)
                             ],
                           ),

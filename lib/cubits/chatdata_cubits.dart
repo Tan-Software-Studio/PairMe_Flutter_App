@@ -22,7 +22,7 @@ class ChatDataSuccess extends ChatDataState {}
 class ChatDataCubit extends Cubit<ChatDataState> {
   ChatDataCubit() : super(ChatDataInitials());
   ChatData chatData = ChatData();
-  Future<ChatData?> ChatDataService(
+  Future ChatDataService(
       {required List array,
         required BuildContext context}) async {
     emit(ChatDataLoading());
@@ -37,14 +37,15 @@ class ChatDataCubit extends Cubit<ChatDataState> {
         'Content-Type': 'application/json',
         'Authorization': Authtoken,
       }) ,data: jsonEncode(body));
-      chatData = ChatData.fromJson(response.data);
+      print("response ==> $response");
       emit(ChatDataSuccess());
-      return chatData;
+      return ;
     } on Exception catch (e) {
       print("fail ====> " +e.toString());
       emit(ChatDataError());
       flutterToast("Something went wrong!", false);
       // TODO
     }
+    return null;
   }
 }

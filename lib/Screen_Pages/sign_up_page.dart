@@ -5,6 +5,7 @@ import 'package:country_picker/country_picker.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:translator/translator.dart';
 import 'package:pair_me/Screen_Pages/login_page.dart';
 import 'package:pair_me/Screen_Pages/set_password_page.dart';
 import 'package:pair_me/Widgets/Background_img.dart';
@@ -12,6 +13,7 @@ import 'package:pair_me/Widgets/custom_button.dart';
 import 'package:pair_me/Widgets/custom_texts.dart';
 import 'package:pair_me/Widgets/flutter_toast.dart';
 import 'package:pair_me/Widgets/textfield.dart';
+import 'package:pair_me/cubits/chatdata_cubits.dart';
 import 'package:pair_me/helper/App_Colors.dart';
 import 'package:pair_me/helper/Size_page.dart';
 
@@ -31,8 +33,8 @@ class _SignUp_pageState extends State<SignUp_page> {
   final TextEditingController _eMail = TextEditingController();
   final TextEditingController _gender = TextEditingController();
   final TextEditingController _date = TextEditingController();
+  ChatDataCubit chatDataCubit = ChatDataCubit();
   RegExp regExp =  RegExp(r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$');
-
   String gender = '';
   bool popup = false;
   bool popup1 = false;
@@ -46,7 +48,16 @@ class _SignUp_pageState extends State<SignUp_page> {
     super.initState();
     _selectedDate = _focusedDay;
   }
+  final translator = GoogleTranslator();
 
+  Future<String> translateText(String text) async {
+    // Translate the text to the target language
+    Translation translation =
+    await translator.translate(text, to: 'en');
+
+    // Return the translated text
+    return translation.text;
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -483,7 +494,18 @@ class _SignUp_pageState extends State<SignUp_page> {
                                 fontFamily: 'Roboto'),
                           ),
                           InkWell(
-                              onTap: () {
+                              onTap: () async {
+                                // changeLang(_firstName.text);
+                                // chatDataCubit.ChatDataService(array: [
+                                //   {
+                                //     "firstName": await translateText(_firstName.text.trim()),
+                                //     "lastName":await translateText(_lastName.text.trim()),
+                                //     "gender": await translateText(gender.trim()),
+                                //     "dateOfBirth":await translateText(_date.text.trim()),
+                                //     "phoneNumber": await translateText(_phoneNumber.text.trim()),
+                                //     "email": await translateText(_eMail.text),
+                                //   },
+                                // ], context: context);
                                 Navigator.pop(context);
                               },
                               child:  Text(
