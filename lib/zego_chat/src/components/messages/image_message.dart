@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:pair_me/Screen_Pages/image_page.dart';
 import 'package:pair_me/zego_chat/src/services/services.dart';
 
 // import 'package:zego_zimkit/src/services/services.dart';
@@ -39,21 +40,20 @@ class ZIMKitImageMessage extends StatelessWidget {
         : null;
     final timeOfMsg = defaultLastMessageTimeBuilder(messageTime);
 
-    final color = message.isMine ? Colors.white : const Color(0xff606164);
+    final color = message.isMine ? Colors.white : const Color(0xff606164).withOpacity(0.5);
 
     return Flexible(
       child: GestureDetector(
-        onTap: () => onPressed?.call(
-          context,
-          message,
-          () {},
-        ),
-        onLongPressStart: (details) => onLongPress?.call(
-          context,
-          details,
-          message,
-          () {},
-        ),
+        onTap: () {
+          Navigator.push(context, MaterialPageRoute(builder: (context) {
+            return Image_Screen(
+              image: message.isNetworkUrl
+                  ? message.imageContent!.fileDownloadUrl
+                  : message.imageContent!.largeImageDownloadUrl,
+              name: 'image',
+            );
+          }));
+        },
         child: AspectRatio(
           aspectRatio: message.imageContent!.aspectRatio,
           child: LayoutBuilder(builder: (context, BoxConstraints constraints) {
@@ -68,6 +68,8 @@ class ZIMKitImageMessage extends StatelessWidget {
                           builder: (context, snapshot) {
                             return snapshot.hasData && (snapshot.data! as bool)
                                 ? Container(
+                                    height: message.imageContent!.originalImageHeight.toDouble(),
+                                    width: message.imageContent!.originalImageWidth.toDouble(),
                                     color: color,
                                     child: Image.file(
                                       File(message.imageContent!.fileLocalPath),
@@ -76,6 +78,8 @@ class ZIMKitImageMessage extends StatelessWidget {
                                     ),
                                   )
                                 : CachedNetworkImage(
+                                    height: message.imageContent!.originalImageHeight.toDouble(),
+                                    width: message.imageContent!.originalImageWidth.toDouble(),
                                     imageUrl: message.isNetworkUrl
                                         ? message.imageContent!.fileDownloadUrl
                                         : message.imageContent!.largeImageDownloadUrl,
@@ -90,6 +94,8 @@ class ZIMKitImageMessage extends StatelessWidget {
                           },
                         )
                       : CachedNetworkImage(
+                          height: message.imageContent!.originalImageHeight.toDouble(),
+                          width: message.imageContent!.originalImageWidth.toDouble(),
                           imageUrl: message.isNetworkUrl
                               ? message.imageContent!.fileDownloadUrl
                               : message.imageContent!.largeImageDownloadUrl,

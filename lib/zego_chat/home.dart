@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pair_me/Widgets/Background_img.dart';
 import 'package:pair_me/cubits/translation_cubit.dart';
-import 'package:pair_me/zego_chat/popup_menu.dart';
 import 'package:pair_me/zego_chat/zego_zimkit.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 // import 'package:zego_zimkit/zego_zimkit.dart';
@@ -49,19 +48,20 @@ class _MyHomePageState extends State<MyHomePage> {
     return WillPopScope(
       onWillPop: () async => false,
       child: Scaffold(
-        appBar: AppBar(
+/*        appBar: AppBar(
           centerTitle: false,
           title: Text(
             chatId,
             style: const TextStyle(color: Colors.black, fontSize: 12),
           ),
           actions: const [HomePagePopupMenuButton()],
-        ),
+        ),*/
         body: ZIMKitConversationListView(
           onPressed: (context, conversation, defaultAction) {
             Navigator.push(context, MaterialPageRoute(
               builder: (context) {
                 return ZIMKitMessageListPage(
+                  name: 'chatting',
                   conversationID: conversation.id,
                   conversationType: conversation.type,
                   messageInputContainerDecoration: BoxDecoration(

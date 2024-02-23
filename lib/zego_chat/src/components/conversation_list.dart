@@ -6,12 +6,14 @@ import 'package:pair_me/Screen_Pages/message_request.dart';
 import 'package:pair_me/Widgets/Background_img.dart';
 import 'package:pair_me/Widgets/custom_texts.dart';
 import 'package:pair_me/Widgets/header_space.dart';
+import 'package:pair_me/cubits/show_message_requests.dart';
 import 'package:pair_me/helper/App_Colors.dart';
 import 'package:pair_me/helper/Size_page.dart';
 import 'package:pair_me/zego_chat/src/components/components.dart';
 import 'package:pair_me/zego_chat/src/pages/message_list_page.dart';
 import 'package:pair_me/zego_chat/src/services/services.dart';
 import 'package:zego_zim/zego_zim.dart';
+
 // import 'package:zego_zimkit/src/components/components.dart';
 // import 'package:zego_zimkit/src/pages/message_list_page.dart';
 // import 'package:zego_zimkit/src/services/services.dart';
@@ -104,12 +106,33 @@ class _ZIMKitConversationListViewState extends State<ZIMKitConversationListView>
 
   ScrollController get _scrollController => widget.scrollController ?? _defaultScrollController;
   Completer? _loadMoreCompleter;
+  AllMessageRequestCubit messageRequestCubit = AllMessageRequestCubit();
 
   @override
   void initState() {
     _scrollController.addListener(scrollControllerListener);
-
+    getRequests();
     super.initState();
+  }
+
+  List requestIdList = [];
+  List connectionIdList = [];
+
+  getRequests() async {
+    await messageRequestCubit.GetAllMessageRequest();
+
+    setState(() {
+      requestIdList.clear();
+      connectionIdList.clear();
+      messageRequestCubit.userMssageReq.data!.withoutConnect!.forEach((element) {
+        requestIdList.add(element.id);
+      });
+      messageRequestCubit.userMssageReq.data!.data!.forEach((element) {
+        connectionIdList.add(element.id);
+      });
+    });
+    debugPrint("requestId --- ${requestIdList}");
+    debugPrint("connectionIdList --- ${connectionIdList}");
   }
 
   @override
@@ -152,35 +175,37 @@ class _ZIMKitConversationListViewState extends State<ZIMKitConversationListView>
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             custom_header(text: 'Message'),
-                            GestureDetector(
-                              onTap: () {
-                                Navigator.push(context, MaterialPageRoute(
-                                  builder: (context) {
-                                    return const MessageRequest();
-                                  },
-                                ));
-                              },
-                              child: Row(
-                                children: [
-                                  Text(
-                                    'Requests'.tr(),
-                                    style: const TextStyle(
-                                        fontSize: 15,
-                                        fontFamily: 'Roboto',
-                                        fontWeight: FontWeight.w500,
-                                        color: AppColor.skyBlue),
-                                  ),
-                                  const Text(
-                                    '(2)',
-                                    style: TextStyle(
-                                        fontSize: 15,
-                                        fontFamily: 'Roboto',
-                                        fontWeight: FontWeight.w500,
-                                        color: AppColor.skyBlue),
-                                  ),
-                                ],
-                              ),
-                            ),
+                            messageRequestCubit.userMssageReq.data != null
+                                ? GestureDetector(
+                                    onTap: () {
+                                      Navigator.push(context, MaterialPageRoute(
+                                        builder: (context) {
+                                          return const MessageRequest();
+                                        },
+                                      ));
+                                    },
+                                    child: Row(
+                                      children: [
+                                        Text(
+                                          'Requests'.tr(),
+                                          style: const TextStyle(
+                                              fontSize: 15,
+                                              fontFamily: 'Roboto',
+                                              fontWeight: FontWeight.w500,
+                                              color: AppColor.skyBlue),
+                                        ),
+                                        Text(
+                                          '(${messageRequestCubit.userMssageReq.data?.withoutConnect?.length ?? 0})',
+                                          style: const TextStyle(
+                                              fontSize: 15,
+                                              fontFamily: 'Roboto',
+                                              fontWeight: FontWeight.w500,
+                                              color: AppColor.skyBlue),
+                                        ),
+                                      ],
+                                    ),
+                                  )
+                                : const SizedBox(),
                           ],
                         ),
                       ),
@@ -192,7 +217,7 @@ class _ZIMKitConversationListViewState extends State<ZIMKitConversationListView>
                             List<ZIMKitConversationNotifier> conversationList,
                             Widget? child,
                           ) {
-                            if (conversationList.isEmpty) {
+                            if (conversationList.isEmpty || connectionIdList.isEmpty) {
                               return Center(
                                 child: Container(
                                   height: screenHeight(context, dividedBy: 7),
@@ -268,6 +293,7 @@ class _ZIMKitConversationListViewState extends State<ZIMKitConversationListView>
                                               Navigator.push(context, MaterialPageRoute(
                                                 builder: (context) {
                                                   return ZIMKitMessageListPage(
+                                                    name: 'chatting',
                                                     conversationID: conversation.id,
                                                     conversationType: conversation.type,
                                                     theme: widget.theme,
@@ -287,14 +313,14 @@ class _ZIMKitConversationListViewState extends State<ZIMKitConversationListView>
                                             }
                                           },
                                         );
+                                        debugPrint("chat id --- ${conversation.id}");
 
                                         // customWidget
-                                        return widget.itemBuilder?.call(
-                                              context,
-                                              conversation,
-                                              defaultWidget,
-                                            ) ??
-                                            defaultWidget;
+                                        return requestIdList.contains(conversation.id)
+                                            ? const SizedBox()
+                                            : !connectionIdList.contains(conversation.id)
+                                                ? const SizedBox()
+                                                : defaultWidget;
                                       },
                                     );
                                   },

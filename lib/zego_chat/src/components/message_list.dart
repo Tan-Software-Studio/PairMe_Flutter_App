@@ -235,7 +235,6 @@ class _ZIMKitMessageListViewState extends State<ZIMKitMessageListView> {
           maxHeight: message.type == ZIMMessageType.text ? double.maxFinite : constraints.maxHeight * 0.5,
         ),
         child: ZIMKitMessageWidget(
-          key: ValueKey(message.hashCode),
           message: message,
           onPressed: widget.onPressed,
           onLongPress: widget.onLongPress,

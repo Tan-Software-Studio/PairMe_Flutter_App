@@ -82,9 +82,28 @@ class ZIMKitConversationWidget extends StatelessWidget {
                           ),
                         ),
                         TextButton(
-                          onPressed: () {
-                            ZIMKit().deleteConversation(conversation.id, conversation.type);
-                            Navigator.pop(context);
+                          onPressed: () async {
+                            debugPrint("type --- ${conversation.type}");
+
+                            ZIMMessageDeleteConfig config = ZIMMessageDeleteConfig();
+                            config.isAlsoDeleteServerMessage = false;
+                            await ZIMKit()
+                                .deleteAllConversation(
+                              isAlsoDeleteFromServer: true,
+                              isAlsoDeleteMessages: true,
+                            )
+                                .then((value) {
+                              ZIMKit().deleteConversation(conversation.id, conversation.type);
+                              Navigator.pop(context);
+                            });
+
+                            // await ZIM
+                            //     .getInstance()!
+                            //     .deleteAllMessage(conversation.id, conversation.type, config)
+                            //     .then((value) {
+                            //   ZIMKit().deleteConversation(conversation.id, conversation.type);
+                            //   Navigator.pop(context);
+                            // }).catchError((onError) {});
                           },
                           child: const Text('OK'),
                         ),

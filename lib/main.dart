@@ -71,8 +71,8 @@ Future<void> main() async {
   }
 
   ZIMKit().init(
-    appID: appID, // your appid
-    appSign: appSign, // your appSign
+    appID: zegoChatAppID, // your appid
+    appSign: zegoChatAppSign, // your appSign
   );
   final navigatorKey = GlobalKey<NavigatorState>();
 

@@ -3,7 +3,6 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:pair_me/Screen_Pages/chat.dart';
 import 'package:pair_me/Widgets/Background_img.dart';
 import 'package:pair_me/Widgets/custom_loader.dart';
 import 'package:pair_me/Widgets/custom_texts.dart';
@@ -12,7 +11,9 @@ import 'package:pair_me/cubits/message_user.dart';
 import 'package:pair_me/cubits/remove_connect_user.dart';
 import 'package:pair_me/helper/Apis.dart';
 import 'package:pair_me/helper/Size_page.dart';
+
 import '../helper/App_Colors.dart';
+import '../zego_chat/zego_zimkit.dart';
 
 class Connection_Page extends StatefulWidget {
   const Connection_Page({super.key});
@@ -26,7 +27,7 @@ class _Connection_PageState extends State<Connection_Page> {
   RemoveUserCubit removeUserCubit = RemoveUserCubit();
   MessageUserCubit messageUserCubit = MessageUserCubit();
 
-@override
+  @override
   void initState() {
     // TODO: implement initState
     super.initState();
@@ -37,7 +38,8 @@ class _Connection_PageState extends State<Connection_Page> {
       connectedUsersCubit.GetConnectedUsers();
     });
     setState(() {});
-}
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -66,7 +68,7 @@ class _Connection_PageState extends State<Connection_Page> {
                 ),
                 title: custom_header(text: "Connections"),
               ),
-              body:SizedBox(
+              body: SizedBox(
                 height: screenHeight(context),
                 width: screenWidth(context),
                 child: Column(
@@ -80,7 +82,7 @@ class _Connection_PageState extends State<Connection_Page> {
                       child: Container(
                         height: 35,
                         decoration: BoxDecoration(
-                          // color: Colors.red,
+                            // color: Colors.red,
                             border: Border.all(color: Colors.grey.shade400),
                             borderRadius: BorderRadius.circular(8)),
                         child: TextField(
@@ -118,247 +120,263 @@ class _Connection_PageState extends State<Connection_Page> {
                     const SizedBox(
                       height: 5,
                     ),
-                    BlocBuilder<ConnectedUsersCubit,ConnectedUsersState>(builder: (context, state) {
-                      if(state is ConnectedUsersSuccess){
-                        return connectedUsersCubit.connectedUsers.data!.isNotEmpty ?  Expanded(child: ListView.separated(
-                            physics: const ClampingScrollPhysics(),
-                            padding: EdgeInsets.only(
-                              bottom: screenHeight(context, dividedBy: 100),
-                            ),
-                            itemBuilder: (context, index) {
-                              return SizedBox(
-                                // margin: EdgeInsets.symmetric(horizontal: screenWidth(context,dividedBy: 15)),
-                                height: screenHeight(context, dividedBy: 8),
-                                width: screenHeight(context),
-                                child: Padding(
-                                  padding: EdgeInsets.symmetric(
-                                    horizontal:
-                                    screenWidth(context, dividedBy: 30),
-                                  ),
-                                  child: Row(
-                                    mainAxisAlignment: MainAxisAlignment.start,
-                                    crossAxisAlignment:
-                                    CrossAxisAlignment.center,
-                                    children: [
-                                      CachedNetworkImage(
-                                        imageUrl: '${apis.baseurl}/${connectedUsersCubit.connectedUsers.data?[index].profileImage ?? ''}',
-                                        imageBuilder:
-                                            (context, imageProvider) =>
-                                            Container(
-                                              height: screenHeight(context,
-                                                  dividedBy: 15),
-                                              width: screenHeight(context,
-                                                  dividedBy: 15),
-                                              decoration: BoxDecoration(
-                                                image: DecorationImage(
-                                                  image: imageProvider,
-                                                  fit: BoxFit.cover,
+                    BlocBuilder<ConnectedUsersCubit, ConnectedUsersState>(
+                      builder: (context, state) {
+                        if (state is ConnectedUsersSuccess) {
+                          return connectedUsersCubit.connectedUsers.data!.isNotEmpty
+                              ? Expanded(
+                                  child: ListView.separated(
+                                      physics: const ClampingScrollPhysics(),
+                                      padding: EdgeInsets.only(
+                                        bottom: screenHeight(context, dividedBy: 100),
+                                      ),
+                                      itemBuilder: (context, index) {
+                                        return SizedBox(
+                                          // margin: EdgeInsets.symmetric(horizontal: screenWidth(context,dividedBy: 15)),
+                                          height: screenHeight(context, dividedBy: 8),
+                                          width: screenHeight(context),
+                                          child: Padding(
+                                            padding: EdgeInsets.symmetric(
+                                              horizontal: screenWidth(context, dividedBy: 30),
+                                            ),
+                                            child: Row(
+                                              mainAxisAlignment: MainAxisAlignment.start,
+                                              crossAxisAlignment: CrossAxisAlignment.center,
+                                              children: [
+                                                CachedNetworkImage(
+                                                  imageUrl:
+                                                      '${apis.baseurl}/${connectedUsersCubit.connectedUsers.data?[index].profileImage ?? ''}',
+                                                  imageBuilder: (context, imageProvider) => Container(
+                                                    height: screenHeight(context, dividedBy: 15),
+                                                    width: screenHeight(context, dividedBy: 15),
+                                                    decoration: BoxDecoration(
+                                                      image: DecorationImage(
+                                                        image: imageProvider,
+                                                        fit: BoxFit.cover,
 
-                                                  // colorFilter: ColorFilter.mode(Colors.red, BlendMode.colorBurn)
-                                                ),
-                                                shape: BoxShape.circle,
-                                              ),
-                                            ),
-                                        placeholder: (context, url) =>
-                                        const CircularProgressIndicator(),
-                                        errorWidget: (context, url, error) =>
-                                            CircleAvatar(
-                                                radius: screenHeight(context,
-                                                    dividedBy: 30),
-                                                child:
-                                                const Icon(Icons.person)),
-                                      ),
-                                      SizedBox(
-                                        width:
-                                        screenWidth(context, dividedBy: 30),
-                                      ),
-                                      Padding(
-                                        padding: EdgeInsets.symmetric(
-                                            vertical: screenWidth(context,
-                                                dividedBy: 40)),
-                                        child: Column(
-                                          mainAxisAlignment:
-                                          MainAxisAlignment.start,
-                                          crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                          children: [
-                                            Text(
-                                              connectedUsersCubit.connectedUsers.data?[index].name ?? '',
-                                              style: const TextStyle(
-                                                  fontSize: 15,
-                                                  fontWeight: FontWeight.w500,
-                                                  fontFamily: 'Roboto'),
-                                            ),
-                                            SizedBox(
-                                              height: screenHeight(context,
-                                                  dividedBy: 300),
-                                            ),
-                                            SizedBox(
-                                              width: screenWidth(context,
-                                                  dividedBy: 2.2),
-                                              child: const Text(
-                                                  'Dis promethium, vei maximus gulag......',
-                                                  maxLines: 2,
-                                                  style: TextStyle(
-                                                      color: Color(0xffAAAAAA),
-                                                      fontSize: 13,
-                                                      fontWeight:
-                                                      FontWeight.w500,
-                                                      fontFamily: 'Roboto')),
-                                            ),
-                                            SizedBox(
-                                              width: screenWidth(context,
-                                                  dividedBy: 2.2),
-                                              child: Row(
-                                                children: [
-                                                  Image.asset(
-                                                      "assets/Images/calendar.png",
-                                                      width: screenWidth(
-                                                          context,
-                                                          dividedBy: 40)),
-                                                  const SizedBox(
-                                                    width: 3,
+                                                        // colorFilter: ColorFilter.mode(Colors.red, BlendMode.colorBurn)
+                                                      ),
+                                                      shape: BoxShape.circle,
+                                                    ),
                                                   ),
-                                                  Text(DateFormat('dd/MM/yyyy').format(connectedUsersCubit.connectedUsers.data?[index].time ?? DateTime.now()),
-                                                      style: const TextStyle(
-                                                          color:
-                                                          Color(0xffAAAAAA),
-                                                          fontSize: 10,
-                                                          fontWeight:
-                                                          FontWeight.w400,
-                                                          fontFamily: 'Roboto'))
-                                                ],
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                      ),
-                                      const Spacer(),
-                                      Padding(
-                                          padding: EdgeInsets.symmetric(
-                                              vertical: screenWidth(context,
-                                                  dividedBy: 40)),
-                                          child: Row(
-                                            children: [
-                                              InkWell(
-                                                onTap: () {
-                                                  showModalBottomSheet(
-                                                    context: context,
-                                                    builder: (context) {
-                                                      return SizedBox(
-                                                        height: screenHeight(
-                                                            context,
-                                                            dividedBy: 7.5),
-                                                        child: Column(
+                                                  placeholder: (context, url) => const CircularProgressIndicator(),
+                                                  errorWidget: (context, url, error) => CircleAvatar(
+                                                      radius: screenHeight(context, dividedBy: 30),
+                                                      child: const Icon(Icons.person)),
+                                                ),
+                                                SizedBox(
+                                                  width: screenWidth(context, dividedBy: 30),
+                                                ),
+                                                Padding(
+                                                  padding: EdgeInsets.symmetric(
+                                                      vertical: screenWidth(context, dividedBy: 40)),
+                                                  child: Column(
+                                                    mainAxisAlignment: MainAxisAlignment.start,
+                                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                                    children: [
+                                                      Text(
+                                                        connectedUsersCubit.connectedUsers.data?[index].name ?? '',
+                                                        style: const TextStyle(
+                                                            fontSize: 15,
+                                                            fontWeight: FontWeight.w500,
+                                                            fontFamily: 'Roboto'),
+                                                      ),
+                                                      SizedBox(
+                                                        height: screenHeight(context, dividedBy: 300),
+                                                      ),
+                                                      SizedBox(
+                                                        width: screenWidth(context, dividedBy: 2.2),
+                                                        child: const Text('Dis promethium, vei maximus gulag......',
+                                                            maxLines: 2,
+                                                            style: TextStyle(
+                                                                color: Color(0xffAAAAAA),
+                                                                fontSize: 13,
+                                                                fontWeight: FontWeight.w500,
+                                                                fontFamily: 'Roboto')),
+                                                      ),
+                                                      SizedBox(
+                                                        width: screenWidth(context, dividedBy: 2.2),
+                                                        child: Row(
                                                           children: [
-                                                            Padding(
-                                                              padding:
-                                                              EdgeInsets
-                                                                  .only(top: screenHeight(context,dividedBy: 50)),
-                                                              child: Container(
-                                                                width:
-                                                                screenHeight(
-                                                                    context,
-                                                                    dividedBy:
-                                                                    15),
-                                                                height: 7,
-                                                                decoration: BoxDecoration(
-                                                                    borderRadius:
-                                                                    BorderRadius.circular(
-                                                                        10),
-                                                                    color: Colors
-                                                                        .black54),
-                                                              ),
+                                                            Image.asset("assets/Images/calendar.png",
+                                                                width: screenWidth(context, dividedBy: 40)),
+                                                            const SizedBox(
+                                                              width: 3,
                                                             ),
-                                                            InkWell(
-                                                              onTap: () {
-                                                                removeUserCubit.AcceptNotification(id: connectedUsersCubit.connectedUsers.data?[index].id ?? '').then((value) {
-                                                                  Navigator.pop(context);
-                                                                },);
-                                                              },
-                                                              child: Container(
-                                                                margin: EdgeInsets.only(left: screenWidth(context,dividedBy: 50)),
-                                                                width: screenWidth(context),
-                                                                height:
-                                                                screenHeight(
-                                                                    context,
-                                                                    dividedBy:
-                                                                    10),
-                                                                decoration: const BoxDecoration(
-                                                                    color: Colors
-                                                                        .transparent,
-                                                                    borderRadius: BorderRadius.only(
-                                                                        topLeft: Radius
-                                                                            .circular(
-                                                                            15),
-                                                                        topRight:
-                                                                        Radius.circular(
-                                                                            16))),
-                                                                child:
-                                                                const Center(
-                                                                    child:
-                                                                    ListTile(
-                                                                      title: Text(
-                                                                          "Remove Connection"),
-                                                                      leading: Icon(
-                                                                          Icons
-                                                                              .delete),
-                                                                    )),
-                                                              ),
-                                                            ),
+                                                            Text(
+                                                                DateFormat('dd/MM/yyyy').format(connectedUsersCubit
+                                                                        .connectedUsers.data?[index].time ??
+                                                                    DateTime.now()),
+                                                                style: const TextStyle(
+                                                                    color: Color(0xffAAAAAA),
+                                                                    fontSize: 10,
+                                                                    fontWeight: FontWeight.w400,
+                                                                    fontFamily: 'Roboto'))
                                                           ],
                                                         ),
-                                                      );
-                                                    },
-                                                  );
-                                                },
-                                                child: SvgPicture.asset(
-                                                    "assets/Images/more.svg",
-                                                    width: screenWidth(context,
-                                                        dividedBy: 100)),
-                                              ),
-                                              SizedBox(
-                                                width: screenWidth(context,
-                                                    dividedBy: 20),
-                                              ),
-                                              InkWell(
-                                                onTap: () {
-                                                  messageUserCubit.AcceptNotification(context,id: connectedUsersCubit.connectedUsers.data?[index].id ?? '', name: connectedUsersCubit.connectedUsers.data?[index].name ?? '', uid: connectedUsersCubit.connectedUsers.loginUserId ?? '', img: connectedUsersCubit.connectedUsers.data?[index].profileImage ?? '',);
-                                                },
-                                                child: SvgPicture.asset(
-                                                    "assets/Images/message.svg",
-                                                    width: screenWidth(context,
-                                                        dividedBy: 25)),
-                                              ),
-                                            ],
-                                          ))
-                                    ],
-                                  ),
-                                ),
-                              );
-                            },
-                            separatorBuilder: (context, index) {
-                              return const Divider(
-                                height: 0,
-                                thickness: 2,
-                                color: Color(0xffF5F5F5),
-                                // color: Colors.black12,
-                              );
-                            },
-                            itemCount: connectedUsersCubit.connectedUsers.data?.length ?? 0)) : Expanded(child: Center(child: NoMessage(context)));
-                      }
-                      if(state is ConnectedUsersLoading){
-                        return Expanded(child: customLoader());
-                      }
-                      if(state is ConnectedUsersError){
-                        return Expanded(child: Center(child: NoMessage(context)));
-                      }
-                      return const SizedBox();
-                    },)
+                                                      ),
+                                                    ],
+                                                  ),
+                                                ),
+                                                const Spacer(),
+                                                Padding(
+                                                    padding: EdgeInsets.symmetric(
+                                                        vertical: screenWidth(context, dividedBy: 40)),
+                                                    child: Row(
+                                                      children: [
+                                                        InkWell(
+                                                          onTap: () {
+                                                            debugPrint("showModalBottomSheet");
+
+                                                            showModalBottomSheet(
+                                                              context: context,
+                                                              builder: (context) {
+                                                                return SizedBox(
+                                                                  height: screenHeight(context, dividedBy: 7.5),
+                                                                  child: Column(
+                                                                    children: [
+                                                                      Padding(
+                                                                        padding: EdgeInsets.only(
+                                                                            top: screenHeight(context, dividedBy: 50)),
+                                                                        child: Container(
+                                                                          width: screenHeight(context, dividedBy: 15),
+                                                                          height: 7,
+                                                                          decoration: BoxDecoration(
+                                                                              borderRadius: BorderRadius.circular(10),
+                                                                              color: Colors.black54),
+                                                                        ),
+                                                                      ),
+                                                                      InkWell(
+                                                                        onTap: () {
+                                                                          removeUserCubit.AcceptNotification(
+                                                                                  id: connectedUsersCubit.connectedUsers
+                                                                                          .data?[index].id ??
+                                                                                      '')
+                                                                              .then(
+                                                                            (value) async {
+                                                                              String conversationID =
+                                                                                  connectedUsersCubit.connectedUsers
+                                                                                          .data?[index].id ??
+                                                                                      '';
+
+                                                                              ZIMMessageDeleteConfig config =
+                                                                                  ZIMMessageDeleteConfig();
+                                                                              config.isAlsoDeleteServerMessage = false;
+
+                                                                              /*            await ZIM
+                                                                                  .getInstance()!
+                                                                                  .deleteAllMessage(conversationID,
+                                                                                      ZIMConversationType.peer, config)
+                                                                                  .then((value) {
+                                                                                ZIMKit().deleteConversation(
+                                                                                    conversationID,
+                                                                                    ZIMConversationType.peer);
+                                                                              }).catchError((onError) {});
+
+*/
+                                                                              await ZIMKit()
+                                                                                  .deleteAllConversation(
+                                                                                isAlsoDeleteFromServer: true,
+                                                                                isAlsoDeleteMessages: true,
+                                                                              )
+                                                                                  .then((value) {
+                                                                                ZIMKit().deleteConversation(
+                                                                                    conversationID,
+                                                                                    ZIMConversationType.peer);
+                                                                              });
+
+                                                                              connectedUsersCubit.GetConnectedUsers();
+
+                                                                              Navigator.pop(context);
+                                                                            },
+                                                                          );
+                                                                        },
+                                                                        child: Container(
+                                                                          margin: EdgeInsets.only(
+                                                                              left:
+                                                                                  screenWidth(context, dividedBy: 50)),
+                                                                          width: screenWidth(context),
+                                                                          height: screenHeight(context, dividedBy: 10),
+                                                                          decoration: const BoxDecoration(
+                                                                              color: Colors.transparent,
+                                                                              borderRadius: BorderRadius.only(
+                                                                                  topLeft: Radius.circular(15),
+                                                                                  topRight: Radius.circular(16))),
+                                                                          child: const Center(
+                                                                              child: ListTile(
+                                                                            title: Text("Remove Connection"),
+                                                                            leading: Icon(Icons.delete),
+                                                                          )),
+                                                                        ),
+                                                                      ),
+                                                                    ],
+                                                                  ),
+                                                                );
+                                                              },
+                                                            );
+                                                          },
+                                                          hoverColor: Colors.transparent,
+                                                          focusColor: Colors.transparent,
+                                                          splashColor: Colors.transparent,
+                                                          highlightColor: Colors.transparent,
+                                                          child: Padding(
+                                                            padding: const EdgeInsets.symmetric(horizontal: 3.0),
+                                                            child: SvgPicture.asset("assets/Images/more.svg",
+                                                                width: screenWidth(context, dividedBy: 90)),
+                                                          ),
+                                                        ),
+                                                        SizedBox(
+                                                          width: screenWidth(context, dividedBy: 20),
+                                                        ),
+                                                        InkWell(
+                                                          onTap: () {
+                                                            messageUserCubit.AcceptNotification(
+                                                              context,
+                                                              id: connectedUsersCubit.connectedUsers.data?[index].id ??
+                                                                  '',
+                                                              name: connectedUsersCubit
+                                                                      .connectedUsers.data?[index].name ??
+                                                                  '',
+                                                              uid: connectedUsersCubit.connectedUsers.loginUserId ?? '',
+                                                              img: connectedUsersCubit
+                                                                      .connectedUsers.data?[index].profileImage ??
+                                                                  '',
+                                                            );
+                                                          },
+                                                          child: SvgPicture.asset("assets/Images/message.svg",
+                                                              width: screenWidth(context, dividedBy: 18)),
+                                                        ),
+                                                        SizedBox(width: screenWidth(context, dividedBy: 30)),
+                                                      ],
+                                                    ))
+                                              ],
+                                            ),
+                                          ),
+                                        );
+                                      },
+                                      separatorBuilder: (context, index) {
+                                        return const Divider(
+                                          height: 0,
+                                          thickness: 2,
+                                          color: Color(0xffF5F5F5),
+                                          // color: Colors.black12,
+                                        );
+                                      },
+                                      itemCount: connectedUsersCubit.connectedUsers.data?.length ?? 0))
+                              : Expanded(child: Center(child: NoMessage(context)));
+                        }
+                        if (state is ConnectedUsersLoading) {
+                          return Expanded(child: customLoader());
+                        }
+                        if (state is ConnectedUsersError) {
+                          return Expanded(child: Center(child: NoMessage(context)));
+                        }
+                        return const SizedBox();
+                      },
+                    )
                   ],
                 ),
-              )
-             )
+              ))
         ],
       ),
     ));

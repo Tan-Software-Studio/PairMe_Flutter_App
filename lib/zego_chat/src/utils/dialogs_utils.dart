@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:pair_me/Widgets/Background_img.dart';
 import 'package:pair_me/zego_chat/src/pages/message_list_page.dart';
 import 'package:pair_me/zego_chat/src/services/zimkit_services.dart';
 import 'package:zego_zim/zego_zim.dart';
@@ -49,7 +50,17 @@ extension ZIMKitDefaultDialogService on ZIMKit {
         if (userIDController.text.isNotEmpty) {
           Navigator.push(context, MaterialPageRoute(builder: (context) {
             return ZIMKitMessageListPage(
+              name: 'chatting',
               conversationID: userIDController.text,
+              messageListBackgroundBuilder: (context, defaultWidget) {
+                return Stack(
+                  clipBehavior: Clip.none,
+                  children: [
+                    Background_Img(context),
+                    defaultWidget,
+                  ],
+                );
+              },
             );
           }));
         }
@@ -139,8 +150,18 @@ extension ZIMKitDefaultDialogService on ZIMKit {
             if (conversationID != null) {
               Navigator.push(context, MaterialPageRoute(builder: (context) {
                 return ZIMKitMessageListPage(
+                  name: 'chatting',
                   conversationID: conversationID,
                   conversationType: ZIMConversationType.group,
+                  messageListBackgroundBuilder: (context, defaultWidget) {
+                    return Stack(
+                      clipBehavior: Clip.none,
+                      children: [
+                        Background_Img(context),
+                        defaultWidget,
+                      ],
+                    );
+                  },
                 );
               }));
             }
@@ -192,8 +213,18 @@ extension ZIMKitDefaultDialogService on ZIMKit {
             if (errorCode == 0) {
               Navigator.push(context, MaterialPageRoute(builder: (context) {
                 return ZIMKitMessageListPage(
+                  name: 'chatting',
                   conversationID: groupIDController.text,
                   conversationType: ZIMConversationType.group,
+                  messageListBackgroundBuilder: (context, defaultWidget) {
+                    return Stack(
+                      clipBehavior: Clip.none,
+                      children: [
+                        Background_Img(context),
+                        defaultWidget,
+                      ],
+                    );
+                  },
                 );
               }));
             }

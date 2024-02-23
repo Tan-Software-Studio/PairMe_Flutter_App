@@ -5,6 +5,9 @@ import 'package:emoji_picker_flutter/emoji_picker_flutter.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart' as imagePicker;
+import 'package:pair_me/cubits/accept_req_msg_user.dart';
+import 'package:pair_me/cubits/block_req_msg_user.dart';
+import 'package:pair_me/cubits/delete_msg_users.dart';
 import 'package:pair_me/helper/App_Colors.dart';
 import 'package:pair_me/helper/Size_page.dart';
 import 'package:pair_me/zego_chat/call/call_function.dart';
@@ -21,6 +24,7 @@ class ZIMKitMessageListPage extends StatefulWidget {
     required this.conversationID,
     this.conversationType = ZIMConversationType.peer,
     this.appBarBuilder,
+    this.blockOrDeleteId,
     this.appBarActions,
     // this.messageInputActions,
     this.onMessageSent,
@@ -51,10 +55,13 @@ class ZIMKitMessageListPage extends StatefulWidget {
     this.messageInputMinLines,
     this.messageInputTextInputAction,
     this.messageInputTextCapitalization,
+    required this.name,
   }) : super(key: key);
 
   /// this page's conversationID
   final String conversationID;
+  final String name;
+  final String? blockOrDeleteId;
 
   /// this page's conversationType
   final ZIMConversationType conversationType;
@@ -193,12 +200,130 @@ class _ZIMKitMessageListPageState extends State<ZIMKitMessageListPage> {
 
   bool showCard = false;
   bool emojiShowing = false;
+  BlockUserCubit blockUserCubit = BlockUserCubit();
+  RemoveMsgUserCubit removeMsgUserCubit = RemoveMsgUserCubit();
+  AcceptReqMsgUserCubit acceptReqMsgUserCubit = AcceptReqMsgUserCubit();
+
   @override
   Widget build(BuildContext context) {
     return Theme(
       data: widget.theme ?? Theme.of(context),
       child: Scaffold(
         // appBar: widget.appBarBuilder?.call(context, buildAppBar(context)) ?? buildAppBar(context),
+        floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+        floatingActionButton: widget.name == 'chatting' //🌎
+            ? const SizedBox()
+            : Padding(
+                padding: EdgeInsets.symmetric(horizontal: screenWidth(context, dividedBy: 20)),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    GestureDetector(
+                      onTap: () {
+                        blockUserCubit.AcceptNotification(id: widget.blockOrDeleteId ?? "")
+                            .then((value) => Navigator.pop(context, "refresh"));
+                        // rejectUserCubit.GetRejectUser(id: widget.id).then((value) => );
+                      },
+                      child: Container(
+                        alignment: Alignment.center,
+                        margin: EdgeInsets.symmetric(vertical: screenHeight(context, dividedBy: 40)),
+                        height: screenHeight(context, dividedBy: 20),
+                        width: screenWidth(context, dividedBy: 3.7),
+                        decoration: BoxDecoration(
+                            color: AppColor.white,
+                            borderRadius: BorderRadius.circular(23),
+                            boxShadow: const [
+                              BoxShadow(
+                                color: AppColor.fontgray,
+                                offset: Offset(
+                                  0,
+                                  4,
+                                ),
+                                blurRadius: 11,
+                                spreadRadius: 0.0,
+                              ),
+                            ]),
+                        child: Text(
+                          'Block'.tr(),
+                          style: const TextStyle(
+                              fontSize: 15,
+                              fontWeight: FontWeight.w600,
+                              fontFamily: 'Roboto',
+                              color: Color(0xffFF0000)),
+                        ),
+                      ),
+                    ),
+                    GestureDetector(
+                      onTap: () {
+                        removeMsgUserCubit.DeleteReqUser(context, id: widget.blockOrDeleteId ?? "")
+                            .then((value) => Navigator.pop(context, "refresh"));
+                      },
+                      child: Container(
+                        alignment: Alignment.center,
+                        margin: EdgeInsets.symmetric(vertical: screenHeight(context, dividedBy: 40)),
+                        height: screenHeight(context, dividedBy: 20),
+                        width: screenWidth(context, dividedBy: 3.7),
+                        decoration: BoxDecoration(
+                            color: AppColor.white,
+                            borderRadius: BorderRadius.circular(23),
+                            boxShadow: const [
+                              BoxShadow(
+                                color: AppColor.fontgray,
+                                offset: Offset(
+                                  0,
+                                  4,
+                                ),
+                                blurRadius: 11,
+                                spreadRadius: 0.0,
+                              ),
+                            ]),
+                        child: Text(
+                          'Delete'.tr(),
+                          style: const TextStyle(
+                              fontSize: 15,
+                              fontWeight: FontWeight.w600,
+                              fontFamily: 'Roboto',
+                              color: Color(0xffFF0000)),
+                        ),
+                      ),
+                    ),
+                    GestureDetector(
+                      onTap: () {
+                        acceptReqMsgUserCubit.AcceptNotification(context, id: widget.blockOrDeleteId ?? "");
+                      },
+                      child: Container(
+                        alignment: Alignment.center,
+                        margin: EdgeInsets.symmetric(vertical: screenHeight(context, dividedBy: 40)),
+                        height: screenHeight(context, dividedBy: 20),
+                        width: screenWidth(context, dividedBy: 3.7),
+                        decoration: BoxDecoration(
+                            color: AppColor.white,
+                            borderRadius: BorderRadius.circular(23),
+                            boxShadow: const [
+                              BoxShadow(
+                                color: AppColor.fontgray,
+                                offset: Offset(
+                                  0,
+                                  4,
+                                ),
+                                blurRadius: 11,
+                                spreadRadius: 0.0,
+                              ),
+                            ]),
+                        child: Text(
+                          'Accept'.tr(),
+                          style: const TextStyle(
+                              fontSize: 15,
+                              fontWeight: FontWeight.w600,
+                              fontFamily: 'Roboto',
+                              color: Color(0xff1D1D1D)),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
         body: GestureDetector(
           onTap: () {
             if (showCard) {
@@ -286,14 +411,23 @@ class _ZIMKitMessageListPageState extends State<ZIMKitMessageListPage> {
                                       fontWeight: FontWeight.w600,
                                       fontFamily: 'Roboto'),
                                 ),
-                                Text(
-                                  'online'.tr(),
-                                  style: const TextStyle(
-                                      color: AppColor.white,
-                                      fontSize: 12,
-                                      fontWeight: FontWeight.w400,
-                                      fontFamily: 'Roboto'),
-                                ),
+                                widget.name == 'Request'
+                                    ? Text(
+                                        'Just Joined'.tr(),
+                                        style: const TextStyle(
+                                            color: AppColor.white,
+                                            fontSize: 12,
+                                            fontWeight: FontWeight.w400,
+                                            fontFamily: 'Roboto'),
+                                      )
+                                    : Text(
+                                        'online'.tr(),
+                                        style: const TextStyle(
+                                            color: AppColor.white,
+                                            fontSize: 12,
+                                            fontWeight: FontWeight.w400,
+                                            fontFamily: 'Roboto'),
+                                      ),
                               ],
                             ),
                             const Spacer(),
@@ -302,6 +436,7 @@ class _ZIMKitMessageListPageState extends State<ZIMKitMessageListPage> {
                                 : sendCallButton(
                                     isVideoCall: false,
                                     inviteeUsersIDTextCtrl: TextEditingController(text: conversation.id),
+                                    inviteeUsersNameTextCtrl: TextEditingController(text: conversation.name),
                                     onCallFinished: onSendCallInvitationFinished,
                                     name: conversation.name,
                                   ),
@@ -311,6 +446,7 @@ class _ZIMKitMessageListPageState extends State<ZIMKitMessageListPage> {
                                 : sendCallButton(
                                     isVideoCall: true,
                                     inviteeUsersIDTextCtrl: TextEditingController(text: conversation.id),
+                                    inviteeUsersNameTextCtrl: TextEditingController(text: conversation.name),
                                     onCallFinished: onSendCallInvitationFinished,
                                     name: conversation.name,
                                   ),
@@ -574,108 +710,112 @@ class _ZIMKitMessageListPageState extends State<ZIMKitMessageListPage> {
                       ),
                     )
                   : const SizedBox(),
-              Container(
-                padding:
-                    widget.messageInputContainerPadding ?? const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-                decoration: widget.messageInputContainerDecoration ??
-                    BoxDecoration(
-                      color: Theme.of(context).scaffoldBackgroundColor,
-                      boxShadow: [
-                        BoxShadow(
-                          offset: const Offset(0, 4),
-                          blurRadius: 32,
-                          color: Theme.of(context).primaryColor.withOpacity(0.15),
-                        ),
-                      ],
-                    ),
-                child: Container(
-                  alignment: Alignment.center,
-                  margin: EdgeInsets.only(
-                    right: screenWidth(context, dividedBy: 60),
-                    left: screenWidth(context, dividedBy: 60),
-                    top: screenHeight(context, dividedBy: 55),
-                    bottom: screenHeight(context, dividedBy: 30),
-                  ),
-                  decoration:
-                      BoxDecoration(color: AppColor.white, borderRadius: BorderRadius.circular(9), boxShadow: const [
-                    BoxShadow(
-                      color: Colors.grey,
-                      offset: Offset(
-                        1,
-                        1,
-                      ),
-                      blurRadius: 4,
-                      spreadRadius: 0.0,
-                    ),
-                  ]),
-                  child: TextFormField(
-                    keyboardType: widget.messageInputKeyboardType ?? TextInputType.multiline,
-                    focusNode: _focusNode,
-                    maxLines: widget.messageInputMaxLines ?? 3,
-                    minLines: widget.messageInputMaxLines ?? 1,
-                    textInputAction: widget.messageInputTextInputAction ?? TextInputAction.newline,
-                    textCapitalization: widget.messageInputTextCapitalization ?? TextCapitalization.sentences,
-                    // focusNode: widget.inputFocusNode,
-                    // onSubmitted: (value) => sendTextMessage(),
-                    // onFieldSubmitted: (value) => sendTextMessage(),
-                    controller: editingController,
-                    onTap: () {
-                      setState(() {
-                        emojiShowing = false;
-                        showCard = false;
-                      });
-                      // debugPrint("--- New done");
-                    },
-                    decoration: InputDecoration(
-                        border: InputBorder.none,
-                        hintText: 'Message...',
-                        hintStyle: const TextStyle(
-                            color: Color(0xff888888), fontFamily: 'Roboto', fontWeight: FontWeight.w400),
-                        prefixIcon: IconButton(
-                          splashRadius: 1,
-                          style: const ButtonStyle(overlayColor: MaterialStatePropertyAll(Colors.transparent)),
-                          onPressed: sendTextMessage,
-                          icon: Container(
-                            height: screenHeight(context, dividedBy: 30),
-                            width: screenWidth(context, dividedBy: 20),
-                            decoration: const BoxDecoration(
-                                image: DecorationImage(image: AssetImage('assets/Images/send.png'))),
-                          ),
-                        ),
-                        suffixIcon: Wrap(
-                          crossAxisAlignment: WrapCrossAlignment.center,
-                          runAlignment: WrapAlignment.center,
-                          children: [
-                            GestureDetector(
-                              onTap: () {
-                                emojiShowing = !emojiShowing;
-                                if (showCard) {
-                                  showCard = false;
-                                }
-                                if (emojiShowing) {
-                                  _focusNode.unfocus();
-                                } else {
-                                  _focusNode.requestFocus();
-                                }
-                                setState(() {});
-                              },
-                              child: Container(
-                                margin: EdgeInsets.only(
-                                    right: screenWidth(context, dividedBy: 40),
-                                    left: screenWidth(context, dividedBy: 300)),
-                                height: screenHeight(context, dividedBy: 30),
-                                width: screenWidth(context, dividedBy: 20),
-                                decoration: const BoxDecoration(
-                                    image: DecorationImage(image: AssetImage('assets/Images/emoji.png'))),
+              widget.name == 'Request'
+                  ? const SizedBox()
+                  : Container(
+                      padding: widget.messageInputContainerPadding ??
+                          const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                      decoration: widget.messageInputContainerDecoration ??
+                          BoxDecoration(
+                            color: Theme.of(context).scaffoldBackgroundColor,
+                            boxShadow: [
+                              BoxShadow(
+                                offset: const Offset(0, 4),
+                                blurRadius: 32,
+                                color: Theme.of(context).primaryColor.withOpacity(0.15),
                               ),
-                            ),
-                            const SizedBox(width: 10),
-                            GestureDetector(
-                              onTap: () {
-                                setState(() {
-                                  showCard = !showCard;
-                                });
-                                /* showDialog(
+                            ],
+                          ),
+                      child: Container(
+                        alignment: Alignment.center,
+                        margin: EdgeInsets.only(
+                          right: screenWidth(context, dividedBy: 60),
+                          left: screenWidth(context, dividedBy: 60),
+                          top: screenHeight(context, dividedBy: 55),
+                          bottom: screenHeight(context, dividedBy: 30),
+                        ),
+                        decoration: BoxDecoration(
+                            color: AppColor.white,
+                            borderRadius: BorderRadius.circular(9),
+                            boxShadow: const [
+                              BoxShadow(
+                                color: Colors.grey,
+                                offset: Offset(
+                                  1,
+                                  1,
+                                ),
+                                blurRadius: 4,
+                                spreadRadius: 0.0,
+                              ),
+                            ]),
+                        child: TextFormField(
+                          keyboardType: widget.messageInputKeyboardType ?? TextInputType.multiline,
+                          focusNode: _focusNode,
+                          maxLines: widget.messageInputMaxLines ?? 3,
+                          minLines: widget.messageInputMaxLines ?? 1,
+                          textInputAction: widget.messageInputTextInputAction ?? TextInputAction.newline,
+                          textCapitalization: widget.messageInputTextCapitalization ?? TextCapitalization.sentences,
+                          // focusNode: widget.inputFocusNode,
+                          // onSubmitted: (value) => sendTextMessage(),
+                          // onFieldSubmitted: (value) => sendTextMessage(),
+                          controller: editingController,
+                          onTap: () {
+                            setState(() {
+                              emojiShowing = false;
+                              showCard = false;
+                            });
+                            // debugPrint("--- New done");
+                          },
+                          decoration: InputDecoration(
+                              border: InputBorder.none,
+                              hintText: 'Message...',
+                              hintStyle: const TextStyle(
+                                  color: Color(0xff888888), fontFamily: 'Roboto', fontWeight: FontWeight.w400),
+                              prefixIcon: IconButton(
+                                splashRadius: 1,
+                                style: const ButtonStyle(overlayColor: MaterialStatePropertyAll(Colors.transparent)),
+                                onPressed: sendTextMessage,
+                                icon: Container(
+                                  height: screenHeight(context, dividedBy: 30),
+                                  width: screenWidth(context, dividedBy: 20),
+                                  decoration: const BoxDecoration(
+                                      image: DecorationImage(image: AssetImage('assets/Images/send.png'))),
+                                ),
+                              ),
+                              suffixIcon: Wrap(
+                                crossAxisAlignment: WrapCrossAlignment.center,
+                                runAlignment: WrapAlignment.center,
+                                children: [
+                                  GestureDetector(
+                                    onTap: () {
+                                      emojiShowing = !emojiShowing;
+                                      if (showCard) {
+                                        showCard = false;
+                                      }
+                                      if (emojiShowing) {
+                                        _focusNode.unfocus();
+                                      } else {
+                                        _focusNode.requestFocus();
+                                      }
+                                      setState(() {});
+                                    },
+                                    child: Container(
+                                      margin: EdgeInsets.only(
+                                          right: screenWidth(context, dividedBy: 40),
+                                          left: screenWidth(context, dividedBy: 300)),
+                                      height: screenHeight(context, dividedBy: 30),
+                                      width: screenWidth(context, dividedBy: 20),
+                                      decoration: const BoxDecoration(
+                                          image: DecorationImage(image: AssetImage('assets/Images/emoji.png'))),
+                                    ),
+                                  ),
+                                  const SizedBox(width: 10),
+                                  GestureDetector(
+                                    onTap: () {
+                                      setState(() {
+                                        showCard = !showCard;
+                                      });
+                                      /* showDialog(
                                       context: context,
                                       builder: (context) {
                                         return Align(
@@ -714,20 +854,20 @@ class _ZIMKitMessageListPageState extends State<ZIMKitMessageListPage> {
                                         );
                                       },
                                     );*/
-                              },
-                              child: Container(
-                                height: screenHeight(context, dividedBy: 30),
-                                width: screenWidth(context, dividedBy: 20),
-                                decoration: const BoxDecoration(
-                                    image: DecorationImage(image: AssetImage('assets/Images/pin.png'))),
-                              ),
-                            ),
-                            const SizedBox(width: 10),
-                          ],
-                        )),
-                  ),
-                ),
-              ),
+                                    },
+                                    child: Container(
+                                      height: screenHeight(context, dividedBy: 30),
+                                      width: screenWidth(context, dividedBy: 20),
+                                      decoration: const BoxDecoration(
+                                          image: DecorationImage(image: AssetImage('assets/Images/pin.png'))),
+                                    ),
+                                  ),
+                                  const SizedBox(width: 10),
+                                ],
+                              )),
+                        ),
+                      ),
+                    ),
               Offstage(
                   offstage: !emojiShowing,
                   child: SizedBox(

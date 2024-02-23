@@ -23,12 +23,8 @@ import 'package:pair_me/helper/Apis.dart';
 import 'package:pair_me/helper/App_Colors.dart';
 import 'package:pair_me/helper/Size_page.dart';
 import 'package:pair_me/helper/pref_Service.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import 'package:tutorial_coach_mark/tutorial_coach_mark.dart';
 import 'package:video_player/video_player.dart';
-
-import '../zego_chat/call/call_function.dart';
-import '../zego_chat/zego_zimkit.dart';
 
 class Home_Page extends StatefulWidget {
   const Home_Page({super.key});
@@ -70,6 +66,7 @@ class _Home_PageState extends State<Home_Page> with TickerProviderStateMixin {
   bool swipeDown = false;
   bool month = true;
   final PageController _pageController = PageController();
+
   getData() async {
     allUsersdetails = (await allUsersDetailsCubit.GetAllUsersDetails())!;
     setState(() {});
@@ -167,7 +164,7 @@ class _Home_PageState extends State<Home_Page> with TickerProviderStateMixin {
   @override
   void initState() {
     // allUsersDetailsCubit.GetAllUsersDetails();
-    chatLogin();
+
     allUsersDetailsCubit = BlocProvider.of<AllUsersDetailsCubit>(context);
     rejectUserCubit = BlocProvider.of<RejectUserCubit>(context);
     connectUserCubit = BlocProvider.of<ConnectUserCubit>(context);
@@ -182,16 +179,7 @@ class _Home_PageState extends State<Home_Page> with TickerProviderStateMixin {
     super.initState();
   }
 
-  chatLogin() async {
-    SharedPreferences prefsService = await SharedPreferences.getInstance();
-    String userID = prefsService.getString("chatId") ?? '';
-    String userName = prefsService.getString("name") ?? '';
-    debugPrint("Data ----- ${userID} ${userName}");
-
-    await ZIMKit().connectUser(id: userID, name: userName);
-    await onUserLogin(userID, userName);
-  }
-
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: SizedBox(
@@ -985,7 +973,7 @@ class _Home_PageState extends State<Home_Page> with TickerProviderStateMixin {
                                                               image: imageProvider,
                                                               fit: BoxFit.cover,
                                                               filterQuality: FilterQuality.high),
-                                                          borderRadius: BorderRadius.all(Radius.circular(20))),
+                                                          borderRadius: const BorderRadius.all(Radius.circular(20))),
                                                     ),
                                                     placeholder: (context, url) => Container(
                                                       height: screenHeight(context),
