@@ -22,6 +22,14 @@
           }
         },
         {
+          "client_id": "658934152118-kqlnvotn7dksd6qiavcj8mfb75k3ckf3.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.pair.me",
+            "certificate_hash": "0baca0dcd3a9483f2b5d56533a72f6cce9bdb12e"
+          }
+        },
+        {
           "client_id": "658934152118-oigju4e9ct65t8qjkf38b3f4jk54rdq3.apps.googleusercontent.com",
           "client_type": 3
         }
@@ -37,6 +45,13 @@
             {
               "client_id": "658934152118-oigju4e9ct65t8qjkf38b3f4jk54rdq3.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "658934152118-01nhdol7l82dk4vtt7hkgpd744c0il4f.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.pair.me"
+              }
             }
           ]
         }

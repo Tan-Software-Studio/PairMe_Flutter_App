@@ -404,37 +404,40 @@ class _ZIMKitMessageListPageState extends State<ZIMKitMessageListPage> {
                                 }
                               }
                             },
-                            child: Padding(
-                              padding: EdgeInsets.symmetric(
-                                  horizontal: screenWidth(context, dividedBy: 15),
-                                  vertical: screenHeight(context, dividedBy: 100)),
-                              child: Row(
-                                children: [
-                                  SizedBox(
-                                    height: screenHeight(context, dividedBy: 17),
-                                    width: screenWidth(context, dividedBy: 2),
-                                    child: Row(
-                                      crossAxisAlignment: CrossAxisAlignment.center,
-                                      children: [
-                                        Container(
-                                          margin: EdgeInsets.only(right: screenWidth(context, dividedBy: 40)),
-                                          height: screenHeight(context, dividedBy: 40),
-                                          width: screenWidth(context, dividedBy: 15),
-                                          decoration: const BoxDecoration(
-                                              image: DecorationImage(image: AssetImage('assets/Images/camera.png'))),
-                                        ),
-                                        const Text(
-                                          'Camera',
-                                          style: TextStyle(
-                                              fontFamily: 'Roboto',
-                                              fontSize: 17,
-                                              fontWeight: FontWeight.w500,
-                                              color: AppColor.dropdownfont),
-                                        ),
-                                      ],
-                                    ),
-                                  )
-                                ],
+                            child: Container(
+                              color: Colors.transparent,
+                              child: Padding(
+                                padding: EdgeInsets.symmetric(
+                                    horizontal: screenWidth(context, dividedBy: 15),
+                                    vertical: screenHeight(context, dividedBy: 100)),
+                                child: Row(
+                                  children: [
+                                    SizedBox(
+                                      height: screenHeight(context, dividedBy: 17),
+                                      width: screenWidth(context, dividedBy: 2),
+                                      child: Row(
+                                        crossAxisAlignment: CrossAxisAlignment.center,
+                                        children: [
+                                          Container(
+                                            margin: EdgeInsets.only(right: screenWidth(context, dividedBy: 40)),
+                                            height: screenHeight(context, dividedBy: 40),
+                                            width: screenWidth(context, dividedBy: 15),
+                                            decoration: const BoxDecoration(
+                                                image: DecorationImage(image: AssetImage('assets/Images/camera.png'))),
+                                          ),
+                                          const Text(
+                                            'Camera',
+                                            style: TextStyle(
+                                                fontFamily: 'Roboto',
+                                                fontSize: 17,
+                                                fontWeight: FontWeight.w500,
+                                                color: AppColor.dropdownfont),
+                                          ),
+                                        ],
+                                      ),
+                                    )
+                                  ],
+                                ),
                               ),
                             ),
                           ),
@@ -468,34 +471,37 @@ class _ZIMKitMessageListPageState extends State<ZIMKitMessageListPage> {
                               padding: EdgeInsets.symmetric(
                                   horizontal: screenWidth(context, dividedBy: 15),
                                   vertical: screenHeight(context, dividedBy: 100)),
-                              child: Row(
-                                children: [
-                                  SizedBox(
-                                    height: screenHeight(context, dividedBy: 17),
-                                    width: screenWidth(context, dividedBy: 2),
-                                    child: Row(
-                                      crossAxisAlignment: CrossAxisAlignment.center,
-                                      children: [
-                                        Container(
-                                          margin: EdgeInsets.only(right: screenWidth(context, dividedBy: 40)),
-                                          height: screenHeight(context, dividedBy: 40),
-                                          width: screenWidth(context, dividedBy: 15),
-                                          decoration: const BoxDecoration(
-                                              image:
-                                                  DecorationImage(image: AssetImage('assets/Images/placeholder.png'))),
-                                        ),
-                                        const Text(
-                                          'Photos & Videos',
-                                          style: TextStyle(
-                                              fontFamily: 'Roboto',
-                                              fontSize: 17,
-                                              fontWeight: FontWeight.w500,
-                                              color: AppColor.dropdownfont),
-                                        ),
-                                      ],
-                                    ),
-                                  )
-                                ],
+                              child: Container(
+                                color: Colors.transparent,
+                                child: Row(
+                                  children: [
+                                    SizedBox(
+                                      height: screenHeight(context, dividedBy: 17),
+                                      width: screenWidth(context, dividedBy: 2),
+                                      child: Row(
+                                        crossAxisAlignment: CrossAxisAlignment.center,
+                                        children: [
+                                          Container(
+                                            margin: EdgeInsets.only(right: screenWidth(context, dividedBy: 40)),
+                                            height: screenHeight(context, dividedBy: 40),
+                                            width: screenWidth(context, dividedBy: 15),
+                                            decoration: const BoxDecoration(
+                                                image: DecorationImage(
+                                                    image: AssetImage('assets/Images/placeholder.png'))),
+                                          ),
+                                          const Text(
+                                            'Photos & Videos',
+                                            style: TextStyle(
+                                                fontFamily: 'Roboto',
+                                                fontSize: 17,
+                                                fontWeight: FontWeight.w500,
+                                                color: AppColor.dropdownfont),
+                                          ),
+                                        ],
+                                      ),
+                                    )
+                                  ],
+                                ),
                               ),
                             ),
                           ),
@@ -529,35 +535,38 @@ class _ZIMKitMessageListPageState extends State<ZIMKitMessageListPage> {
                               padding: EdgeInsets.symmetric(
                                   horizontal: screenWidth(context, dividedBy: 15),
                                   vertical: screenHeight(context, dividedBy: 100)),
-                              child: Row(
-                                children: [
-                                  SizedBox(
-                                    height: screenHeight(context, dividedBy: 17),
-                                    width: screenWidth(context, dividedBy: 2),
-                                    child: Row(
-                                      crossAxisAlignment: CrossAxisAlignment.center,
-                                      children: [
-                                        Image(
-                                          image: const AssetImage('assets/Images/file.png'),
-                                          height: screenHeight(context, dividedBy: 30),
-                                          width: screenWidth(context, dividedBy: 15),
-                                          color: const Color(0xff5D5D5D),
-                                        ),
-                                        SizedBox(
-                                          width: screenWidth(context, dividedBy: 50),
-                                        ),
-                                        const Text(
-                                          'Document',
-                                          style: TextStyle(
-                                              fontFamily: 'Roboto',
-                                              fontSize: 17,
-                                              fontWeight: FontWeight.w500,
-                                              color: AppColor.dropdownfont),
-                                        ),
-                                      ],
-                                    ),
-                                  )
-                                ],
+                              child: Container(
+                                color: Colors.transparent,
+                                child: Row(
+                                  children: [
+                                    SizedBox(
+                                      height: screenHeight(context, dividedBy: 17),
+                                      width: screenWidth(context, dividedBy: 2),
+                                      child: Row(
+                                        crossAxisAlignment: CrossAxisAlignment.center,
+                                        children: [
+                                          Image(
+                                            image: const AssetImage('assets/Images/file.png'),
+                                            height: screenHeight(context, dividedBy: 30),
+                                            width: screenWidth(context, dividedBy: 15),
+                                            color: const Color(0xff5D5D5D),
+                                          ),
+                                          SizedBox(
+                                            width: screenWidth(context, dividedBy: 50),
+                                          ),
+                                          const Text(
+                                            'Document',
+                                            style: TextStyle(
+                                                fontFamily: 'Roboto',
+                                                fontSize: 17,
+                                                fontWeight: FontWeight.w500,
+                                                color: AppColor.dropdownfont),
+                                          ),
+                                        ],
+                                      ),
+                                    )
+                                  ],
+                                ),
                               ),
                             ),
                           ),

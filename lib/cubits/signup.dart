@@ -1,12 +1,9 @@
 import 'dart:convert';
-import 'dart:developer';
 
 import 'package:dio/dio.dart';
-import 'package:easy_localization/easy_localization.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:pair_me/Screen_Pages/login_page.dart';
@@ -62,8 +59,7 @@ class SignUpCubit extends Cubit<SignUpState> {
       "isFacebookSignin": isFacebookSignIn,
       if (isGoogleSignIn != true && isFacebookSignIn != true) "password": password,
       if (isGoogleSignIn != true && isFacebookSignIn != true) "confirmPassword": confirmPassword,
-      "language":Language
-
+      "language": Language
     };
     print("Body is $body");
     try {
@@ -76,6 +72,10 @@ class SignUpCubit extends Cubit<SignUpState> {
         emit(SignUpSuccess());
         Authtoken = "Bearer ${hello['Token']}";
         prefsService.setStringData("Authtoken", Authtoken);
+        prefsService.removeData('chatId');
+        prefsService.removeData('name');
+        prefsService.setStringData("chatId", email.trim());
+        prefsService.setStringData("name", firstname.trim());
         Navigator.push(context, MaterialPageRoute(
           builder: (context) {
             return Verification_code(
@@ -108,7 +108,8 @@ class SignUpCubit extends Cubit<SignUpState> {
       final GoogleSignInAccount? googleSignInAccount = await googleSignIn.signIn();
       final GoogleSignInAuthentication googleSignInAuthentication = await googleSignInAccount!.authentication;
 
-      final AuthCredential credential = GoogleAuthProvider.credential(accessToken: googleSignInAuthentication.accessToken, idToken: googleSignInAuthentication.idToken);
+      final AuthCredential credential = GoogleAuthProvider.credential(
+          accessToken: googleSignInAuthentication.accessToken, idToken: googleSignInAuthentication.idToken);
 
       UserCredential authResult = await FirebaseAuth.instance.signInWithCredential(credential);
       User? user = authResult.user;
@@ -117,6 +118,12 @@ class SignUpCubit extends Cubit<SignUpState> {
 
         assert(user.uid == currentUser!.uid);
 
+        SharedPrefsService prefsService = SharedPrefsService();
+
+        prefsService.removeData('chatId');
+        prefsService.removeData('name');
+        prefsService.setStringData("chatId", currentUser!.providerData.first.email!);
+        prefsService.setStringData("name", currentUser.displayName.toString());
         bool isNewUser = authResult.additionalUserInfo!.isNewUser;
         debugPrint("google sign-in isNewUser *** $isNewUser");
         debugPrint("google sign-in isNewUser *** $currentUser");
@@ -127,7 +134,7 @@ class SignUpCubit extends Cubit<SignUpState> {
               return CompleteProfile(
                 firstname: currentUser!.displayName!.toString().split(" ").first,
                 lastname: currentUser!.displayName!.toString().split(" ").last,
-                email:  currentUser.providerData.first.email!,
+                email: currentUser.providerData.first.email!,
                 isGoogleSignIn: true,
                 isFacebookSignIn: false,
               );
@@ -177,7 +184,6 @@ class SignUpCubit extends Cubit<SignUpState> {
       print("authResult res ======${authResult}");
       print("authResult res ======${authResult.user}");
 
-
       User? user = authResult.user;
 
       debugPrint("facebook sign-in  ***-=-=-= ${user!.email}");
@@ -186,6 +192,12 @@ class SignUpCubit extends Cubit<SignUpState> {
       bool isNewUser = authResult.additionalUserInfo!.isNewUser;
       debugPrint("facebook sign-in isNewUser *** $isNewUser");
       debugPrint("facebook sign-in isNewUser *** ${user.providerData.first.email}");
+      SharedPrefsService prefsService = SharedPrefsService();
+
+      prefsService.removeData('chatId');
+      prefsService.removeData('name');
+      prefsService.setStringData("chatId", user.providerData.first.email!);
+      prefsService.setStringData("name", user.displayName.toString());
 
       if (isNewUser) {
         Navigator.push(context, MaterialPageRoute(

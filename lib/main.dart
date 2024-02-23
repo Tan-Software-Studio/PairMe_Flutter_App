@@ -1,5 +1,7 @@
 // import 'package:agora_chat_sdk/agora_chat_sdk.dart';
+// import 'package:agora_chat_sdk/agora_chat_sdk.dart';
 import 'dart:io' show Platform;
+import 'dart:io';
 
 import 'package:easy_localization/easy_localization.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -49,22 +51,24 @@ import 'package:pair_me/cubits/user_update_cubit.dart';
 import 'package:pair_me/cubits/verify_forgot_otp.dart';
 import 'package:pair_me/helper/App_Colors.dart';
 import 'package:pair_me/helper/constant.dart';
-import 'package:pair_me/zego_chat/login_page.dart';
 import 'package:pair_me/zego_chat/zego_zimkit.dart';
 import 'package:zego_uikit_prebuilt_call/zego_uikit_prebuilt_call.dart';
 import 'package:zego_uikit_signaling_plugin/zego_uikit_signaling_plugin.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  Platform.isAndroid?
-  await Firebase.initializeApp(
-    options: const FirebaseOptions(
-      apiKey: 'AIzaSyC2_y0JdEfnvqoSiHnclxQn-g_DA-WMn2U',
-      appId: '1:658934152118:android:8a784db8774c4944f85f17',
-      messagingSenderId: '658934152118',
-      projectId: 'pair-me-76d51',
-    ),
-  ):await Firebase.initializeApp();
+  if (Platform.isAndroid) {
+    await Firebase.initializeApp(
+      options: const FirebaseOptions(
+        apiKey: 'AIzaSyC2_y0JdEfnvqoSiHnclxQn-g_DA-WMn2U',
+        appId: '1:658934152118:android:8a784db8774c4944f85f17',
+        messagingSenderId: '658934152118',
+        projectId: 'pair-me-76d51',
+      ),
+    );
+  } else {
+    await Firebase.initializeApp();
+  }
 
   ZIMKit().init(
     appID: appID, // your appid

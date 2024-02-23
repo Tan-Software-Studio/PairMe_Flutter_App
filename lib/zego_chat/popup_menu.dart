@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:pair_me/cubits/translation_cubit.dart';
+import 'package:pair_me/zego_chat/zego_zimkit.dart';
 
 // import 'package:zego_zimkit/zego_zimkit.dart';
 
@@ -28,7 +29,7 @@ class _HomePagePopupMenuButtonState extends State<HomePagePopupMenuButton> {
       icon: const Icon(CupertinoIcons.add_circled),
       itemBuilder: (context) {
         return [
-          PopupMenuItem(
+/*          PopupMenuItem(
             value: 'English',
             child: const ListTile(leading: Icon(CupertinoIcons.person_2_fill), title: Text('English', maxLines: 1)),
             onTap: () async {
@@ -70,6 +71,12 @@ class _HomePagePopupMenuButtonState extends State<HomePagePopupMenuButton> {
                 language: 'cantonese',
               );
             },
+          ),*/
+          PopupMenuItem(
+            value: 'New Chat',
+            child:
+                const ListTile(leading: Icon(CupertinoIcons.chat_bubble_2_fill), title: Text('New Chat', maxLines: 1)),
+            onTap: () => ZIMKit().showDefaultNewPeerChatDialog(context),
           ),
 /*          PopupMenuItem(
             value: 'New Chat',

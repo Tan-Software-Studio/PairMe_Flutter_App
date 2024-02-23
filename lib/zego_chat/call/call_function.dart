@@ -5,8 +5,8 @@ import 'package:zego_uikit_signaling_plugin/zego_uikit_signaling_plugin.dart';
 
 Future<void> onUserLogin(id, name) async {
   ZegoUIKitPrebuiltCallInvitationService().init(
-    appID: 1908055129 /*input your AppID*/,
-    appSign: 'e66dbfca5b08399304f3ab30e6e925cf29813aaf39cf19d13b91f73accf05be9' /*input your AppSign*/,
+    appID: 1908055129,
+    appSign: 'e66dbfca5b08399304f3ab30e6e925cf29813aaf39cf19d13b91f73accf05be9',
     userID: id,
     userName: name,
     plugins: [

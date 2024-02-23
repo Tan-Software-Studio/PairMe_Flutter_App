@@ -23,6 +23,7 @@ class _SpleshScreenState extends State<SpleshScreen> {
     super.initState();
     Splash_Timer();
   }
+
   Splash_Timer() async {
     Authtoken = (await prefsService.getStringData("Authtoken"))!;
     Timer(const Duration(seconds: 1), () async {
@@ -32,20 +33,26 @@ class _SpleshScreenState extends State<SpleshScreen> {
               context,
               MaterialPageRoute(builder: (context) => const Home_screen()),
               // MaterialPageRoute(builder: (context) => const LoginPage()),
-                  (route) => false);
+              (route) => false);
         });
       } else {
-        Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => const Language_Screen(),), (route) => false);
+        Navigator.pushAndRemoveUntil(
+            context,
+            MaterialPageRoute(
+              builder: (context) => const Language_Screen(),
+            ),
+            (route) => false);
       }
-
     });
   }
+
   @override
   Widget build(BuildContext context) {
     return Container(
       height: screenHeight(context),
       width: screenWidth(context),
-      decoration: const BoxDecoration(image: DecorationImage(image: AssetImage('assets/Images/logo.png'),fit: BoxFit.cover)),
+      decoration:
+          const BoxDecoration(image: DecorationImage(image: AssetImage('assets/Images/logo.png'), fit: BoxFit.cover)),
     );
   }
 }

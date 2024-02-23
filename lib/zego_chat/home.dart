@@ -3,7 +3,7 @@ import 'package:pair_me/Widgets/Background_img.dart';
 import 'package:pair_me/cubits/translation_cubit.dart';
 import 'package:pair_me/zego_chat/popup_menu.dart';
 import 'package:pair_me/zego_chat/zego_zimkit.dart';
-
+import 'package:shared_preferences/shared_preferences.dart';
 // import 'package:zego_zimkit/zego_zimkit.dart';
 
 class MyHomePage extends StatefulWidget {
@@ -21,6 +21,7 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   void initState() {
     // loginUser();
+    getChatId();
     showCard = false;
     super.initState();
   }
@@ -34,14 +35,27 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 
+  String chatId = "";
+
+  getChatId() async {
+    SharedPreferences prefsService = await SharedPreferences.getInstance();
+    setState(() {
+      chatId = prefsService.getString("chatId") ?? '';
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
       onWillPop: () async => false,
       child: Scaffold(
         appBar: AppBar(
-          title: const Text('Zego Chat'),
-          actions: [HomePagePopupMenuButton()],
+          centerTitle: false,
+          title: Text(
+            chatId,
+            style: const TextStyle(color: Colors.black, fontSize: 12),
+          ),
+          actions: const [HomePagePopupMenuButton()],
         ),
         body: ZIMKitConversationListView(
           onPressed: (context, conversation, defaultAction) {

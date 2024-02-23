@@ -84,15 +84,15 @@
 
         		<array>
         			<!-- Copied from GoogleService-Info.plist key REVERSED_CLIENT_ID -->
-        			<string>fb313128555073734</string>
+        			<string>fb945235630437370</string>
         			<string>com.googleusercontent.apps.658934152118-01nhdol7l82dk4vtt7hkgpd744c0il4f</string>
         		</array>
         	</dict>
         </array>
         <key>FacebookAppID</key>
-        <string>313128555073734</string>
+        <string>945235630437370</string>
         <key>FacebookClientToken</key>
-        <string>4726ff3abf6cf96f1357c928aaeaf32b</string>
+        <string>05edbefa6468320d80081de28f464203</string>
         <key>FacebookDisplayName</key>
         <string>Pair-me</string>
 </dict>
