@@ -276,17 +276,15 @@ class _Connection_PageState extends State<Connection_Page> {
 */
                                                                               await ZIMKit()
                                                                                   .deleteAllConversation(
-                                                                                isAlsoDeleteFromServer: true,
-                                                                                isAlsoDeleteMessages: true,
-                                                                              )
+                                                                                      isAlsoDeleteFromServer: true,
+                                                                                      isAlsoDeleteMessages: true)
                                                                                   .then((value) {
-                                                                                ZIMKit().deleteConversation(
-                                                                                    conversationID,
-                                                                                    ZIMConversationType.peer);
+                                                                                // ZIMKit().deleteConversation(
+                                                                                //     conversationID,
+                                                                                //     ZIMConversationType.peer);
                                                                               });
 
                                                                               connectedUsersCubit.GetConnectedUsers();
-
                                                                               Navigator.pop(context);
                                                                             },
                                                                           );
