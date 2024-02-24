@@ -1,13 +1,12 @@
-// import 'package:agora_chat_sdk/agora_chat_sdk.dart';
-// import 'package:agora_chat_sdk/agora_chat_sdk.dart';
-import 'dart:io' show Platform;
-import 'dart:io';
-
+import 'package:agora_chat_sdk/agora_chat_sdk.dart';
+import 'package:awesome_notifications/awesome_notifications.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:pair_me/Screen_Pages/Step_Screens.dart';
 import 'package:pair_me/Screen_Pages/splash_Screen.dart';
 import 'package:pair_me/cubits/Buisness_profile.dart';
 import 'package:pair_me/cubits/City&state.dart';
@@ -49,73 +48,76 @@ import 'package:pair_me/cubits/undo_users_cubit.dart';
 import 'package:pair_me/cubits/user_profile_cubit.dart';
 import 'package:pair_me/cubits/user_update_cubit.dart';
 import 'package:pair_me/cubits/verify_forgot_otp.dart';
+import 'package:pair_me/firebase_options.dart';
 import 'package:pair_me/helper/App_Colors.dart';
-import 'package:pair_me/helper/constant.dart';
-import 'package:pair_me/zego_chat/zego_zimkit.dart';
-import 'package:zego_uikit_prebuilt_call/zego_uikit_prebuilt_call.dart';
-import 'package:zego_uikit_signaling_plugin/zego_uikit_signaling_plugin.dart';
+import 'package:pair_me/helper/Size_page.dart';
+
+Future<void> backgroundHandler(RemoteMessage message) async {
+  print("message ===> $message");
+  AwesomeNotifications().createNotification(
+      content: NotificationContent(
+          id: 123,
+          channelKey: "call_channel",
+        color: Colors.white,
+        title: message.notification?.title ?? '',
+        body: message.notification?.body,
+        category: NotificationCategory.Call,
+        wakeUpScreen: true,
+        fullScreenIntent: true,
+        autoDismissible: false,
+        backgroundColor: Colors.orange
+      ),
+  actionButtons: [
+    NotificationActionButton(key: "ACCEPT", label: "Accept",color: Colors.greenAccent,autoDismissible: true),
+    NotificationActionButton(key: "REJECT", label: "Reject",color: Colors.redAccent,autoDismissible: true),
+  ]
+  );
+}
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  if (Platform.isAndroid) {
-    await Firebase.initializeApp(
-      options: const FirebaseOptions(
-        apiKey: 'AIzaSyC2_y0JdEfnvqoSiHnclxQn-g_DA-WMn2U',
-        appId: '1:658934152118:android:8a784db8774c4944f85f17',
-        messagingSenderId: '658934152118',
-        projectId: 'pair-me-76d51',
-      ),
-    );
-  } else {
-    await Firebase.initializeApp();
-  }
-
-  ZIMKit().init(
-    appID: zegoChatAppID, // your appid
-    appSign: zegoChatAppSign, // your appSign
+  await EasyLocalization.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
   );
-  final navigatorKey = GlobalKey<NavigatorState>();
-
-  ZegoUIKitPrebuiltCallInvitationService().setNavigatorKey(navigatorKey);
-  ZegoUIKit().initLog().then((value) async {
-    ZegoUIKitPrebuiltCallInvitationService().useSystemCallingUI(
-      [ZegoUIKitSignalingPlugin()],
-    );
-    await EasyLocalization.ensureInitialized();
-    // final options = ChatOptions(
-    //   appKey: AgoraAppkey,
-    //   autoLogin: false,
-    // );
-    // await ChatClient.getInstance.init(options);
-    SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp, DeviceOrientation.portraitDown])
-        .then((_) async {
-      runApp(EasyLocalization(
-          supportedLocales: const [
-            Locale('en'), // English
-            Locale('hi'), // Hindi
-            Locale('es'), // Spanish
-            Locale('zh', 'CN'), // Simplified Chinese mandarin
-            Locale('zh', 'TW'), // Traditional Chinese cantesos
-          ],
-          fallbackLocale: const Locale('en'),
-          path: 'assets/Language',
-          child: MyApp(
-            navigatorKey: navigatorKey,
-          )));
-    });
+  AwesomeNotifications().initialize(null, [
+    NotificationChannel(
+        channelKey: "call_channel",
+        channelName: "call_channel",
+        channelDescription: "channel of calling",
+        defaultColor: Colors.redAccent,
+        ledColor: Colors.white,
+        importance: NotificationImportance.Max,
+        channelShowBadge: true,
+        locked: true,
+        defaultRingtoneType: DefaultRingtoneType.Ringtone)
+  ]);
+  FirebaseMessaging.onBackgroundMessage(backgroundHandler);
+  final options = ChatOptions(
+    appKey: AgoraAppkey,
+    autoLogin: false,
+  );
+  await ChatClient.getInstance.init(options);
+  SystemChrome.setPreferredOrientations(
+          [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown])
+      .then((_) async {
+    runApp(EasyLocalization(
+        supportedLocales: const [
+          Locale('en'), // English
+          Locale('hi'), // Hindi
+          Locale('es'), // Spanish
+          Locale('zh', 'CN'), // Simplified Chinese mandarin
+          Locale('zh', 'TW'), // Traditional Chinese cantesos
+        ],
+        fallbackLocale: const Locale('en'),
+        path: 'assets/Language',
+        child: const MyApp()));
   });
 }
 
-class MyApp extends StatefulWidget {
-  final GlobalKey<NavigatorState> navigatorKey;
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
 
-  const MyApp({super.key, required this.navigatorKey});
-
-  @override
-  State<MyApp> createState() => _MyAppState();
-}
-
-class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
@@ -153,6 +155,7 @@ class _MyAppState extends State<MyApp> {
         BlocProvider(create: (context) => ClearAllNotificationCubit()),
         BlocProvider(create: (context) => AcceptorRejectCubit()),
         BlocProvider(create: (context) => ConnectedUsersCubit()),
+        BlocProvider(create: (context) => MessageUserCubit()),
         BlocProvider(create: (context) => RemoveUserCubit()),
         BlocProvider(create: (context) => MessageUserCubit()),
         BlocProvider(create: (context) => MsgReqbyIDCubit()),
@@ -164,8 +167,6 @@ class _MyAppState extends State<MyApp> {
       ],
       child: MaterialApp(
         title: 'Flutter Demo',
-        navigatorKey: widget.navigatorKey,
-
         debugShowCheckedModeBanner: false,
         locale: context.locale,
         theme: ThemeData(
@@ -174,21 +175,8 @@ class _MyAppState extends State<MyApp> {
         ),
         supportedLocales: context.supportedLocales,
         localizationsDelegates: context.localizationDelegates,
-        builder: (context, child) {
-          return Stack(
-            children: [
-              child!,
-              ZegoUIKitPrebuiltCallMiniOverlayPage(
-                showUserName: true,
-                contextQuery: () {
-                  return widget.navigatorKey.currentState!.context;
-                },
-              ),
-            ],
-          );
-        },
         home: const SpleshScreen(),
-        // home: const LoginPage(),
+       // home: const StepScreen(),
       ),
     );
   }

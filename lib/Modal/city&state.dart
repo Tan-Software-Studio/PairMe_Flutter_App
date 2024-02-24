@@ -77,7 +77,7 @@ class CityandStateState {
   String name;
   String iso3;
   String iso2;
-  List<StateElement> states;
+  List states;
   int v;
 
   CityandStateState({
@@ -94,7 +94,7 @@ class CityandStateState {
     name: json["name"],
     iso3: json["iso3"],
     iso2: json["iso2"],
-    states: List<StateElement>.from(json["states"].map((x) => StateElement.fromJson(x))),
+    states: List.from(json["states"].map((x) => StateElement.fromJson(x))),
     v: json["__v"],
   );
 
@@ -103,7 +103,7 @@ class CityandStateState {
     "name": name,
     "iso3": iso3,
     "iso2": iso2,
-    "states": List<dynamic>.from(states.map((x) => x.toJson())),
+    "states": List.from(states.map((x) => x.toJson())),
     "__v": v,
   };
 }

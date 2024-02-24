@@ -1,15 +1,16 @@
 import 'dart:convert';
-import 'dart:math';
-
 import 'package:dio/dio.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter/material.dart';
+import 'package:pair_me/Screen_Pages/Step_Screens.dart';
 import 'package:pair_me/Screen_Pages/bottom_bar/home_screen.dart';
+import 'package:pair_me/Screen_Pages/creat_new_password.dart';
 import 'package:pair_me/Screen_Pages/login_page.dart';
 import 'package:pair_me/Widgets/flutter_toast.dart';
 import 'package:pair_me/helper/Apis.dart';
 import 'package:pair_me/helper/Size_page.dart';
 import 'package:pair_me/helper/pref_Service.dart';
+
 
 abstract class LoginState {}
 
@@ -24,7 +25,10 @@ class LoginSuccess extends LoginState {}
 class LoginCubit extends Cubit<LoginState> {
   LoginCubit() : super(LoginInitials());
 
-  Future<void> LoginService({required String phoneNumber, required String otp, required BuildContext context}) async {
+  Future<void> LoginService(
+      {required String phoneNumber,
+        required String otp,
+        required BuildContext context}) async {
     emit(LoginLoading());
     final dio = Dio();
     SharedPrefsService prefsService = SharedPrefsService();
@@ -43,17 +47,7 @@ class LoginCubit extends Cubit<LoginState> {
         emit(LoginSuccess());
         Authtoken = "Bearer ${hello['Token']}";
         prefsService.setStringData("Authtoken", Authtoken);
-        prefsService.removeData('chatId');
-        prefsService.removeData('name');
-        prefsService.setStringData("chatId", phoneNumber);
-        prefsService.setStringData("name", "${Random().nextInt(100)}");
-        Navigator.pushAndRemoveUntil(
-            context,
-            MaterialPageRoute(
-              builder: (context) => const Home_screen(),
-              // builder: (context) => const LoginPage(),
-            ),
-            (route) => false);
+        Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => const Home_screen(),), (route) => false);
         flutterToast(hello['message'], true);
       } else {
         emit(LoginError());

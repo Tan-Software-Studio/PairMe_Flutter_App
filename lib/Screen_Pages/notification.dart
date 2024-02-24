@@ -29,66 +29,6 @@ class _Notification_pageState extends State<Notification_page> {
   ClearAllNotificationCubit clearAllNotificationCubit =
       ClearAllNotificationCubit();
   List ids = [];
-
-//   List list = [
-//   {
-//     "Name":"Jane Koblenz",
-//     "image":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTCczoMDFIc77qVeqtnJ26h8Yen0WXNfyLTIg&usqp=CAU"
-//   },
-//   {
-//     "Name":"Virat Kohli",
-//     "image":"https://wallpapers.com/images/hd/virat-kohli-hd-black-tuxedo-fibgrtdlqvatdblj.jpg"
-//   },
-//   {
-//     "Name":"Hardik Pandeya",
-//     "image":"https://i.pinimg.com/originals/2e/31/a4/2e31a4fce6c52a98d518053d269d7eba.jpg"
-//   },
-//   {
-//     "Name":"Amitabh Bachchan",
-//     "image":"https://e1.pxfuel.com/desktop-wallpaper/85/759/desktop-wallpaper-%E2%9C%85-8-amitabh-bachchan-amitabh-bachchan-thumbnail.jpg"
-//   },
-//   {
-//     "Name":"Vincenzo cassano",
-//     "image":"https://e0.pxfuel.com/wallpapers/251/76/desktop-wallpaper-vincenzo-cassano-thumbnail.jpg"
-//   },
-//   {
-//     "Name":"Shahrukh khan",
-//     "image":"https://e0.pxfuel.com/wallpapers/531/653/desktop-wallpaper-shah-rukh-khan-actor-king-gentleman-shahrukhkhan-attitude.jpg"
-//   },
-//   {
-//     "Name":"Robert Downey jr",
-//     "image":"https://static.wikia.nocookie.net/ironman/images/7/79/Photo%28906%29.jpg/revision/latest?cb=20141019122536"
-//   },
-//   {
-//     "Name":"Johnny Depp",
-//     "image":"https://images.saymedia-content.com/.image/t_share/MTc0NDI1MDExOTk2NTk5OTQy/top-10-greatest-johnny-depp-movies-of-all-time.jpg"
-//   },
-//   {
-//     "Name":"úrsula corberó",
-//     "image":"https://www.bollywoodhungama.com/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-23-at-10.45.54-AM.jpeg"
-//   },
-//   {
-//     "Name":"Satoru Gojo",
-//     "image":"https://e0.pxfuel.com/wallpapers/666/451/desktop-wallpaper-white-hair-blue-eyes-satoru-gojo-jujutsu-kaisen.jpg"
-//   },
-//   {
-//     "Name":"Nanami Kento",
-//     "image":"https://wallpaperaccess.com/full/5661539.png"
-//   },
-//   {
-//     "Name":"Ryomen Sukuna",
-//     "image":"https://i1.sndcdn.com/artworks-Ovrge2921kVbhGxA-m3FQYA-t500x500.jpg"
-//   },
-//   {
-//     "Name":"Vijay Thalapathy",
-//     "image":"https://static.toiimg.com/photo/101080781.cms"
-//   },
-//   {
-//     "Name":"Yash",
-//     "image":"https://img.mensxp.com/media/content/2021/Jan/Lesser-Known-Facts-About-Yash-7_60056adf8c66e.jpeg?w=900&h=1200&cc=1"
-//   },
-// ];
-
   getData() {
     notificationCubit.GetNotification();
     int lenth = notificationCubit.userNotification.data?.length ?? 0;
@@ -195,7 +135,7 @@ class _Notification_pageState extends State<Notification_page> {
                                 itemBuilder: (context, index) {
                                   return SizedBox(
                                     // margin: EdgeInsets.symmetric(horizontal: screenWidth(context,dividedBy: 15)),
-                                    height: screenHeight(context, dividedBy: 8),
+                                    height: screenHeight(context, dividedBy: 8.67),
                                     width: screenHeight(context),
                                     child: Padding(
                                       padding: EdgeInsets.symmetric(
@@ -246,7 +186,7 @@ class _Notification_pageState extends State<Notification_page> {
                                           Padding(
                                             padding: EdgeInsets.symmetric(
                                                 vertical: screenWidth(context,
-                                                    dividedBy: 40)),
+                                                    dividedBy: 50)),
                                             child: Column(
                                               mainAxisAlignment:
                                                   MainAxisAlignment.start,
@@ -283,6 +223,7 @@ class _Notification_pageState extends State<Notification_page> {
                                                       style: const TextStyle(
                                                           color:
                                                               Color(0xffAAAAAA),
+                                                          height: 1.3,
                                                           fontSize: 12,
                                                           fontWeight:
                                                               FontWeight.w400,
@@ -291,7 +232,7 @@ class _Notification_pageState extends State<Notification_page> {
                                                 ),
                                                 SizedBox(
                                                   height: screenHeight(context,
-                                                      dividedBy: 70),
+                                                      dividedBy: 150),
                                                 ),
                                                 SizedBox(
                                                     width: screenWidth(context,

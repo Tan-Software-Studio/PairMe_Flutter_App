@@ -438,7 +438,7 @@ class _Setting_pageState extends State<Setting_page> {
                     GestureDetector(
                       onTap: () {
                         showDialog(context: context,builder: (context) => addFolderNameDialog(name: 'Confirm Logout', describ: 'Are you sure you want to logout?', cancel: 'Cancel', remove: 'OK', onTap: () async {
-                          // await ChatClient.getInstance.logout(true);
+                          await ChatClient.getInstance.logout(true);
                           logoutUserCubit.LogoutService(context);
                         }),);
                       },

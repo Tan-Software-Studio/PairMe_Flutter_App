@@ -289,17 +289,17 @@ class _Professional_DetailsState extends State<Professional_Details> {
                           : const SizedBox(),
                       custom_textfield_header(text: 'Skills'),
                       Custom_textfield(context,
-                          show_icon: true,
+                          show_icon: false,
                           image: _skill ?'assets/Images/Vector.png' : 'assets/Images/right_arrow.png',
                           onTap: () {
-                            setState(() {
-                              _skill = !_skill;
-                            });
+                            // setState(() {
+                            //   _skill = !_skill;
+                            // });
                           },
                           readOnly: false, onPress: () {
-                            setState(() {
-                              _skill = !_skill;
-                            });
+                            // setState(() {
+                            //   _skill = !_skill;
+                            // });
                           },
                           hint: "Select",
                           hidetext: false,

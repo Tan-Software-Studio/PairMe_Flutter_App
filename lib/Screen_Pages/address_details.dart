@@ -1,4 +1,5 @@
 import 'package:country_picker/country_picker.dart';
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pair_me/Modal/city&state.dart';
@@ -10,6 +11,8 @@ import 'package:pair_me/Widgets/textfield.dart';
 import 'package:pair_me/cubits/City&state.dart';
 import 'package:pair_me/cubits/address_update.dart';
 import 'package:pair_me/helper/Size_page.dart';
+import 'package:pair_me/helper/Apis.dart';
+
 
 class Address_Details extends StatefulWidget {
   String line1,line2,country,state,city,code;
@@ -35,9 +38,30 @@ class _Address_DetailsState extends State<Address_Details> {
   final TextEditingController _State = TextEditingController();
   final TextEditingController _City = TextEditingController();
   CityandState cityandState = CityandState();
+  List _states = [];
+  List _citys = [];
+  List resultstates = [];
+  List resultcity = [];
   GetData(String country) async {
     cityandState = (await cityStateCubit.getcalendarEvents(country: country))!;
     setState(() {});
+  }
+  Future getStateandcitys ({required String country}) async {
+    final dio = Dio();
+    try {
+      Response response = await dio.get('${apis.city}/$country');
+      Map _map = response.data;
+      final st = _map['state']['states'];
+      final st1 = _map['city']['cities'];
+      _states = st;
+      _citys = st1;
+      setState(() {
+      });
+      print("map ==> $_citys as Strin");
+    } on Exception catch (e) {
+      print("you are fully fail my friend" + e.toString());
+      // TODO
+    }
   }
   getdata(){
     _Address.text = widget.line1;
@@ -46,6 +70,14 @@ class _Address_DetailsState extends State<Address_Details> {
     _State.text = widget.state;
     _City.text = widget.city;
     _Zipcode.text = widget.code;
+    _City.text.isNotEmpty ? getStateandcitys(country: _Contry.text).then((value) {
+      resultcity = _citys.where((element) => element.toString().toLowerCase().contains(_City.text.toLowerCase())).toList() ?? [];
+    }) : null;
+    _City.text.isNotEmpty ? GetData( _Contry.text) : null;
+    _State.text.isNotEmpty ? getStateandcitys(country: _Contry.text).then((value) {
+      resultstates = _states.where((element) => element['name'].toString().toLowerCase().contains( _State.text.toLowerCase())).toList() ?? [];
+    }) : null;
+    _State.text.isNotEmpty ? GetData( _Contry.text) : null;
     setState(() {
 
     });
@@ -82,7 +114,7 @@ class _Address_DetailsState extends State<Address_Details> {
                     onTap: () {
                       Navigator.pop(context);
                     },
-                    child: Padding(
+                    child: const Padding(
                       padding: EdgeInsets.only(left: 8.0),
                       child: Icon(Icons.arrow_back_ios_rounded),
                     )),
@@ -126,11 +158,11 @@ class _Address_DetailsState extends State<Address_Details> {
                               context: context,
                               showPhoneCode: true,
                               onSelect: (Country country) {
-                                print(
-                                    'Select country: ${country.phoneCode}');
+                                print('Select country: ${country.phoneCode}');
                                 print('Select country: ${country.name}');
                                 _Contry.text = country.name;
                                 GetData(_Contry.text);
+                                getStateandcitys(country: _Contry.text);
                                 // countryCodeSelect = country.phoneCode;
                                 // countryCodeflagsvg = country.flagEmoji;
                                 //flutterToast(country.displayNameNoCountryCode, true);
@@ -144,18 +176,17 @@ class _Address_DetailsState extends State<Address_Details> {
                               : 'assets/Images/right_arrow.png',
                           readOnly: true,
                           onPress: () {
-                            // setState(() {
-                            //   _contry = !_contry;
-                            // });
                             showCountryPicker(
                               context: context,
                               showPhoneCode: true,
                               onSelect: (Country country) {
                                 print(
                                     'Select country: ${country.phoneCode}');
-                                print('Select country: ${country.name}');
+                                print(
+                                    'Select country: ${country.name}');
                                 _Contry.text = country.name;
                                 GetData(_Contry.text);
+                                getStateandcitys(country: _Contry.text);
                                 // countryCodeSelect = country.phoneCode;
                                 // countryCodeflagsvg = country.flagEmoji;
                                 //flutterToast(country.displayNameNoCountryCode, true);
@@ -174,16 +205,22 @@ class _Address_DetailsState extends State<Address_Details> {
                               children: [
                                 custom_textfield_header(text: 'State'),
                                 Custom_textfield(context,
+                                    onChanged: (value) {
+                                      resultstates = _states.where((element) => element['name'].toString().toLowerCase().contains(value.toLowerCase())).toList() ?? [];
+                                      print("result ==> $resultstates");
+                                      setState(() { });
+                                    },
                                     onTap: () {
                                       setState(() {
-                                        _state = !_state;
+                                        _state = true;
+                                        print("_states ===> $_states");
                                       });
                                     },
                                     show_icon: true,
                                     image: _state
                                         ? 'assets/Images/Vector.png'
                                         : 'assets/Images/right_arrow.png',
-                                    readOnly: true,
+                                    readOnly: false,
                                     onPress: () {
                                       setState(() {
                                         _state = !_state;
@@ -219,7 +256,7 @@ class _Address_DetailsState extends State<Address_Details> {
                                       builder: (context, state) {
                                         print(state);
                                         if (state is CityStateError)
-                                          return Center(
+                                          return const Center(
                                             child: Text("No State"),
                                           );
                                         return Padding(
@@ -230,34 +267,25 @@ class _Address_DetailsState extends State<Address_Details> {
                                               horizontal: screenWidth(
                                                   context,
                                                   dividedBy: 30)),
-                                          child: ListView.builder(
+                                          child:ListView.builder(
                                             physics:
                                             const ClampingScrollPhysics(),
                                             padding: EdgeInsets.zero,
-                                            itemCount: cityandState
-                                                .state?.states.length,
-                                            itemBuilder:
-                                                (context, index) {
+                                            itemCount: _State.text.isNotEmpty ? resultstates.length : cityandState.state?.states.length,
+                                            itemBuilder: (context, index) {
                                               return InkWell(
                                                 onTap: () {
-                                                  _State.text = cityandState
+                                                  _State.text =_State.text.isNotEmpty ?
+                                                  resultstates[index]['name'].toString() : cityandState
                                                       .state
                                                       ?.states[
                                                   index]
-                                                      .name ??
-                                                      '';
+                                                      .name;
                                                   _state = !_state;
-                                                  setState(() {
-
-                                                  });
+                                                  setState(() {});
                                                 },
                                                 child: custom_text(
-                                                    text: cityandState
-                                                        .state
-                                                        ?.states[
-                                                    index]
-                                                        .name ??
-                                                        '',
+                                                    text:_State.text.isNotEmpty ? resultstates[index]['name'].toString() :  cityandState.state?.states[index].name,
                                                     color: const Color(
                                                         0xff303030)),
                                               );
@@ -284,10 +312,15 @@ class _Address_DetailsState extends State<Address_Details> {
                               children: [
                                 custom_textfield_header(text: 'City'),
                                 Custom_textfield(
+                                    onChanged: (value) {
+                                      resultcity = _citys.where((element) => element.toString().toLowerCase().contains(value.toLowerCase())).toList() ?? [];
+                                      print("result ==> $resultcity");
+                                      setState(() { });
+                                    },
                                     onTap: () {
-                                      // setState(() {
-                                      //   _city = !_city;
-                                      // });
+                                      setState(() {
+                                        _city = true;
+                                      });
                                     },
                                     context,
                                     show_icon: true,
@@ -329,10 +362,11 @@ class _Address_DetailsState extends State<Address_Details> {
                                       CityStateState>(
                                     builder: (context, state) {
                                       print(state);
-                                      if (state is CityStateError)
-                                        return Center(
+                                      if (state is CityStateError) {
+                                        return const Center(
                                           child: Text("No State"),
                                         );
+                                      }
                                       return Padding(
                                         padding: EdgeInsets.symmetric(
                                             vertical: screenHeight(
@@ -345,26 +379,24 @@ class _Address_DetailsState extends State<Address_Details> {
                                           physics:
                                           const ClampingScrollPhysics(),
                                           padding: EdgeInsets.zero,
-                                          itemCount: cityandState
-                                              .city?.cities.length,
+                                          itemCount:_City.text.isEmpty ? cityandState.city?.cities.length : resultcity.length,
                                           itemBuilder:
                                               (context, index) {
                                             return InkWell(
                                                 onTap: () {
-                                                  _City.text = cityandState
+                                                  _City
+                                                      .text = _City.text.isEmpty ? cityandState
                                                       .city
                                                       ?.cities[
-                                                  index] ??
-                                                      '';
+                                                  index] : resultcity[index] ;
                                                   _city = !_city;
                                                   setState(() {});
                                                 },
                                                 child: custom_text(
-                                                    text: cityandState
+                                                    text: _City.text.isEmpty ? cityandState
                                                         .city
                                                         ?.cities[
-                                                    index] ??
-                                                        '',
+                                                    index] : resultcity[index],
                                                     color: const Color(
                                                         0xff303030)));
                                           },
