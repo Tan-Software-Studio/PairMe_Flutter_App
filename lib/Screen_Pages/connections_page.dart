@@ -263,25 +263,16 @@ class _Connection_PageState extends State<Connection_Page> {
                                                                                   ZIMMessageDeleteConfig();
                                                                               config.isAlsoDeleteServerMessage = false;
 
-                                                                              /*            await ZIM
-                                                                                  .getInstance()!
-                                                                                  .deleteAllMessage(conversationID,
-                                                                                      ZIMConversationType.peer, config)
+                                                                              await ZIMKit()
+                                                                                  .deleteAllMessage(
+                                                                                      conversationID: conversationID,
+                                                                                      conversationType:
+                                                                                          ZIMConversationType.peer,
+                                                                                      isAlsoDeleteServerMessage: true)
                                                                                   .then((value) {
                                                                                 ZIMKit().deleteConversation(
                                                                                     conversationID,
                                                                                     ZIMConversationType.peer);
-                                                                              }).catchError((onError) {});
-
-*/
-                                                                              await ZIMKit()
-                                                                                  .deleteAllConversation(
-                                                                                      isAlsoDeleteFromServer: true,
-                                                                                      isAlsoDeleteMessages: true)
-                                                                                  .then((value) {
-                                                                                // ZIMKit().deleteConversation(
-                                                                                //     conversationID,
-                                                                                //     ZIMConversationType.peer);
                                                                               });
 
                                                                               connectedUsersCubit.GetConnectedUsers();

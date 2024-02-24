@@ -88,11 +88,19 @@ class ZIMKitConversationWidget extends StatelessWidget {
                             ZIMMessageDeleteConfig config = ZIMMessageDeleteConfig();
                             config.isAlsoDeleteServerMessage = false;
                             await ZIMKit()
-                                .deleteAllConversation(isAlsoDeleteFromServer: true, isAlsoDeleteMessages: true)
+                                .deleteAllMessage(
+                                    conversationID: conversation.id,
+                                    conversationType: conversation.type,
+                                    isAlsoDeleteServerMessage: false)
                                 .then((value) {
-                              // ZIMKit().deleteConversation(conversation.id, conversation.type);
+                              ZIMKit().deleteConversation(conversation.id, conversation.type);
                               Navigator.pop(context);
                             });
+                            // await ZIMKit()
+                            //     .deleteAllConversation(isAlsoDeleteFromServer: true, isAlsoDeleteMessages: true)
+                            //     .then((value) {
+                            //
+                            // });
 
                             /*             await ZIM
                                 .getInstance()!

@@ -138,7 +138,6 @@ class _ZIMKitConversationListViewState extends State<ZIMKitConversationListView>
   @override
   void dispose() {
     _scrollController.removeListener(scrollControllerListener);
-
     super.dispose();
   }
 

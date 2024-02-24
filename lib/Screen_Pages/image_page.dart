@@ -6,8 +6,8 @@ import 'package:pair_me/helper/Size_page.dart';
 import 'package:video_player/video_player.dart';
 
 class Image_Screen extends StatefulWidget {
-  String image,name;
-  Image_Screen({super.key, required this.image,required this.name});
+  String image, name;
+  Image_Screen({super.key, required this.image, required this.name});
 
   @override
   State<Image_Screen> createState() => _Image_ScreenState();
@@ -19,10 +19,11 @@ class _Image_ScreenState extends State<Image_Screen> {
   @override
   void initState() {
     super.initState();
-    _controller = VideoPlayerController.networkUrl(Uri.parse(widget.image),
-        videoPlayerOptions: VideoPlayerOptions(mixWithOthers: true),)
-      ..initialize().then((_) {
-        print("Hello Prit:- ${widget.image}");
+    _controller = VideoPlayerController.networkUrl(
+      Uri.parse(widget.image),
+      videoPlayerOptions: VideoPlayerOptions(mixWithOthers: true),
+    )..initialize().then((_) {
+        debugPrint("Hello Prit:- ${widget.image}");
         setState(() {});
       });
   }
@@ -61,16 +62,13 @@ class _Image_ScreenState extends State<Image_Screen> {
                             child: GestureDetector(
                                 onTap: () {
                                   setState(() {
-                                    _controller!.value.isPlaying
-                                        ? _controller?.pause()
-                                        : _controller?.play();
+                                    _controller!.value.isPlaying ? _controller?.pause() : _controller?.play();
                                   });
                                 },
                                 child: Icon(
-                                  _controller!.value.isPlaying
-                                      ? Icons.pause
-                                      : Icons.play_arrow,
-                                  size: 30,color: Colors.white,
+                                  _controller!.value.isPlaying ? Icons.pause : Icons.play_arrow,
+                                  size: 30,
+                                  color: Colors.white,
                                 )),
                           ))
                     ],
@@ -100,7 +98,7 @@ class _Image_ScreenState extends State<Image_Screen> {
                     decoration: BoxDecoration(
                         image: DecorationImage(
                             image: NetworkImage(widget.image),
-                          //  fit: BoxFit.fitHeight,
+                            //  fit: BoxFit.fitHeight,
                             filterQuality: FilterQuality.high)),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,

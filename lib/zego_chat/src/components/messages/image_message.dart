@@ -10,11 +10,11 @@ import 'package:pair_me/zego_chat/src/services/services.dart';
 
 class ZIMKitImageMessage extends StatelessWidget {
   const ZIMKitImageMessage({
-    Key? key,
+    super.key,
     required this.message,
     this.onPressed,
     this.onLongPress,
-  }) : super(key: key);
+  });
 
   final ZIMKitMessage message;
 
@@ -38,6 +38,7 @@ class ZIMKitImageMessage extends StatelessWidget {
             message.info.timestamp,
           )
         : null;
+
     final timeOfMsg = defaultLastMessageTimeBuilder(messageTime);
 
     final color = message.isMine ? Colors.white : const Color(0xff606164).withOpacity(0.5);
