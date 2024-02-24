@@ -3,7 +3,6 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:pair_me/Screen_Pages/chat.dart';
 import 'package:pair_me/Widgets/Background_img.dart';
 import 'package:pair_me/Widgets/custom_loader.dart';
 import 'package:pair_me/Widgets/custom_texts.dart';
@@ -93,10 +92,7 @@ class _Connection_PageState extends State<Connection_Page> {
                           onChanged: (value) {
                             setState(() {
                               data = connectedUsersCubit.data
-                                      .where((element) => element['name']
-                                          .toString()
-                                          .toLowerCase()
-                                          .contains(value))
+                                      .where((element) => element['name'].toString().toLowerCase().contains(value))
                                       .toList() ??
                                   [];
                             });
@@ -122,13 +118,11 @@ class _Connection_PageState extends State<Connection_Page> {
                         padding: EdgeInsets.symmetric(
                             horizontal: screenWidth(context, dividedBy: 30),
                             vertical: screenHeight(context, dividedBy: 70)),
-                        child: BlocBuilder<ConnectedUsersCubit,
-                            ConnectedUsersState>(
+                        child: BlocBuilder<ConnectedUsersCubit, ConnectedUsersState>(
                           builder: (context, state) {
                             print("state is $state");
                             if (state is ConnectedUsersSuccess) {
-                              return connectedUsersCubit
-                                      .connectedUsers.data!.isNotEmpty
+                              return connectedUsersCubit.connectedUsers.data!.isNotEmpty
                                   ? Text(
                                       "${connectedUsersCubit.connectedUsers.data?.length} Connection",
                                       style: const TextStyle(
@@ -168,46 +162,33 @@ class _Connection_PageState extends State<Connection_Page> {
                     BlocBuilder<ConnectedUsersCubit, ConnectedUsersState>(
                       builder: (context, state) {
                         if (state is ConnectedUsersSuccess) {
-                          return connectedUsersCubit
-                                      .connectedUsers.data!.isNotEmpty ||
-                                  data.isNotEmpty
+                          return connectedUsersCubit.connectedUsers.data!.isNotEmpty || data.isNotEmpty
                               ? Expanded(
                                   child: ListView.separated(
                                       physics: const ClampingScrollPhysics(),
                                       padding: EdgeInsets.only(
-                                        bottom: screenHeight(context,
-                                            dividedBy: 100),
+                                        bottom: screenHeight(context, dividedBy: 100),
                                       ),
                                       itemBuilder: (context, index) {
                                         return SizedBox(
                                           // margin: EdgeInsets.symmetric(horizontal: screenWidth(context,dividedBy: 15)),
-                                          height: screenHeight(context,
-                                              dividedBy: 8),
+                                          height: screenHeight(context, dividedBy: 8),
                                           width: screenHeight(context),
                                           child: Padding(
                                             padding: EdgeInsets.symmetric(
-                                              horizontal: screenWidth(context,
-                                                  dividedBy: 30),
+                                              horizontal: screenWidth(context, dividedBy: 30),
                                             ),
                                             child: Row(
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment.start,
-                                              crossAxisAlignment:
-                                                  CrossAxisAlignment.center,
+                                              mainAxisAlignment: MainAxisAlignment.start,
+                                              crossAxisAlignment: CrossAxisAlignment.center,
                                               children: [
                                                 CachedNetworkImage(
-                                                  imageUrl: serarchbar
-                                                          .text.isNotEmpty
+                                                  imageUrl: serarchbar.text.isNotEmpty
                                                       ? '${apis.baseurl}/${data[index]['profileImage'] ?? ''}'
                                                       : '${apis.baseurl}/${connectedUsersCubit.connectedUsers.data?[index].profileImage ?? ''}',
-                                                  imageBuilder: (context,
-                                                          imageProvider) =>
-                                                      Container(
-                                                    height: screenHeight(
-                                                        context,
-                                                        dividedBy: 15),
-                                                    width: screenHeight(context,
-                                                        dividedBy: 15),
+                                                  imageBuilder: (context, imageProvider) => Container(
+                                                    height: screenHeight(context, dividedBy: 15),
+                                                    width: screenHeight(context, dividedBy: 15),
                                                     decoration: BoxDecoration(
                                                       image: DecorationImage(
                                                         image: imageProvider,
@@ -218,103 +199,67 @@ class _Connection_PageState extends State<Connection_Page> {
                                                       shape: BoxShape.circle,
                                                     ),
                                                   ),
-                                                  placeholder: (context, url) =>
-                                                      const CircularProgressIndicator(),
-                                                  errorWidget: (context, url,
-                                                          error) =>
-                                                      CircleAvatar(
-                                                          radius: screenHeight(
-                                                              context,
-                                                              dividedBy: 30),
-                                                          child: const Icon(
-                                                              Icons.person)),
+                                                  placeholder: (context, url) => const CircularProgressIndicator(),
+                                                  errorWidget: (context, url, error) => CircleAvatar(
+                                                      radius: screenHeight(context, dividedBy: 30),
+                                                      child: const Icon(Icons.person)),
                                                 ),
                                                 SizedBox(
-                                                  width: screenWidth(context,
-                                                      dividedBy: 30),
+                                                  width: screenWidth(context, dividedBy: 30),
                                                 ),
                                                 Padding(
                                                   padding: EdgeInsets.symmetric(
-                                                      vertical: screenWidth(
-                                                          context,
-                                                          dividedBy: 40)),
+                                                      vertical: screenWidth(context, dividedBy: 40)),
                                                   child: Column(
-                                                    mainAxisAlignment:
-                                                        MainAxisAlignment.start,
-                                                    crossAxisAlignment:
-                                                        CrossAxisAlignment
-                                                            .start,
+                                                    mainAxisAlignment: MainAxisAlignment.start,
+                                                    crossAxisAlignment: CrossAxisAlignment.start,
                                                     children: [
                                                       Text(
-                                                        serarchbar
-                                                                .text.isNotEmpty
-                                                            ? data[index]
-                                                                ['name']
-                                                            : connectedUsersCubit
-                                                                    .connectedUsers
-                                                                    .data?[
-                                                                        index]
-                                                                    .name ??
+                                                        serarchbar.text.isNotEmpty
+                                                            ? data[index]['name']
+                                                            : connectedUsersCubit.connectedUsers.data?[index].name ??
                                                                 '',
                                                         style: const TextStyle(
                                                             fontSize: 15,
-                                                            fontWeight:
-                                                                FontWeight.w500,
-                                                            fontFamily:
-                                                                'Roboto'),
+                                                            fontWeight: FontWeight.w500,
+                                                            fontFamily: 'Roboto'),
                                                       ),
                                                       SizedBox(
-                                                        height: screenHeight(
-                                                            context,
-                                                            dividedBy: 300),
+                                                        height: screenHeight(context, dividedBy: 300),
                                                       ),
                                                       SizedBox(
-                                                        width: screenWidth(
-                                                            context,
-                                                            dividedBy: 2.2),
-                                                        child: const Text(
-                                                            'Dis promethium, vei maximus gulag......',
+                                                        width: screenWidth(context, dividedBy: 2.2),
+                                                        child: const Text('Dis promethium, vei maximus gulag......',
                                                             maxLines: 2,
                                                             style: TextStyle(
-                                                                color: Color(
-                                                                    0xffAAAAAA),
+                                                                color: Color(0xffAAAAAA),
                                                                 fontSize: 13,
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .w500,
-                                                                fontFamily:
-                                                                    'Roboto')),
+                                                                fontWeight: FontWeight.w500,
+                                                                fontFamily: 'Roboto')),
                                                       ),
                                                       SizedBox(
-                                                        width: screenWidth(
-                                                            context,
-                                                            dividedBy: 2.2),
+                                                        width: screenWidth(context, dividedBy: 2.2),
                                                         child: Row(
                                                           children: [
-                                                            Image.asset(
-                                                                "assets/Images/calendar.png",
-                                                                width: screenWidth(
-                                                                    context,
-                                                                    dividedBy:
-                                                                        40)),
+                                                            Image.asset("assets/Images/calendar.png",
+                                                                width: screenWidth(context, dividedBy: 40)),
                                                             const SizedBox(
                                                               width: 3,
                                                             ),
-                                                            Text(serarchbar
-                                                                .text
-                                                                .isNotEmpty
-                                                                ?DateFormat('dd/MM/yyyy').format(DateTime.parse(data[index]['time']) ?? DateTime.now()) :
-                                                                DateFormat('dd/MM/yyyy').format(connectedUsersCubit.connectedUsers.data?[index].time ?? DateTime.now()),
+                                                            Text(
+                                                                serarchbar.text.isNotEmpty
+                                                                    ? DateFormat('dd/MM/yyyy').format(
+                                                                        DateTime.parse(data[index]['time']) ??
+                                                                            DateTime.now())
+                                                                    : DateFormat('dd/MM/yyyy').format(
+                                                                        connectedUsersCubit
+                                                                                .connectedUsers.data?[index].time ??
+                                                                            DateTime.now()),
                                                                 style: const TextStyle(
-                                                                    color: Color(
-                                                                        0xffAAAAAA),
-                                                                    fontSize:
-                                                                        10,
-                                                                    fontWeight:
-                                                                        FontWeight
-                                                                            .w400,
-                                                                    fontFamily:
-                                                                        'Roboto'))
+                                                                    color: Color(0xffAAAAAA),
+                                                                    fontSize: 10,
+                                                                    fontWeight: FontWeight.w400,
+                                                                    fontFamily: 'Roboto'))
                                                           ],
                                                         ),
                                                       ),
@@ -323,47 +268,40 @@ class _Connection_PageState extends State<Connection_Page> {
                                                 ),
                                                 const Spacer(),
                                                 Padding(
-                                                    padding:
-                                                        EdgeInsets.symmetric(
-                                                            vertical:
-                                                                screenWidth(
-                                                                    context,
-                                                                    dividedBy:
-                                                                        40)),
+                                                    padding: EdgeInsets.symmetric(
+                                                        vertical: screenWidth(context, dividedBy: 40)),
                                                     child: Row(
                                                       children: [
                                                         InkWell(
                                                           onTap: () {
                                                             showModalBottomSheet(
                                                               context: context,
-                                                              builder:
-                                                                  (context) {
+                                                              builder: (context) {
                                                                 return SizedBox(
-                                                                  height: screenHeight(
-                                                                      context,
-                                                                      dividedBy:
-                                                                          7.5),
+                                                                  height: screenHeight(context, dividedBy: 7.5),
                                                                   child: Column(
                                                                     children: [
                                                                       Padding(
-                                                                        padding:
-                                                                            EdgeInsets.only(top: screenHeight(context, dividedBy: 50)),
-                                                                        child:
-                                                                            Container(
-                                                                          width: screenHeight(
-                                                                              context,
-                                                                              dividedBy: 15),
-                                                                          height:
-                                                                              7,
+                                                                        padding: EdgeInsets.only(
+                                                                            top: screenHeight(context, dividedBy: 50)),
+                                                                        child: Container(
+                                                                          width: screenHeight(context, dividedBy: 15),
+                                                                          height: 7,
                                                                           decoration: BoxDecoration(
                                                                               borderRadius: BorderRadius.circular(10),
                                                                               color: Colors.black54),
                                                                         ),
                                                                       ),
                                                                       InkWell(
-                                                                        onTap:
-                                                                            () {
-                                                                          removeUserCubit.AcceptNotification(id: serarchbar.text.isNotEmpty ? data[index]['id'] : connectedUsersCubit.connectedUsers.data?[index].id ?? '')
+                                                                        onTap: () {
+                                                                          removeUserCubit.AcceptNotification(
+                                                                                  id: serarchbar.text.isNotEmpty
+                                                                                      ? data[index]['id']
+                                                                                      : connectedUsersCubit
+                                                                                              .connectedUsers
+                                                                                              .data?[index]
+                                                                                              .id ??
+                                                                                          '')
                                                                               .then(
                                                                             (value) async {
                                                                               String conversationID =
@@ -392,24 +330,21 @@ class _Connection_PageState extends State<Connection_Page> {
                                                                             },
                                                                           );
                                                                         },
-                                                                        child:
-                                                                            Container(
-                                                                          margin:
-                                                                              EdgeInsets.only(left: screenWidth(context, dividedBy: 50)),
-                                                                          width:
-                                                                              screenWidth(context),
-                                                                          height: screenHeight(
-                                                                              context,
-                                                                              dividedBy: 10),
+                                                                        child: Container(
+                                                                          margin: EdgeInsets.only(
+                                                                              left:
+                                                                                  screenWidth(context, dividedBy: 50)),
+                                                                          width: screenWidth(context),
+                                                                          height: screenHeight(context, dividedBy: 10),
                                                                           decoration: const BoxDecoration(
                                                                               color: Colors.transparent,
-                                                                              borderRadius: BorderRadius.only(topLeft: Radius.circular(15), topRight: Radius.circular(16))),
+                                                                              borderRadius: BorderRadius.only(
+                                                                                  topLeft: Radius.circular(15),
+                                                                                  topRight: Radius.circular(16))),
                                                                           child: const Center(
                                                                               child: ListTile(
-                                                                            title:
-                                                                                Text("Remove Connection"),
-                                                                            leading:
-                                                                                Icon(Icons.delete),
+                                                                            title: Text("Remove Connection"),
+                                                                            leading: Icon(Icons.delete),
                                                                           )),
                                                                         ),
                                                                       ),
@@ -421,65 +356,49 @@ class _Connection_PageState extends State<Connection_Page> {
                                                           },
                                                           child: Padding(
                                                             padding: EdgeInsets.symmetric(
-                                                                horizontal: screenWidth(context, dividedBy: 30),
-                                                                vertical: screenHeight(context, dividedBy: 50),
+                                                              horizontal: screenWidth(context, dividedBy: 30),
+                                                              vertical: screenHeight(context, dividedBy: 50),
                                                             ),
-                                                            child: SvgPicture.asset(
-                                                                "assets/Images/more.svg",
-                                                                height: screenHeight(context,dividedBy: 50),
-                                                                width:
-                                                                    screenWidth(
-                                                                        context,
-                                                                        dividedBy:
-                                                                            100)),
+                                                            child: SvgPicture.asset("assets/Images/more.svg",
+                                                                height: screenHeight(context, dividedBy: 50),
+                                                                width: screenWidth(context, dividedBy: 100)),
                                                           ),
                                                         ),
                                                         InkWell(
                                                           onTap: () {
-                                                            if(serarchbar.text.isNotEmpty){
+                                                            if (serarchbar.text.isNotEmpty) {
                                                               messageUserCubit.AcceptNotification(
                                                                 context,
                                                                 id: data[index]['_id'],
                                                                 name: data[index]['name'],
-                                                                uid: connectedUsersCubit.connectedUsers.loginUserId ?? '',
+                                                                uid: connectedUsersCubit.connectedUsers.loginUserId ??
+                                                                    '',
                                                                 img: data[index]['profileImage'],
                                                               );
                                                             } else {
-                                                              messageUserCubit
-                                                                  .AcceptNotification(
+                                                              messageUserCubit.AcceptNotification(
                                                                 context,
                                                                 id: connectedUsersCubit
-                                                                    .connectedUsers
-                                                                    .data?[index]
-                                                                    .id ?? '',
+                                                                        .connectedUsers.data?[index].id ??
+                                                                    '',
                                                                 name: connectedUsersCubit
-                                                                    .connectedUsers
-                                                                    .data?[index]
-                                                                    .name ?? '',
-                                                                uid: connectedUsersCubit
-                                                                    .connectedUsers
-                                                                    .loginUserId ??
+                                                                        .connectedUsers.data?[index].name ??
+                                                                    '',
+                                                                uid: connectedUsersCubit.connectedUsers.loginUserId ??
                                                                     '',
                                                                 img: connectedUsersCubit
-                                                                    .connectedUsers
-                                                                    .data?[index]
-                                                                    .profileImage ??
+                                                                        .connectedUsers.data?[index].profileImage ??
                                                                     '',
                                                               );
                                                             }
                                                           },
                                                           child: Padding(
-                                                              padding: EdgeInsets.symmetric(
+                                                            padding: EdgeInsets.symmetric(
                                                               horizontal: screenWidth(context, dividedBy: 50),
-                                                          vertical: screenHeight(context, dividedBy: 40),
-                                                        ),
-                                                            child: SvgPicture.asset(
-                                                                "assets/Images/message.svg",
-                                                                width:
-                                                                    screenWidth(
-                                                                        context,
-                                                                        dividedBy:
-                                                                            25)),
+                                                              vertical: screenHeight(context, dividedBy: 40),
+                                                            ),
+                                                            child: SvgPicture.asset("assets/Images/message.svg",
+                                                                width: screenWidth(context, dividedBy: 25)),
                                                           ),
                                                         ),
                                                       ],
@@ -499,18 +418,14 @@ class _Connection_PageState extends State<Connection_Page> {
                                       },
                                       itemCount: serarchbar.text.isNotEmpty
                                           ? data.length
-                                          : connectedUsersCubit.connectedUsers
-                                                  .data?.length ??
-                                              0))
-                              : Expanded(
-                                  child: Center(child: NoMessage(context)));
+                                          : connectedUsersCubit.connectedUsers.data?.length ?? 0))
+                              : Expanded(child: Center(child: NoMessage(context)));
                         }
                         if (state is ConnectedUsersLoading) {
                           return Expanded(child: customLoader());
                         }
                         if (state is ConnectedUsersError) {
-                          return Expanded(
-                              child: Center(child: NoMessage(context)));
+                          return Expanded(child: Center(child: NoMessage(context)));
                         }
                         return const SizedBox();
                       },
