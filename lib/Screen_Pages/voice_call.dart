@@ -49,13 +49,13 @@ class _VoiceCallPageState extends State<VoiceCallPage> {
   Future<void> setupVoiceSDKEngine() async {
     // retrieve or request microphone permission
     await [Permission.microphone].request();
-
     //create an instance of the Agora engine
     agoraEngine = createAgoraRtcEngine();
     await agoraEngine.initialize( RtcEngineContext(
         appId: AgoraAppid
-    ));
-
+    )).then((value) {
+      join();
+    });
     // Register the event handler
     agoraEngine.registerEventHandler(
       RtcEngineEventHandler(
@@ -86,12 +86,13 @@ class _VoiceCallPageState extends State<VoiceCallPage> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    createchannel();
-   // setupVoiceSDKEngine();
+   // createchannel();
+    setupVoiceSDKEngine();
   }
   // Clean up the resources when you leave
   @override
   void dispose() async {
+    await agoraEngine.release();
     await agoraEngine.leaveChannel();
     super.dispose();
   }
@@ -213,7 +214,10 @@ class _VoiceCallPageState extends State<VoiceCallPage> {
               ),
               SizedBox(height: screenHeight(context,dividedBy: 50),),
               GestureDetector(
-                onTap: () => createchannel(),
+                onTap: () {
+                  agoraEngine.leaveChannel();
+                },
+               // onTap: () => createchannel(),
                   child: Container(
                     height: screenHeight(context,dividedBy: 10),
                     width: screenHeight(context,dividedBy: 10),
@@ -239,16 +243,16 @@ class _VoiceCallPageState extends State<VoiceCallPage> {
     );
   }
   void  join() async {
-
     // Set channel options including the client role and channel profile
     ChannelMediaOptions options = const ChannelMediaOptions(
       clientRoleType: ClientRoleType.clientRoleBroadcaster,
       channelProfile: ChannelProfileType.channelProfileCommunication,
+
     );
 
     await agoraEngine.joinChannel(
-      token: token,
-      channelId: channelName,
+      token: '',
+      channelId: widget.uid,
       options: options,
       uid: uid,
     );

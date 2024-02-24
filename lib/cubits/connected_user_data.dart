@@ -22,6 +22,7 @@ class ConnectedUsersCubit extends Cubit<ConnectedUsersState> {
   ConnectedUsersCubit() : super(ConnectedUsersInitials());
   ConnectedUsers connectedUsers = ConnectedUsers();
   final dio = Dio();
+  List data = [];
   Future<ConnectedUsers?> GetConnectedUsers() async {
     emit(ConnectedUsersLoading());
     try {
@@ -29,14 +30,13 @@ class ConnectedUsersCubit extends Cubit<ConnectedUsersState> {
         'Content-Type': 'application/json',
         'Authorization': Authtoken,
       }));
-      log("response ====> $response");
       final hello = response.data;
-      print("hello ===> $hello");
       if(hello['code'] == 200 && hello['data'] != null)
       {
         connectedUsers = ConnectedUsers.fromJson(response.data);
+        data = hello['data'] ?? [];
         print(connectedUsers);
-        print("passs");
+        print("hello ===> $data ");
         emit(ConnectedUsersSuccess());
       } else {
         emit(ConnectedUsersError());

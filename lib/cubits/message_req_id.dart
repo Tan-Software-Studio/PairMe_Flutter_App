@@ -1,10 +1,10 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:pair_me/Widgets/Background_img.dart';
+import 'package:pair_me/Screen_Pages/chat.dart';
 import 'package:pair_me/helper/Apis.dart';
 import 'package:pair_me/helper/Size_page.dart';
-import 'package:pair_me/zego_chat/src/pages/message_list_page.dart';
+
 
 abstract class MsgReqbyIDState {}
 
@@ -19,51 +19,28 @@ class MsgReqbyIDSuccess extends MsgReqbyIDState {}
 class MsgReqbyIDCubit extends Cubit<MsgReqbyIDState> {
   MsgReqbyIDCubit() : super(MsgReqbyIDInitials());
   final dio = Dio();
-  Future AcceptNotification(BuildContext context,
-      {required String id, required String uid, required String name, required String image}) async {
+  Future AcceptNotification(BuildContext context,{required String id,required String uid,required String name,required String image}) async {
     print("id ==> $id");
     emit(MsgReqbyIDLoading());
     try {
-      Response response = await dio.get('${apis.messageReqUser}$id',
-          options: Options(headers: {
-            'Content-Type': 'application/json',
-            'Authorization': Authtoken,
-          }));
+      Response response = await dio.get('${apis.messageReqUser}$id',options:  Options(headers: {
+        'Content-Type': 'application/json',
+        'Authorization': Authtoken,
+      }));
       print(response);
       final hello = response.data;
       print("hello ==> $hello");
-      if (response.statusCode == 200 && response.data != null) {
+      if(response.statusCode == 200 && response.data != null)
+      {
         emit(MsgReqbyIDSuccess());
         // if(hello['msg'] == "This User Already In messagePage"){
-        debugPrint("****** Going to chat page via home chat");
-        debugPrint("**** user id ==> $id");
-
-        Navigator.push(context, MaterialPageRoute(builder: (context) {
-          return ZIMKitMessageListPage(
-            name: 'chatting',
-            conversationID: id,
-            messageListBackgroundBuilder: (context, defaultWidget) {
-              return Stack(
-                clipBehavior: Clip.none,
-                children: [
-                  Background_Img(context),
-                  defaultWidget,
-                ],
-              );
-            },
-          );
-        }));
-        // Navigator.push(context, MaterialPageRoute(
-        //   builder: (context) {
-        //     return Chatting_Page(
-        //       name: 'chatting',
-        //       Username: name,
-        //       image: image,
-        //       id: id,
-        //       uid: uid,
-        //     );
-        //   },
-        // ));
+          Navigator.push(context,MaterialPageRoute(builder: (context) {
+            return Chatting_Page(
+              name: 'chatting',
+              Username:  name,
+              image: image, id: id, uid: uid,
+            );
+          },));
         // }else{
         //   userMsgReq = UserMsgReq.fromJson(response.data);
         //   Navigator.push(context,MaterialPageRoute(builder: (context) {

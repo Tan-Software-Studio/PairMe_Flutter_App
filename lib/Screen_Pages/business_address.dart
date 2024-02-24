@@ -1,12 +1,13 @@
 import 'package:bottom_picker/bottom_picker.dart';
 import 'package:bottom_picker/resources/arrays.dart';
 import 'package:country_picker/country_picker.dart';
+import 'package:dio/dio.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pair_me/Modal/city&state.dart';
-import 'package:pair_me/Screen_Pages/business_profile.dart';
+import 'package:pair_me/helper/Apis.dart';
 import 'package:pair_me/Widgets/Background_img.dart';
 import 'package:pair_me/Widgets/custom_button.dart';
 import 'package:pair_me/Widgets/custom_loader.dart';
@@ -39,6 +40,10 @@ class _Business_AddressState extends State<Business_Address> {
   BusinessaddressUpdatesCubit businessaddressUpdatesCubit = BusinessaddressUpdatesCubit();
   CityStateCubit cityStateCubit = CityStateCubit();
   CityandState cityandState = CityandState();
+  List _states = [];
+  List _citys = [];
+  List resultstates = [];
+  List resultcity = [];
   final TextEditingController _Address = TextEditingController();
   final TextEditingController _Address2 = TextEditingController();
   final TextEditingController _Zipcode = TextEditingController();
@@ -50,6 +55,21 @@ class _Business_AddressState extends State<Business_Address> {
     cityandState = (await cityStateCubit.getcalendarEvents(country: country))!;
     setState(() {});
   }
+  Future getStateandcitys ({required String country}) async {
+    final dio = Dio();
+    try {
+      Response response = await dio.get('${apis.city}/$country');
+      Map _map = response.data;
+      final st = _map['state']['states'];
+      final st1 = _map['city']['cities'];
+      _states = st;
+      _citys = st1;
+      print("map ==> $_citys as Strin");
+    } on Exception catch (e) {
+      print("you are fully fail my friend" + e.toString());
+      // TODO
+    }
+  }
   Getadddata(){
     _Address.text = widget.line1;
     _Address2.text = widget.line2;
@@ -58,8 +78,17 @@ class _Business_AddressState extends State<Business_Address> {
     _City.text = widget.city;
     _Zipcode.text = widget.code;
     _date.text = widget.date;
+    _City.text.isNotEmpty ? getStateandcitys(country: _Contry.text).then((value) {
+      resultcity = _citys.where((element) => element.toString().toLowerCase().contains(_City.text.toLowerCase())).toList() ?? [];
+    }) : null;
+    _City.text.isNotEmpty ? GetData( _Contry.text) : null;
+    _State.text.isNotEmpty ? getStateandcitys(country: _Contry.text).then((value) {
+      resultstates = _states.where((element) => element['name'].toString().toLowerCase().contains( _State.text.toLowerCase())).toList() ?? [];
+    }) : null;
+    _State.text.isNotEmpty ? GetData( _Contry.text) : null;
     setState(() {});
   }
+
   @override
   void initState() {
     // TODO: implement initState
@@ -120,9 +149,11 @@ class _Business_AddressState extends State<Business_Address> {
                               onSelect: (Country country) {
                                 print(
                                     'Select country: ${country.phoneCode}');
-                                print('Select country: ${country.name}');
+                                print(
+                                    'Select country: ${country.name}');
                                 _Contry.text = country.name;
                                 GetData(_Contry.text);
+                                getStateandcitys(country: _Contry.text);
                                 // countryCodeSelect = country.phoneCode;
                                 // countryCodeflagsvg = country.flagEmoji;
                                 //flutterToast(country.displayNameNoCountryCode, true);
@@ -136,18 +167,17 @@ class _Business_AddressState extends State<Business_Address> {
                               : 'assets/Images/right_arrow.png',
                           readOnly: true,
                           onPress: () {
-                            // setState(() {
-                            //   _contry = !_contry;
-                            // });
                             showCountryPicker(
                               context: context,
                               showPhoneCode: true,
                               onSelect: (Country country) {
                                 print(
                                     'Select country: ${country.phoneCode}');
-                                print('Select country: ${country.name}');
+                                print(
+                                    'Select country: ${country.name}');
                                 _Contry.text = country.name;
                                 GetData(_Contry.text);
+                                getStateandcitys(country: _Contry.text);
                                 // countryCodeSelect = country.phoneCode;
                                 // countryCodeflagsvg = country.flagEmoji;
                                 //flutterToast(country.displayNameNoCountryCode, true);
@@ -166,16 +196,22 @@ class _Business_AddressState extends State<Business_Address> {
                               children: [
                                 custom_textfield_header(text: 'State'),
                                 Custom_textfield(context,
+                                    onChanged: (value) {
+                                      resultstates = _states.where((element) => element['name'].toString().toLowerCase().contains(value.toLowerCase())).toList() ?? [];
+                                      print("result ==> $resultstates");
+                                      setState(() { });
+                                    },
                                     onTap: () {
                                       setState(() {
-                                        _state = !_state;
+                                        _state = true;
+                                        print("_states ===> $_states");
                                       });
                                     },
                                     show_icon: true,
                                     image: _state
                                         ? 'assets/Images/Vector.png'
                                         : 'assets/Images/right_arrow.png',
-                                    readOnly: true,
+                                    readOnly: false,
                                     onPress: () {
                                       setState(() {
                                         _state = !_state;
@@ -211,7 +247,7 @@ class _Business_AddressState extends State<Business_Address> {
                                       builder: (context, state) {
                                         print(state);
                                         if (state is CityStateError)
-                                          return Center(
+                                          return const Center(
                                             child: Text("No State"),
                                           );
                                         return Padding(
@@ -222,34 +258,25 @@ class _Business_AddressState extends State<Business_Address> {
                                               horizontal: screenWidth(
                                                   context,
                                                   dividedBy: 30)),
-                                          child: ListView.builder(
+                                          child:ListView.builder(
                                             physics:
                                             const ClampingScrollPhysics(),
                                             padding: EdgeInsets.zero,
-                                            itemCount: cityandState
-                                                .state?.states.length,
-                                            itemBuilder:
-                                                (context, index) {
+                                            itemCount: _State.text.isNotEmpty ? resultstates.length : cityandState.state?.states.length,
+                                            itemBuilder: (context, index) {
                                               return InkWell(
                                                 onTap: () {
-                                                  _State.text = cityandState
+                                                  _State.text =_State.text.isNotEmpty ?
+                                                  resultstates[index]['name'].toString() : cityandState
                                                       .state
                                                       ?.states[
                                                   index]
-                                                      .name ??
-                                                      '';
+                                                      .name;
                                                   _state = !_state;
-                                                  setState(() {
-
-                                                  });
+                                                  setState(() {});
                                                 },
                                                 child: custom_text(
-                                                    text: cityandState
-                                                        .state
-                                                        ?.states[
-                                                    index]
-                                                        .name ??
-                                                        '',
+                                                    text:_State.text.isNotEmpty ? resultstates[index]['name'].toString() :  cityandState.state?.states[index].name,
                                                     color: const Color(
                                                         0xff303030)),
                                               );
@@ -276,9 +303,14 @@ class _Business_AddressState extends State<Business_Address> {
                               children: [
                                 custom_textfield_header(text: 'City'),
                                 Custom_textfield(
+                                    onChanged: (value) {
+                                      resultcity = _citys.where((element) => element.toString().toLowerCase().contains(value.toLowerCase())).toList() ?? [];
+                                      print("result ==> $resultcity");
+                                      setState(() { });
+                                    },
                                     onTap: () {
                                       setState(() {
-                                        _city = !_city;
+                                        _city = true;
                                       });
                                     },
                                     context,
@@ -286,7 +318,7 @@ class _Business_AddressState extends State<Business_Address> {
                                     image: _city
                                         ? 'assets/Images/Vector.png'
                                         : 'assets/Images/right_arrow.png',
-                                    readOnly: true,
+                                    readOnly: false,
                                     onPress: () {
                                       setState(() {
                                         _city = !_city;
@@ -321,10 +353,11 @@ class _Business_AddressState extends State<Business_Address> {
                                       CityStateState>(
                                     builder: (context, state) {
                                       print(state);
-                                      if (state is CityStateError)
-                                        return Center(
+                                      if (state is CityStateError) {
+                                        return const Center(
                                           child: Text("No State"),
                                         );
+                                      }
                                       return Padding(
                                         padding: EdgeInsets.symmetric(
                                             vertical: screenHeight(
@@ -337,26 +370,24 @@ class _Business_AddressState extends State<Business_Address> {
                                           physics:
                                           const ClampingScrollPhysics(),
                                           padding: EdgeInsets.zero,
-                                          itemCount: cityandState
-                                              .city?.cities.length,
+                                          itemCount:_City.text.isEmpty ? cityandState.city?.cities.length : resultcity.length,
                                           itemBuilder:
                                               (context, index) {
                                             return InkWell(
                                                 onTap: () {
-                                                  _City.text = cityandState
+                                                  _City
+                                                      .text = _City.text.isEmpty ? cityandState
                                                       .city
                                                       ?.cities[
-                                                  index] ??
-                                                      '';
+                                                  index] : resultcity[index] ;
                                                   _city = !_city;
                                                   setState(() {});
                                                 },
                                                 child: custom_text(
-                                                    text: cityandState
+                                                    text: _City.text.isEmpty ? cityandState
                                                         .city
                                                         ?.cities[
-                                                    index] ??
-                                                        '',
+                                                    index] : resultcity[index],
                                                     color: const Color(
                                                         0xff303030)));
                                           },
